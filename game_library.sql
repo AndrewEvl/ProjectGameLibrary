@@ -1,8 +1,7 @@
 CREATE DATABASE game_library;
-
 USE game_library;
 
-DROP DATABASE game_library;
+# DROP DATABASE game_library;
 
 CREATE TABLE genres (id INT AUTO_INCREMENT, ganre VARCHAR(30) UNIQUE , PRIMARY KEY (id));
 CREATE TABLE publishers (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE , PRIMARY KEY (id));
@@ -27,5 +26,7 @@ CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(30), nickName VARCHAR(30
 
 CREATE TABLE news (id INT AUTO_INCREMENT, name VARCHAR(100), date DATE, text VARCHAR(20000), PRIMARY KEY (id));
 
-CREATE TABLE users_roles (users_id INT , roles_users_id INT, PRIMARY KEY (users_id,roles_users_id),FOREIGN KEY (users_id) REFERENCES users(id),
-  FOREIGN KEY (roles_users_id) REFERENCES roles_users(id));
+INSERT INTO developers (name) VALUE ('Ubisoft')
+
+# CREATE TABLE users_roles (users_id INT , roles_users_id INT, PRIMARY KEY (users_id,roles_users_id),FOREIGN KEY (users_id) REFERENCES users(id),
+#   FOREIGN KEY (roles_users_id) REFERENCES roles_users(id));

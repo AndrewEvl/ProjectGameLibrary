@@ -11,7 +11,7 @@ public class DeveloperTest {
     public Developer developerDaoTest() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Developer devFind = session.find(Developer.class, 3L);
+        Developer devFind = session.find(Developer.class, 1L);
         return devFind;
     }
 }
