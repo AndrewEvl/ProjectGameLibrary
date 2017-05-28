@@ -1,0 +1,14 @@
+
+
+GameLibrary.iml
+dao/dao.iml
+service/service.iml
+service/src/test/
+web/src/main/resources/
+web/web.iml
+.idea/*
+.idea/libraries/*
+dao/target/
+service/target/
+web/target/
+target/
