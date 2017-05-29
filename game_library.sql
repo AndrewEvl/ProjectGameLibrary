@@ -26,9 +26,19 @@ CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(30), nickName VARCHAR(30
 
 CREATE TABLE news (id INT AUTO_INCREMENT, name VARCHAR(100), date DATE, text VARCHAR(20000), PRIMARY KEY (id));
 
+CREATE TABLE system_settings (id INT AUTO_INCREMENT,cpu_id INT, ram_id INT ,
+                              hdd_id INT , video_card_id INT ,PRIMARY KEY (id,cpu_id, ram_id, hdd_id, video_card_id),
+  FOREIGN KEY (cpu_id) REFERENCES cpu(id),FOREIGN KEY (ram_id) REFERENCES ram(id), FOREIGN KEY (hdd_id) REFERENCES hdd(id), FOREIGN KEY (video_card_id) REFERENCES video_card(id));
+
+CREATE TABLE platforms_system (platforms_id INT, system_settings_id INT, PRIMARY KEY (platforms_id,system_settings_id),
+  FOREIGN KEY (platforms_id) REFERENCES platforms(id), FOREIGN KEY (system_settings_id) REFERENCES system_settings(id));
+
 CREATE TABLE forum_theme (id INT AUTO_INCREMENT, theme VARCHAR(100), PRIMARY KEY (id));
 
-INSERT INTO developers (name) VALUE ('Ubisoft')
+CREATE TABLE cpu (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
+CREATE TABLE ram (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
+CREATE TABLE hdd (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
+CREATE TABLE video_card (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
 
-# CREATE TABLE users_roles (users_id INT , roles_users_id INT, PRIMARY KEY (users_id,roles_users_id),FOREIGN KEY (users_id) REFERENCES users(id),
-#   FOREIGN KEY (roles_users_id) REFERENCES roles_users(id));
+
+INSERT INTO developers (name) VALUE ('Ubisoft')
