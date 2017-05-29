@@ -2,7 +2,6 @@ package entities;
 
 import lombok.*;
 import org.joda.time.LocalDate;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -44,7 +43,7 @@ public class Game {
     @Setter
     @Getter
     private Developer developer;
-    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reviews_id")
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "game")
     @Setter
     @Getter
     private Set<Review> review = new HashSet<>();
