@@ -39,8 +39,9 @@ public class User {
     @Getter
     @Setter
     private long id;
-//    @Column (name = "review")
-//    @Setter
-//    @Getter
-//    private String role;
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn (name = "roles_id")
+    @Setter
+    @Getter
+    private Role role;
 }

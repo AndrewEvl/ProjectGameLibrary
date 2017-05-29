@@ -20,29 +20,33 @@ public class Game {
     @Setter
     @Getter
     private String name;
-//    @Column (name = "release_day")
-//    @Setter
-//    @Getter
-//    private LocalDate releaseDay;
+   @Column (name = "release_day")
+    @Setter
+    @Getter
+    private LocalDate releaseDay;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private long id;
-//    @Setter
-//    @Getter
-//    private Genre genre;
-//    @Column (name = "name")
-//    @Setter
-//    @Getter
-//    private Publisher publisher;
-//    @Column (name = "name")
-//    @Setter
-//    @Getter
-//    private Developer developer;
-//    @Column (name = "name")
-//    @Setter
-//    @Getter
-//    private Set<Review> review = new HashSet<Review>();
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn (name = "genres_id")
+    @Setter
+    @Getter
+    private Genre genre;
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn (name = "publishers_id")
+    @Setter
+    @Getter
+    private Publisher publisher;
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn (name = "developers_id")
+    @Setter
+    @Getter
+    private Developer developer;
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reviews_id")
+    @Setter
+    @Getter
+    private Set<Review> review = new HashSet<>();
 
 }

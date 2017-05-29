@@ -33,8 +33,8 @@ public class News {
     @Getter
     @Setter
     private long id;
-//    @Column (name = "release_day")
-//    @Setter
-//    @Getter
-//    private Set<Review> reviews = new HashSet<Review>();
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reviews_id")
+    @Setter
+    @Getter
+    private Set<Review> reviews = new HashSet<>();
 }
