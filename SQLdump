@@ -1,0 +1,584 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: game_library
+-- ------------------------------------------------------
+-- Server version	5.7.17-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ram`
+--
+
+DROP TABLE IF EXISTS `ram`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ram` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ram`
+--
+
+LOCK TABLES `ram` WRITE;
+/*!40000 ALTER TABLE `ram` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ram` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews_game`
+--
+
+DROP TABLE IF EXISTS `reviews_game`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews_game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `users_id` int(11) NOT NULL,
+  `games_id` int(11) NOT NULL,
+  `review` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`id`,`users_id`,`games_id`),
+  KEY `users_id` (`users_id`),
+  KEY `games_id` (`games_id`),
+  CONSTRAINT `reviews_game_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `reviews_game_ibfk_2` FOREIGN KEY (`games_id`) REFERENCES `games` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews_game`
+--
+
+LOCK TABLES `reviews_game` WRITE;
+/*!40000 ALTER TABLE `reviews_game` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews_game` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `games`
+--
+
+DROP TABLE IF EXISTS `games`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `games` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `relaese_day` date DEFAULT NULL,
+  `genres_id` int(11) DEFAULT NULL,
+  `publishers_id` int(11) DEFAULT NULL,
+  `developers_id` int(11) DEFAULT NULL,
+  `reviews_id` int(11) DEFAULT NULL,
+  `platforms_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `genres_id` (`genres_id`),
+  KEY `publishers_id` (`publishers_id`),
+  KEY `developers_id` (`developers_id`),
+  KEY `reviews_id` (`reviews_id`),
+  KEY `platforms_id` (`platforms_id`),
+  CONSTRAINT `games_ibfk_1` FOREIGN KEY (`genres_id`) REFERENCES `genres` (`id`),
+  CONSTRAINT `games_ibfk_2` FOREIGN KEY (`publishers_id`) REFERENCES `publishers` (`id`),
+  CONSTRAINT `games_ibfk_3` FOREIGN KEY (`developers_id`) REFERENCES `developers` (`id`),
+  CONSTRAINT `games_ibfk_4` FOREIGN KEY (`reviews_id`) REFERENCES `reviews` (`id`),
+  CONSTRAINT `games_ibfk_5` FOREIGN KEY (`platforms_id`) REFERENCES `platforms` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `games`
+--
+
+LOCK TABLES `games` WRITE;
+/*!40000 ALTER TABLE `games` DISABLE KEYS */;
+/*!40000 ALTER TABLE `games` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `system_settings`
+--
+
+DROP TABLE IF EXISTS `system_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `system_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cpu_id` int(11) NOT NULL,
+  `ram_id` int(11) NOT NULL,
+  `hdd_id` int(11) NOT NULL,
+  `video_card_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`cpu_id`,`ram_id`,`hdd_id`,`video_card_id`),
+  KEY `cpu_id` (`cpu_id`),
+  KEY `ram_id` (`ram_id`),
+  KEY `hdd_id` (`hdd_id`),
+  KEY `video_card_id` (`video_card_id`),
+  CONSTRAINT `system_settings_ibfk_1` FOREIGN KEY (`cpu_id`) REFERENCES `cpu` (`id`),
+  CONSTRAINT `system_settings_ibfk_2` FOREIGN KEY (`ram_id`) REFERENCES `ram` (`id`),
+  CONSTRAINT `system_settings_ibfk_3` FOREIGN KEY (`hdd_id`) REFERENCES `hdd` (`id`),
+  CONSTRAINT `system_settings_ibfk_4` FOREIGN KEY (`video_card_id`) REFERENCES `video_card` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `system_settings`
+--
+
+LOCK TABLES `system_settings` WRITE;
+/*!40000 ALTER TABLE `system_settings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news_reviews_news`
+--
+
+DROP TABLE IF EXISTS `news_reviews_news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `news_reviews_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `news_id` int(11) NOT NULL,
+  `reviews_news_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`news_id`,`reviews_news_id`),
+  KEY `news_id` (`news_id`),
+  KEY `reviews_news_id` (`reviews_news_id`),
+  CONSTRAINT `news_reviews_news_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  CONSTRAINT `news_reviews_news_ibfk_2` FOREIGN KEY (`reviews_news_id`) REFERENCES `reviews_news` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `news_reviews_news`
+--
+
+LOCK TABLES `news_reviews_news` WRITE;
+/*!40000 ALTER TABLE `news_reviews_news` DISABLE KEYS */;
+/*!40000 ALTER TABLE `news_reviews_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `publishers`
+--
+
+DROP TABLE IF EXISTS `publishers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `publishers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `publishers`
+--
+
+LOCK TABLES `publishers` WRITE;
+/*!40000 ALTER TABLE `publishers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `publishers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews_news`
+--
+
+DROP TABLE IF EXISTS `reviews_news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `users_id` int(11) NOT NULL,
+  `review` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`,`users_id`),
+  KEY `users_id` (`users_id`),
+  CONSTRAINT `reviews_news_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews_news`
+--
+
+LOCK TABLES `reviews_news` WRITE;
+/*!40000 ALTER TABLE `reviews_news` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews_news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles_users`
+--
+
+DROP TABLE IF EXISTS `roles_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_user` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `role_user` (`role_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles_users`
+--
+
+LOCK TABLES `roles_users` WRITE;
+/*!40000 ALTER TABLE `roles_users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roles_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews_forum`
+--
+
+DROP TABLE IF EXISTS `reviews_forum`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews_forum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`user_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `reviews_forum_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews_forum`
+--
+
+LOCK TABLES `reviews_forum` WRITE;
+/*!40000 ALTER TABLE `reviews_forum` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews_forum` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news`
+--
+
+DROP TABLE IF EXISTS `news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `text` varchar(20000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `news`
+--
+
+LOCK TABLES `news` WRITE;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hdd`
+--
+
+DROP TABLE IF EXISTS `hdd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hdd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hdd`
+--
+
+LOCK TABLES `hdd` WRITE;
+/*!40000 ALTER TABLE `hdd` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hdd` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `platforms`
+--
+
+DROP TABLE IF EXISTS `platforms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `platforms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `platforms`
+--
+
+LOCK TABLES `platforms` WRITE;
+/*!40000 ALTER TABLE `platforms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `platforms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum`
+--
+
+DROP TABLE IF EXISTS `forum`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `forum_theme_id` int(11) NOT NULL,
+  `reviews_forum_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`forum_theme_id`,`reviews_forum_id`),
+  KEY `forum_theme_id` (`forum_theme_id`),
+  KEY `reviews_forum_id` (`reviews_forum_id`),
+  CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`forum_theme_id`) REFERENCES `forum_theme` (`id`),
+  CONSTRAINT `forum_ibfk_2` FOREIGN KEY (`reviews_forum_id`) REFERENCES `reviews_forum` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum`
+--
+
+LOCK TABLES `forum` WRITE;
+/*!40000 ALTER TABLE `forum` DISABLE KEYS */;
+/*!40000 ALTER TABLE `forum` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `developers`
+--
+
+DROP TABLE IF EXISTS `developers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `developers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `developers`
+--
+
+LOCK TABLES `developers` WRITE;
+/*!40000 ALTER TABLE `developers` DISABLE KEYS */;
+INSERT INTO `developers` VALUES (1,'Ubisoft');
+/*!40000 ALTER TABLE `developers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_theme`
+--
+
+DROP TABLE IF EXISTS `forum_theme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forum_theme` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reviews_forum_id` int(11) NOT NULL,
+  `theme` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`,`reviews_forum_id`),
+  KEY `reviews_forum_id` (`reviews_forum_id`),
+  CONSTRAINT `forum_theme_ibfk_1` FOREIGN KEY (`reviews_forum_id`) REFERENCES `reviews_forum` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forum_theme`
+--
+
+LOCK TABLES `forum_theme` WRITE;
+/*!40000 ALTER TABLE `forum_theme` DISABLE KEYS */;
+/*!40000 ALTER TABLE `forum_theme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cpu`
+--
+
+DROP TABLE IF EXISTS `cpu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cpu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cpu`
+--
+
+LOCK TABLES `cpu` WRITE;
+/*!40000 ALTER TABLE `cpu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cpu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `nickName` varchar(30) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
+  `mail` varchar(50) DEFAULT NULL,
+  `roles_users_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `roles_users_id` (`roles_users_id`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`roles_users_id`) REFERENCES `roles_users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `genres`
+--
+
+DROP TABLE IF EXISTS `genres`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ganre` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ganre` (`ganre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genres`
+--
+
+LOCK TABLES `genres` WRITE;
+/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `platforms_system`
+--
+
+DROP TABLE IF EXISTS `platforms_system`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `platforms_system` (
+  `platforms_id` int(11) NOT NULL,
+  `system_settings_id` int(11) NOT NULL,
+  PRIMARY KEY (`platforms_id`,`system_settings_id`),
+  KEY `system_settings_id` (`system_settings_id`),
+  CONSTRAINT `platforms_system_ibfk_1` FOREIGN KEY (`platforms_id`) REFERENCES `platforms` (`id`),
+  CONSTRAINT `platforms_system_ibfk_2` FOREIGN KEY (`system_settings_id`) REFERENCES `system_settings` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `platforms_system`
+--
+
+LOCK TABLES `platforms_system` WRITE;
+/*!40000 ALTER TABLE `platforms_system` DISABLE KEYS */;
+/*!40000 ALTER TABLE `platforms_system` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `video_card`
+--
+
+DROP TABLE IF EXISTS `video_card`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `video_card` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `video_card`
+--
+
+LOCK TABLES `video_card` WRITE;
+/*!40000 ALTER TABLE `video_card` DISABLE KEYS */;
+/*!40000 ALTER TABLE `video_card` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `review` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews`
+--
+
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-05-30 15:55:46

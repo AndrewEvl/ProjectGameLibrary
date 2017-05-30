@@ -23,7 +23,11 @@ public class Platform {
     @Getter
     @Setter
     private long id;
-//    @Setter
-//    @Getter
-//    private SystemSetting systemSetting;
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinTable(name = "platforms_system",
+    joinColumns = @JoinColumn (name = "platforms_id"),
+    inverseJoinColumns = @JoinColumn(name = "system_settings_id"))
+    @Setter
+    @Getter
+    private SystemSetting systemSetting;
 }

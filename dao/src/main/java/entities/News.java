@@ -1,5 +1,6 @@
 package entities;
 
+import entities.Reviews.NewsComment;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,5 +37,6 @@ public class News {
     @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reviews_id")
     @Setter
     @Getter
-    private Set<Review> reviews = new HashSet<>();
+    private Set<NewsComment> newsCommentSet = new HashSet<>();
+
 }

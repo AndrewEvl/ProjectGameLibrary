@@ -109,7 +109,7 @@ public class EntityTest {
 //    public void testSaveReview() {
 //        Session session = SESSION_FACTORY.openSession();
 //
-//        Review review = new Review();
+//        ReviewGame reviewGames = new ReviewGame();
 //        review.setId(1L);
 //        review.setText("test");
 //

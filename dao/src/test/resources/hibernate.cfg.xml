@@ -12,11 +12,19 @@
         <property name="format_sql">true</property>
 
         <mapping class="entities.Developer"/>
+        <mapping class="entities.ForumTheme"/>
         <mapping class="entities.Game"/>
         <mapping class="entities.Genre"/>
         <mapping class="entities.News"/>
         <mapping class="entities.Platform"/>
         <mapping class="entities.Publisher"/>
-        <mapping class="entities.Review"/>
+        <mapping class="entities.Reviews.ReviewGame"/>
+        <mapping class="entities.SystemSetting"/>
+        <mapping class="entities.User"/>
+        <mapping class="entities.Role"/>
+        <mapping class="entities.SystemParts.Cpu"/>
+        <mapping class="entities.SystemParts.Ram"/>
+        <mapping class="entities.SystemParts.Hdd"/>
+        <mapping class="entities.SystemParts.VideoCard"/>
     </session-factory>
 </hibernate-configuration>
