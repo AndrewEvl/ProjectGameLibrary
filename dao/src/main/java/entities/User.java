@@ -40,7 +40,7 @@ public class User {
     @Setter
     private long id;
     @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinColumn (name = "roles_id")
+    @JoinColumn (name = "roles_users_id")
     @Setter
     @Getter
     private Role role;

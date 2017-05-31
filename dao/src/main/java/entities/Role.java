@@ -11,7 +11,7 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "roles")
+@Table(name = "roles_users")
 public class Role {
 
     @Id
@@ -19,7 +19,7 @@ public class Role {
     @Getter
     @Setter
     private long id;
-    @Column (name = "roles")
+    @Column (name = "role_user")
     @Setter
     @Getter
     private String role;

@@ -26,7 +26,9 @@ public class ReviewGame {
     private String text;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinTable(name = "games",joinColumns =  @JoinColumn(name = "reviews_id"),
-    inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "reviews_game", joinColumns =  @JoinColumn(name = "id"),
+    inverseJoinColumns = @JoinColumn(name = "games_id"))
+    @Setter
+    @Getter
     private Game game;
 }

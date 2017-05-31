@@ -19,12 +19,16 @@ public class NewsComment {
     @Getter
     @Setter
     private Long id;
+
     @Column(name = "review")
     @Setter
     @Getter
     private String text;
+
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinTable(name = "news", joinColumns = @JoinColumn(name = "news_id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "news_reviews_news", joinColumns = @JoinColumn(name = "news_id"),
+            inverseJoinColumns = @JoinColumn(name = "reviews_news_id"))
+    @Setter
+    @Getter
     private News news;
 }

@@ -1,6 +1,7 @@
 package entities;
 
 import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.*;
@@ -18,48 +19,49 @@ public class EntityTest {
 //    public static void init() {
 //        SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
 //    }
-//
-//    @Test
-//    public void testSaveDeveloper() {
-//        Session session = SESSION_FACTORY.openSession();
-//
-//        Developer developer = new Developer();
-//        developer.setName("Test");
-//        developer.setId(1L);
-//
-//        assertEquals(developer.getName(), "Test");
-//        assertEquals(developer.getId(), 1);
-//
-//        session.close();
-//    }
-//
-//    @Test
-//    public void testSaveGame() {
-//        Session session = SESSION_FACTORY.openSession();
-//
-//        Game game = new Game();
-//        game.setId(1L);
-//        game.setName("test");
-//        assertEquals(game.getId(), 1);
-//        assertEquals(game.getName(), "test");
-//
-//        session.close();
-//
-//    }
-//
-//    @Test
-//    public void testSaveGenre() {
-//        Session session = SESSION_FACTORY.openSession();
-//
-//        Genre genre = new Genre();
-//        genre.setId(1L);
-//        genre.setName("test");
-//        assertEquals(genre.getId(), 1);
-//        assertEquals(genre.getName(), "test");
-//
-//        session.close();
-//    }
-//
+
+    @Test
+    public void testSaveDeveloper() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Developer developer = new Developer();
+        developer.setName("Test");
+        developer.setId(1L);
+
+        assertEquals(developer.getName(), "Test");
+        assertEquals(developer.getId(), 1);
+
+        session.close();
+    }
+
+    @Test
+    public void testSaveGame() {
+        Session session = SESSION_FACTORY.openSession();
+
+        Game game = new Game();
+        game.setId(1L);
+        game.setName("test");
+        assertEquals(game.getId(), 1);
+        assertEquals(game.getName(), "test");
+
+        session.close();
+
+    }
+
+    @Test
+    public void testSaveGenre() {
+        Session session = SESSION_FACTORY.openSession();
+
+        Genre genre = new Genre();
+        genre.setId(1L);
+        genre.setName("test");
+        assertEquals(genre.getId(), 1);
+        assertEquals(genre.getName(), "test");
+
+        session.close();
+    }
+
 //    @Test
 //    public void testSaveNews() {
 //        Session session = SESSION_FACTORY.openSession();
@@ -74,37 +76,37 @@ public class EntityTest {
 //
 //        session.close();
 //    }
-//
-//    @Test
-//    public void testSavePublisher() {
-//        Session session = SESSION_FACTORY.openSession();
-//
-//        Publisher publisher = new Publisher();
-//        publisher.setId(1L);
-//        publisher.setName("test");
-//
-//        assertEquals(publisher.getId(), 1);
-//        assertEquals(publisher.getName(), "test");
-//
-//
-//        session.close();
-//    }
-//
-//    @Test
-//    public void testSavePlatform() {
-//        Session session = SESSION_FACTORY.openSession();
-//
-//        Platform platform = new Platform();
-//        platform.setId(1L);
-//        platform.setName("test");
-//
-//        assertEquals(platform.getId(), 1);
-//        assertEquals(platform.getName(), "test");
-//
-//
-//        session.close();
-//    }
-//
+
+    @Test
+    public void testSavePublisher() {
+        Session session = SESSION_FACTORY.openSession();
+
+        Publisher publisher = new Publisher();
+        publisher.setId(1L);
+        publisher.setName("test");
+
+        assertEquals(publisher.getId(), 1);
+        assertEquals(publisher.getName(), "test");
+
+
+        session.close();
+    }
+
+    @Test
+    public void testSavePlatform() {
+        Session session = SESSION_FACTORY.openSession();
+
+        Platform platform = new Platform();
+        platform.setId(1L);
+        platform.setName("test");
+
+        assertEquals(platform.getId(), 1);
+        assertEquals(platform.getName(), "test");
+
+
+        session.close();
+    }
+
 //    @Test
 //    public void testSaveReview() {
 //        Session session = SESSION_FACTORY.openSession();

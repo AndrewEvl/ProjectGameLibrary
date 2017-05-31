@@ -13,28 +13,33 @@ import java.util.Set;
  */
 @Entity
 @ToString
-@NoArgsConstructor
 @EqualsAndHashCode
+@NoArgsConstructor
 @Table(name = "news")
+
 public class News {
     @Column (name = "name")
     @Setter
     @Getter
     private String name;
+
     @Column (name = "date")
     @Setter
     @Getter
     private LocalDate date;
+
     @Column (name = "text")
     @Setter
     @Getter
     private String text;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private long id;
-    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "reviews_id")
+    private Long id;
+
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "news")
     @Setter
     @Getter
     private Set<NewsComment> newsCommentSet = new HashSet<>();
