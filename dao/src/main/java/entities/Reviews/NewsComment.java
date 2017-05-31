@@ -30,5 +30,5 @@ public class NewsComment {
             inverseJoinColumns = @JoinColumn(name = "reviews_news_id"))
     @Setter
     @Getter
-    private News news;
+    private News setNews;
 }

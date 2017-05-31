@@ -31,7 +31,7 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private long id;
+    private Long id;
 
     @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn (name = "genres_id")

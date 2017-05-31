@@ -39,7 +39,7 @@ public class News {
     @Setter
     private Long id;
 
-    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "news")
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "setNews")
     @Setter
     @Getter
     private Set<NewsComment> newsCommentSet = new HashSet<>();
