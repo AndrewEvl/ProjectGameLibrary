@@ -1,4 +1,4 @@
-package entities.SystemParts;
+package entities.systemParts;
 
 import lombok.*;
 

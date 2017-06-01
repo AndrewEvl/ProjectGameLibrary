@@ -17,16 +17,16 @@
         <mapping class="entities.News"/>
         <mapping class="entities.Platform"/>
         <mapping class="entities.Publisher"/>
-        <mapping class="entities.Reviews.ReviewGame"/>
+        <mapping class="entities.reviews.ReviewGame"/>
         <mapping class="entities.SystemSetting"/>
         <mapping class="entities.User"/>
         <mapping class="entities.Role"/>
-        <mapping class="entities.SystemParts.Cpu"/>
-        <mapping class="entities.SystemParts.Ram"/>
-        <mapping class="entities.SystemParts.Hdd"/>
-        <mapping class="entities.SystemParts.VideoCard"/>
-        <mapping class="entities.Reviews.NewsComment"/>
-        <mapping class="entities.Reviews.ReviewGame"/>
+        <mapping class="entities.systemParts.Cpu"/>
+        <mapping class="entities.systemParts.Ram"/>
+        <mapping class="entities.systemParts.Hdd"/>
+        <mapping class="entities.systemParts.VideoCard"/>
+        <mapping class="entities.reviews.NewsComment"/>
+        <mapping class="entities.reviews.ReviewGame"/>
 
     </session-factory>
 </hibernate-configuration>

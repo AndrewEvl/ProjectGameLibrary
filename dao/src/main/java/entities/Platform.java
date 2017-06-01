@@ -24,9 +24,7 @@ public class Platform {
     @Setter
     private long id;
     @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinTable(name = "platforms_system",
-    joinColumns = @JoinColumn (name = "platforms_id"),
-    inverseJoinColumns = @JoinColumn(name = "system_settings_id"))
+    @JoinColumn
     @Setter
     @Getter
     private SystemSetting systemSetting;

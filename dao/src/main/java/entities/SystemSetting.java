@@ -1,12 +1,14 @@
 package entities;
 
-import entities.SystemParts.Cpu;
-import entities.SystemParts.Hdd;
-import entities.SystemParts.Ram;
-import entities.SystemParts.VideoCard;
+import entities.systemParts.Cpu;
+import entities.systemParts.Hdd;
+import entities.systemParts.Ram;
+import entities.systemParts.VideoCard;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by User on 23.05.2017.
@@ -15,7 +17,7 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "system_settings")
+@Table(name = "system_requirements")
 public class SystemSetting {
 
     @Id
@@ -23,24 +25,28 @@ public class SystemSetting {
     @Getter
     @Setter
     private long id;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "cpu_id")
     @Setter
     @Getter
     private Cpu cpu;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "ram_id")
     @Setter
     @Getter
     private Ram ram;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "hdd_id")
     @Setter
     @Getter
     private Hdd hdd;
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "video_card_id")
     @Setter
     @Getter
     private VideoCard videoCard;
+    @ManyToMany(mappedBy = "systemSetting")
+    @Setter
+    @Getter
+    private Set<Game> game = new HashSet<>();
 }

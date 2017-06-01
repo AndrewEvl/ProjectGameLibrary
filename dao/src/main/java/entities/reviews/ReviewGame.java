@@ -1,4 +1,4 @@
-package entities.Reviews;
+package entities.reviews;
 
 import entities.Game;
 import lombok.*;
@@ -25,9 +25,8 @@ public class ReviewGame {
     @Getter
     private String text;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinTable(name = "reviews_game", joinColumns =  @JoinColumn(name = "id"),
-    inverseJoinColumns = @JoinColumn(name = "games_id"))
+    @ManyToOne
+    @JoinColumn (name = "games_id")
     @Setter
     @Getter
     private Game game;

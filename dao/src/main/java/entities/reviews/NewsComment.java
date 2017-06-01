@@ -1,4 +1,4 @@
-package entities.Reviews;
+package entities.reviews;
 
 import entities.News;
 import lombok.*;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "reviews_news")
+@Table(name = "comments_news")
 public class NewsComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,8 @@ public class NewsComment {
     @Getter
     private String text;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-    @JoinTable(name = "news_reviews_news", joinColumns = @JoinColumn(name = "news_id"),
-            inverseJoinColumns = @JoinColumn(name = "reviews_news_id"))
+    @ManyToOne
+    @JoinColumn (name = "news_id")
     @Setter
     @Getter
     private News setNews;
