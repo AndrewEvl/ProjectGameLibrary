@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = "game")
 @NoArgsConstructor
 @Table(name = "reviews_game")
 public class ReviewGame {

@@ -1,15 +1,16 @@
 package entities;
 
+import entities.reviews.NewsComment;
 import entities.reviews.ReviewGame;
-import entities.systemParts.Cpu;
 import org.hibernate.Session;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import java.util.Set;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,8 +30,7 @@ public class EntityTest {
     @Test
     public void testSaveDeveloper() {
 
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
 
         Developer developer = new Developer();
@@ -47,6 +47,7 @@ public class EntityTest {
     @Test
     public void testSaveGame() {
         Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
 
         Game game = new Game();
         Genre genre = new Genre();
@@ -54,25 +55,28 @@ public class EntityTest {
         Developer developer = new Developer();
         ReviewGame reviewGame = new ReviewGame();
         SystemSetting systemSetting = new SystemSetting();
+
         reviewGame.setText("Test");
         reviewGame.setGame(game);
         publisher.setName("Test");
         genre.setName("Test");
         developer.setName("Test");
+
         session.save(systemSetting);
         session.save(reviewGame);
         session.save(developer);
         session.save(publisher);
         session.save(genre);
+
         game.setName("test");
         game.setGenre(genre);
         game.setDeveloper(developer);
         game.setPublisher(publisher);
-//        game.setSystemSetting((Set<SystemSetting>) systemSetting);
-//        game.setReviewGame((Set<ReviewGame>) reviewGame);
+        game.getSystemSetting().add(systemSetting);
+        game.getReviewGame().add(reviewGame);
+
         session.save(game);
-
-
+        transaction.commit();
         session.close();
 
     }
@@ -80,6 +84,7 @@ public class EntityTest {
     @Test
     public void testSaveGenre() {
         Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
 
         Genre genre = new Genre();
         genre.setId(1L);
@@ -87,42 +92,50 @@ public class EntityTest {
         assertEquals(genre.getId(), 1);
         assertEquals(genre.getName(), "test");
 
+        transaction.commit();
         session.close();
     }
 
-    //
-////    @Test
-////    public void testSaveNews() {
-////        Session session = SESSION_FACTORY.openSession();
-////
-////        News news = new News();
-////        news.setId(1L);
-////        news.setName("test");
-////        news.setText("test");
-////        assertEquals(news.getId(), 1);
-////        assertEquals(news.getName(), "test");
-////        assertEquals(news.getText(), "test");
-////
-////        session.close();
-////    }
-//
+
+    @Test
+    public void testSaveNews() {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        News news = new News();
+        NewsComment newsComment = new NewsComment();
+        newsComment.setText("Test");
+        session.save(newsComment);
+        news.setId(1L);
+        news.setDate(LocalDate.now());
+        news.setName("test");
+        news.setText("test");
+        news.setDate(LocalDate.now());
+        news.getNewsCommentSet().add(newsComment);
+        news.toString();
+        news.hashCode();
+
+        transaction.commit();
+        session.close();
+    }
+
     @Test
     public void testSavePublisher() {
         Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
 
         Publisher publisher = new Publisher();
         publisher.setId(1L);
         publisher.setName("test");
 
-//        assertEquals(publisher.getId(), 1);
-//        assertEquals(publisher.getName(), "test");
-
+        transaction.commit();
         session.close();
     }
 
     @Test
     public void testSavePlatform() {
         Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
 
         Platform platform = new Platform();
         platform.setId(1L);
@@ -131,20 +144,20 @@ public class EntityTest {
         assertEquals(platform.getId(), 1);
         assertEquals(platform.getName(), "test");
 
+        transaction.commit();
         session.close();
     }
 
     @Test
     public void testSaveReview() {
         Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
 
         ReviewGame reviewGames = new ReviewGame();
         reviewGames.setId(1L);
         reviewGames.setText("test");
 
-//        assertEquals(reviewGames.getId(),1L);
-//        assertEquals(reviewGames.getText(), "test");
-
+        transaction.commit();
         session.close();
     }
 

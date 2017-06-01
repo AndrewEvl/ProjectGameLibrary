@@ -46,7 +46,7 @@ INSERT INTO comments_forum (name, forum_theme_id, user_id) VALUE ('никак))'
 INSERT INTO hdd (name) VALUE ('1.5 Гб');
 INSERT INTO system_requirements (cpu_id, ram_id, hdd_id, video_card_id) VALUE (1,1,1,1);
 INSERT INTO platforms_system (platforms_id, system_settings_id) VALUE (1,1);
-INSERT INTO games (name, genres_id, publishers_id, developers_id) VALUE ('Half-Life',1,1,2);
+INSERT INTO games (name, genres_id, publishers_id, developers_id) VALUE ('Half-Life',1,1,1);
 INSERT INTO news (name, text) VALUE ('Анонс Half-Life 3', 'Анонсировали выход Half-Life 3');
 INSERT INTO comments_news (users_id, news_id, review) VALUE (1,1,'Круто!');
 INSERT INTO reviews_game (users_id, games_id, review) VALUE (1,1,'Легендарная вещь!');
