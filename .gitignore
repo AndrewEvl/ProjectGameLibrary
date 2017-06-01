@@ -12,3 +12,6 @@ dao/target/
 service/target/
 web/target/
 target/
+/web/src/main/webapp/WEB-INF/pic/
+.idea/
+dao/log4j.log
