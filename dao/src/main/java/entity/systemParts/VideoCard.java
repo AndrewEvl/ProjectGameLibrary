@@ -1,4 +1,4 @@
-package entities;
+package entity.systemParts;
 
 import lombok.*;
 
@@ -11,16 +11,15 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "roles_users")
-public class Role {
-
+@Table(name = "video_card")
+public class VideoCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private long id;
-    @Column (name = "role_user")
+    @Column(name = "name")
     @Setter
     @Getter
-    private String role;
+    private String name;
 }

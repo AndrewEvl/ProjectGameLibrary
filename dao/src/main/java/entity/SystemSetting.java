@@ -1,9 +1,9 @@
-package entities;
+package entity;
 
-import entities.systemParts.Cpu;
-import entities.systemParts.Hdd;
-import entities.systemParts.Ram;
-import entities.systemParts.VideoCard;
+import entity.systemParts.Cpu;
+import entity.systemParts.Hdd;
+import entity.systemParts.Ram;
+import entity.systemParts.VideoCard;
 import lombok.*;
 
 import javax.persistence.*;

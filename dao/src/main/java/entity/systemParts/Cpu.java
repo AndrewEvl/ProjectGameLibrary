@@ -1,4 +1,4 @@
-package entities.systemParts;
+package entity.systemParts;
 
 import lombok.*;
 
@@ -11,14 +11,14 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "ram")
-public class Ram {
+@Table(name = "cpu")
+public class Cpu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private long id;
-    @Column(name = "name")
+    @Column (name = "name")
     @Setter
     @Getter
     private String name;

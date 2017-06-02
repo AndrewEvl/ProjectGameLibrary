@@ -1,6 +1,6 @@
-package entities.reviews;
+package entity.reviews;
 
-import entities.Game;
+import entity.Game;
 import lombok.*;
 
 import javax.persistence.*;

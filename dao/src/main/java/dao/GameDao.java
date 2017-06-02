@@ -1,6 +1,6 @@
 package dao;
 
-import entities.Game;
+import entity.Game;
 
 /**
  * Created by User on 25.05.2017.

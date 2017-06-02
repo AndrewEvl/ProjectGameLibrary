@@ -1,4 +1,4 @@
-package entities.systemParts;
+package entity;
 
 import lombok.*;
 
@@ -11,15 +11,16 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "hdd")
-public class Hdd {
+@Table(name = "roles_users")
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     private long id;
-    @Column(name = "name")
+    @Column (name = "role_user")
     @Setter
     @Getter
-    private String name;
+    private String role;
 }

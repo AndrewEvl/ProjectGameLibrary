@@ -1,4 +1,4 @@
-import entities.Developer;
+import entity.Developer;
 
 
 /**

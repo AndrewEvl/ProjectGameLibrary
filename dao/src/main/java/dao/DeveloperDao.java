@@ -1,6 +1,6 @@
 package dao;
 
-import entities.Developer;
+import entity.Developer;
 
 /**
  * Created by User on 25.05.2017.

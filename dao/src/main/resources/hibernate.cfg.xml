@@ -10,23 +10,23 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="entities.Developer"/>
-        <mapping class="entities.ForumTheme"/>
-        <mapping class="entities.Game"/>
-        <mapping class="entities.Genre"/>
-        <mapping class="entities.News"/>
-        <mapping class="entities.Platform"/>
-        <mapping class="entities.Publisher"/>
-        <mapping class="entities.reviews.ReviewGame"/>
-        <mapping class="entities.SystemSetting"/>
-        <mapping class="entities.User"/>
-        <mapping class="entities.Role"/>
-        <mapping class="entities.systemParts.Cpu"/>
-        <mapping class="entities.systemParts.Ram"/>
-        <mapping class="entities.systemParts.Hdd"/>
-        <mapping class="entities.systemParts.VideoCard"/>
-        <mapping class="entities.reviews.NewsComment"/>
-        <mapping class="entities.reviews.ReviewGame"/>
+        <mapping class="entity.Developer"/>
+        <mapping class="entity.ForumTheme"/>
+        <mapping class="entity.Game"/>
+        <mapping class="entity.Genre"/>
+        <mapping class="entity.News"/>
+        <mapping class="entity.Platform"/>
+        <mapping class="entity.Publisher"/>
+        <mapping class="entity.reviews.ReviewGame"/>
+        <mapping class="entity.SystemSetting"/>
+        <mapping class="entity.User"/>
+        <mapping class="entity.Role"/>
+        <mapping class="entity.systemParts.Cpu"/>
+        <mapping class="entity.systemParts.Ram"/>
+        <mapping class="entity.systemParts.Hdd"/>
+        <mapping class="entity.systemParts.VideoCard"/>
+        <mapping class="entity.reviews.NewsComment"/>
+        <mapping class="entity.reviews.ReviewGame"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -1,7 +1,7 @@
-package entities;
+package entity;
 
-import entities.reviews.NewsComment;
-import entities.reviews.ReviewGame;
+import entity.reviews.NewsComment;
+import entity.reviews.ReviewGame;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

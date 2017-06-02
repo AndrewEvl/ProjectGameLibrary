@@ -1,4 +1,4 @@
-package entities;
+package entity;
 
 import lombok.*;
 
@@ -11,17 +11,16 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "forum_theme")
-
-public class ForumTheme {
-    @Column (name = "theme")
-    @Setter
-    @Getter
-    private String theme;
+@Table(name = "publishers")
+public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private long id;
+    private Long id;
+    @Column (name = "name")
+    @Setter
+    @Getter
+    private String name;
 
 }

@@ -1,6 +1,6 @@
-package entities;
+package entity;
 
-import entities.reviews.ReviewGame;
+import entity.reviews.ReviewGame;
 import lombok.*;
 import org.joda.time.LocalDate;
 

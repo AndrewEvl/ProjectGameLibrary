@@ -1,7 +1,6 @@
-package entities;
+package entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 /**
@@ -11,13 +10,15 @@ import javax.persistence.*;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "publishers")
-public class Publisher {
+@Table(name = "developers")
+public class Developer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long id;
+    private long id;
+
     @Column (name = "name")
     @Setter
     @Getter

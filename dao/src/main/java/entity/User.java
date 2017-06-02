@@ -1,12 +1,9 @@
-package entities;
+package entity;
 
-import entities.reviews.NewsComment;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by User on 23.05.2017.
@@ -15,33 +12,36 @@ import java.util.Set;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "news")
-
-public class News {
+@Table(name = "users")
+public class User {
     @Column (name = "name")
     @Setter
     @Getter
     private String name;
-
-    @Column (name = "date")
+    @Column (name = "nickname")
+    @Setter
+    @Getter
+    private String nickName;
+    @Column (name = "birthday")
     @Setter
     @Getter
     private LocalDate date;
-
-    @Column (name = "text")
+    @Column (name = "password")
     @Setter
     @Getter
-    private String text;
-
+    private String password;
+    @Column (name = "mail")
+    @Setter
+    @Getter
+    private String mail;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
-    private Long id;
-
-    @OneToMany (mappedBy = "setNews")
+    private long id;
+    @OneToOne
+    @JoinColumn (name = "roles_users_id")
     @Setter
     @Getter
-    private Set<NewsComment> newsCommentSet = new HashSet<>();
-
+    private Role role;
 }
