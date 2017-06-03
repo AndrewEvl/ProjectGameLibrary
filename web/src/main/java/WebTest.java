@@ -13,7 +13,7 @@ import java.io.IOException;
 public class WebTest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/testPage.jsp");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/TestJsp.jsp");
             req.setAttribute("test", new TestService().developerSetviceTest());
             requestDispatcher.forward(req, resp);
     }
