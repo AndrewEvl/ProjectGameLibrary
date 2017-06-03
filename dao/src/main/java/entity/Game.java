@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString
+@ToString(exclude = "reviewGame")
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "games")

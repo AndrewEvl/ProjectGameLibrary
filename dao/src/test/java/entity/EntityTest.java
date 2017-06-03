@@ -2,6 +2,10 @@ package entity;
 
 import entity.reviews.NewsComment;
 import entity.reviews.ReviewGame;
+import entity.systemParts.Cpu;
+import entity.systemParts.Hdd;
+import entity.systemParts.Ram;
+import entity.systemParts.VideoCard;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,7 +16,9 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 
 /**
@@ -55,25 +61,44 @@ public class EntityTest {
         Developer developer = new Developer();
         ReviewGame reviewGame = new ReviewGame();
         SystemSetting systemSetting = new SystemSetting();
+        Cpu cpu = new Cpu();
+        Ram ram = new Ram();
+        Hdd hdd = new Hdd();
+        VideoCard videoCard = new VideoCard();
 
         reviewGame.setText("Test");
         reviewGame.setGame(game);
         publisher.setName("Test");
         genre.setName("Test");
         developer.setName("Test");
+        game.setName("test");
+        cpu.setName("test");
+        ram.setName("test");
+        hdd.setName("test");
+        videoCard.setName("test");
+        systemSetting.setCpu(cpu);
+        systemSetting.setHdd(hdd);
+        systemSetting.setRam(ram);
+        systemSetting.setVideoCard(videoCard);
+        game.setReleaseDay(org.joda.time.LocalDate.now());
 
+        session.save(cpu);
+        session.save(ram);
+        session.save(hdd);
+        session.save(videoCard);
         session.save(systemSetting);
         session.save(reviewGame);
         session.save(developer);
         session.save(publisher);
         session.save(genre);
 
-        game.setName("test");
+
         game.setGenre(genre);
         game.setDeveloper(developer);
         game.setPublisher(publisher);
         game.getSystemSetting().add(systemSetting);
         game.getReviewGame().add(reviewGame);
+        System.out.println(game.toString());
 
         session.save(game);
         transaction.commit();
@@ -114,6 +139,7 @@ public class EntityTest {
         news.getNewsCommentSet().add(newsComment);
         news.toString();
         news.hashCode();
+        System.out.println(news.toString());
 
         transaction.commit();
         session.close();
@@ -156,6 +182,28 @@ public class EntityTest {
         ReviewGame reviewGames = new ReviewGame();
         reviewGames.setId(1L);
         reviewGames.setText("test");
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void testRole (){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Role role = new Role();
+
+        role.setId(1L);
+        role.setRole("test");
+        session.save(role);
+        role.getRole();
+        role.getId();
+        role.toString();
+        role.hashCode();
+
+        assertThat(role.getRole(),equalTo("test"));
+        System.out.println(role.toString());
 
         transaction.commit();
         session.close();
