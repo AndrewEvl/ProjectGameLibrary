@@ -45,6 +45,7 @@ public class EntityTest {
 
         assertEquals(developer.getName(), "Test");
         assertEquals(developer.getId(), 1);
+        System.out.println(developer);
 
         transaction.commit();
         session.close();
