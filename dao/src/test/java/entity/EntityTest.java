@@ -198,7 +198,6 @@ public class EntityTest {
         role.setId(1L);
         role.setRole("test");
         session.save(role);
-        role.getRole();
         role.getId();
         role.toString();
         role.hashCode();
