@@ -209,6 +209,45 @@ public class EntityTest {
         session.close();
     }
 
+
+    @Test
+    public void testUser (){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        User user = new User();
+        Role role = new Role();
+
+        user.setDate(LocalDate.now());
+        user.setMail("test");
+        user.setName("test");
+        user.setNickName("test");
+        user.setPassword("test");
+        role.setRole("test");
+        session.save(role);
+        user.setRole(role);
+
+        System.out.println(user.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void testForumTheme (){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        ForumTheme forumTheme = new ForumTheme();
+
+        forumTheme.setTheme("test");
+
+        System.out.println(forumTheme.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
     @AfterClass
     public static void finish() {
         SESSION_FACTORY.close();
