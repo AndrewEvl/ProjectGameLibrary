@@ -1,5 +1,6 @@
 package entity;
 
+import entity.reviews.ForumComments;
 import entity.reviews.NewsComment;
 import entity.reviews.ReviewGame;
 import entity.systemParts.Cpu;
@@ -33,6 +34,29 @@ public class EntityTest {
     public static void init() {
         SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
 //        EntityTestDataImporter.getINSTANCE().importTestData(sassionFactory);
+    }
+
+    @Test
+    public void testForumComments (){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        ForumComments forumComments = new ForumComments();
+        User user = new User();
+        ForumTheme forumTheme = new ForumTheme();
+        forumTheme.setTheme("test");
+        user.setNickName("Andrew");
+        session.save(user);
+        session.save(forumTheme);
+        forumComments.setName("test");
+        forumComments.setUser(user);
+        forumComments.setForumTheme(forumTheme);
+        session.save(forumComments);
+
+        System.out.println(forumComments);
+
+        transaction.commit();
+        session.close();
     }
 
 
