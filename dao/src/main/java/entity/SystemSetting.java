@@ -49,4 +49,21 @@ public class SystemSetting {
     @Setter
     @Getter
     private Set<Game> game = new HashSet<>();
+
+
+
+    public SystemSetting(Cpu cpu, Ram ram, Hdd hdd, VideoCard videoCard, Set<Game> game) {
+        this.cpu = cpu;
+        this.ram = ram;
+        this.hdd = hdd;
+        this.videoCard = videoCard;
+        this.game = game;
+    }
+
+    public SystemSetting(Cpu cpu, Ram ram, Hdd hdd, VideoCard videoCard) {
+        this.cpu = cpu;
+        this.ram = ram;
+        this.hdd = hdd;
+        this.videoCard = videoCard;
+    }
 }

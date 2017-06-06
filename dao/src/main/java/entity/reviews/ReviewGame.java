@@ -20,14 +20,23 @@ public class ReviewGame {
     @Setter
     private Long id;
 
-    @Column (name = "review")
+    @Column(name = "review")
     @Setter
     @Getter
     private String text;
 
     @ManyToOne
-    @JoinColumn (name = "games_id")
+    @JoinColumn(name = "games_id")
     @Setter
     @Getter
     private Game game;
+
+    public ReviewGame(String text) {
+        this.text = text;
+    }
+
+    public ReviewGame(String text, Game game) {
+        this.text = text;
+        this.game = game;
+    }
 }

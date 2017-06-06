@@ -2,9 +2,10 @@ package entity;
 
 import entity.reviews.ReviewGame;
 import lombok.*;
-import org.joda.time.LocalDate;
+
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,19 +35,19 @@ public class Game {
     @Setter
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "genres_id")
     @Setter
     @Getter
     private Genre genre;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "publishers_id")
     @Setter
     @Getter
     private Publisher publisher;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "developers_id")
     @Setter
     @Getter
@@ -62,6 +63,34 @@ public class Game {
             inverseJoinColumns = @JoinColumn(name = "games_id"))
     @Setter
     @Getter
-    private Set<SystemSetting> systemSetting = new HashSet<>();
+    private Set<Platform> systemSetting = new HashSet<>();
+
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer) {
+        this.name = name;
+        this.releaseDay = releaseDay;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.developer = developer;
+    }
+
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<Platform> systemSetting) {
+        this.name = name;
+        this.releaseDay = releaseDay;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.developer = developer;
+        this.systemSetting = systemSetting;
+    }
+
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> systemSetting) {
+        this.name = name;
+        this.releaseDay = releaseDay;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.developer = developer;
+        this.reviewGame = reviewGame;
+        this.systemSetting = systemSetting;
+    }
+
 
 }

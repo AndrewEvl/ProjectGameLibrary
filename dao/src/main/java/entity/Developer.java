@@ -24,4 +24,7 @@ public class Developer {
     @Getter
     private String name;
 
+    public Developer(String name) {
+        this.name = name;
+    }
 }

@@ -22,4 +22,8 @@ public class Ram {
     @Setter
     @Getter
     private String name;
+
+    public Ram(String name) {
+        this.name = name;
+    }
 }

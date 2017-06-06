@@ -16,19 +16,18 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "news")
-
 public class News {
-    @Column (name = "name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String name;
 
-    @Column (name = "date")
+    @Column(name = "date")
     @Setter
     @Getter
     private LocalDate date;
 
-    @Column (name = "text")
+    @Column(name = "text")
     @Setter
     @Getter
     private String text;
@@ -39,9 +38,21 @@ public class News {
     @Setter
     private Long id;
 
-    @OneToMany (mappedBy = "setNews")
+    @OneToMany(mappedBy = "setNews")
     @Setter
     @Getter
     private Set<NewsComment> newsCommentSet = new HashSet<>();
 
+    public News(String name, LocalDate date, String text) {
+        this.name = name;
+        this.date = date;
+        this.text = text;
+    }
+
+    public News(String name, LocalDate date, String text, Set<NewsComment> newsCommentSet) {
+        this.name = name;
+        this.date = date;
+        this.text = text;
+        this.newsCommentSet = newsCommentSet;
+    }
 }

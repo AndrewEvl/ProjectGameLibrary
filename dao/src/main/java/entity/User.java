@@ -14,23 +14,23 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
-    @Column (name = "name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String name;
-    @Column (name = "nickname")
+    @Column(name = "nickname")
     @Setter
     @Getter
     private String nickName;
-    @Column (name = "birthday")
+    @Column(name = "birthday")
     @Setter
     @Getter
     private LocalDate date;
-    @Column (name = "password")
+    @Column(name = "password")
     @Setter
     @Getter
     private String password;
-    @Column (name = "mail")
+    @Column(name = "mail")
     @Setter
     @Getter
     private String mail;
@@ -40,8 +40,26 @@ public class User {
     @Setter
     private long id;
     @OneToOne
-    @JoinColumn (name = "roles_users_id")
+    @JoinColumn(name = "roles_users_id")
     @Setter
     @Getter
     private Role role;
+    @Getter
+    @Setter
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "city")),
+            @AttributeOverride(name = "country", column = @Column(name = "country"))
+    })
+    private Address address;
+
+    public User(String name, String nickName, LocalDate date, String password, String mail, Role role, Address address) {
+        this.name = name;
+        this.nickName = nickName;
+        this.date = date;
+        this.password = password;
+        this.mail = mail;
+        this.role = role;
+        this.address = address;
+    }
 }

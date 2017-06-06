@@ -30,4 +30,13 @@ public class NewsComment {
     @Setter
     @Getter
     private News setNews;
+
+    public NewsComment(String text) {
+        this.text = text;
+    }
+
+    public NewsComment(String text, News setNews) {
+        this.text = text;
+        this.setNews = setNews;
+    }
 }

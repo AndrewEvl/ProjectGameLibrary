@@ -22,4 +22,8 @@ public class Cpu {
     @Setter
     @Getter
     private String name;
+
+    public Cpu(String name) {
+        this.name = name;
+    }
 }

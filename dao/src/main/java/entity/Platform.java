@@ -28,4 +28,9 @@ public class Platform {
     @Setter
     @Getter
     private SystemSetting systemSetting;
+
+    public Platform(String name, SystemSetting systemSetting) {
+        this.name = name;
+        this.systemSetting = systemSetting;
+    }
 }

@@ -23,4 +23,7 @@ public class Genre {
     @Getter
     private String name;
 
+    public Genre(String name) {
+        this.name = name;
+    }
 }

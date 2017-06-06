@@ -23,4 +23,7 @@ public class Publisher {
     @Getter
     private String name;
 
+    public Publisher(String name) {
+        this.name = name;
+    }
 }

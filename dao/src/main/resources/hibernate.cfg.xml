@@ -27,6 +27,7 @@
         <mapping class="entity.systemParts.VideoCard"/>
         <mapping class="entity.reviews.NewsComment"/>
         <mapping class="entity.reviews.ReviewGame"/>
+        <mapping class="entity.reviews.ForumComments"/>
 
     </session-factory>
 </hibernate-configuration>

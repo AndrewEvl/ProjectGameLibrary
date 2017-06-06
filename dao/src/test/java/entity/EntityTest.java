@@ -13,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import util.EntityTestDataImporter;
 
 import java.time.LocalDate;
 
@@ -31,7 +32,9 @@ public class EntityTest {
     @BeforeClass
     public static void init() {
         SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
+//        EntityTestDataImporter.getINSTANCE().importTestData(sassionFactory);
     }
+
 
     @Test
     public void testSaveDeveloper() {
@@ -60,6 +63,7 @@ public class EntityTest {
         Genre genre = new Genre();
         Publisher publisher = new Publisher();
         Developer developer = new Developer();
+        Platform platform = new Platform();
         ReviewGame reviewGame = new ReviewGame();
         SystemSetting systemSetting = new SystemSetting();
         Cpu cpu = new Cpu();
@@ -77,17 +81,22 @@ public class EntityTest {
         ram.setName("test");
         hdd.setName("test");
         videoCard.setName("test");
+        platform.setName("PC");
         systemSetting.setCpu(cpu);
         systemSetting.setHdd(hdd);
         systemSetting.setRam(ram);
         systemSetting.setVideoCard(videoCard);
-        game.setReleaseDay(org.joda.time.LocalDate.now());
+        platform.setSystemSetting(systemSetting);
+        game.setReleaseDay(LocalDate.now());
+
 
         session.save(cpu);
         session.save(ram);
         session.save(hdd);
         session.save(videoCard);
         session.save(systemSetting);
+        session.save(platform);
+
         session.save(reviewGame);
         session.save(developer);
         session.save(publisher);
@@ -97,7 +106,7 @@ public class EntityTest {
         game.setGenre(genre);
         game.setDeveloper(developer);
         game.setPublisher(publisher);
-        game.getSystemSetting().add(systemSetting);
+        game.getSystemSetting().add(platform);
         game.getReviewGame().add(reviewGame);
         System.out.println(game.toString());
 
@@ -117,6 +126,8 @@ public class EntityTest {
         genre.setName("test");
         assertEquals(genre.getId(), 1);
         assertEquals(genre.getName(), "test");
+
+        System.out.println(genre.toString());
 
         transaction.commit();
         session.close();
@@ -138,8 +149,6 @@ public class EntityTest {
         news.setText("test");
         news.setDate(LocalDate.now());
         news.getNewsCommentSet().add(newsComment);
-        news.toString();
-        news.hashCode();
         System.out.println(news.toString());
 
         transaction.commit();
@@ -154,6 +163,8 @@ public class EntityTest {
         Publisher publisher = new Publisher();
         publisher.setId(1L);
         publisher.setName("test");
+
+        System.out.println(publisher.toString());
 
         transaction.commit();
         session.close();
@@ -171,6 +182,8 @@ public class EntityTest {
         assertEquals(platform.getId(), 1);
         assertEquals(platform.getName(), "test");
 
+        System.out.println(platform);
+
         transaction.commit();
         session.close();
     }
@@ -184,12 +197,14 @@ public class EntityTest {
         reviewGames.setId(1L);
         reviewGames.setText("test");
 
+        System.out.println(reviewGames.toString());
+
         transaction.commit();
         session.close();
     }
 
     @Test
-    public void testRole (){
+    public void testRole() {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -198,11 +213,8 @@ public class EntityTest {
         role.setId(1L);
         role.setRole("test");
         session.save(role);
-        role.getId();
-        role.toString();
-        role.hashCode();
 
-        assertThat(role.getRole(),equalTo("test"));
+        assertThat(role.getRole(), equalTo("test"));
         System.out.println(role.toString());
 
         transaction.commit();
@@ -211,12 +223,14 @@ public class EntityTest {
 
 
     @Test
-    public void testUser (){
+    public void testUser() {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
 
         User user = new User();
         Role role = new Role();
+        Address address = new Address();
+
 
         user.setDate(LocalDate.now());
         user.setMail("test");
@@ -225,7 +239,11 @@ public class EntityTest {
         user.setPassword("test");
         role.setRole("test");
         session.save(role);
+        address.setCity("Minsk");
+        address.setCountry("Belarus");
+        user.setAddress(address);
         user.setRole(role);
+        session.flush();
 
         System.out.println(user.toString());
 
@@ -234,7 +252,7 @@ public class EntityTest {
     }
 
     @Test
-    public void testForumTheme (){
+    public void testForumTheme() {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -243,6 +261,69 @@ public class EntityTest {
         forumTheme.setTheme("test");
 
         System.out.println(forumTheme.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void testCpu () {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Cpu cpu = new Cpu();
+        cpu.setName("test");
+        cpu.setId(1L);
+        session.save(cpu);
+        System.out.println(cpu.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void  testRam(){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Ram ram = new Ram();
+        ram.setName("test");
+        ram.setId(1L);
+        session.save(ram);
+
+        System.out.println(ram.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void  testHdd(){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Hdd hdd = new Hdd();
+        hdd.setName("test");
+        hdd.setId(1L);
+        session.save(hdd);
+
+        System.out.println(hdd.toString());
+
+        transaction.commit();
+        session.close();
+    }
+
+    @Test
+    public void  testVideoCard(){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        VideoCard videoCard = new VideoCard();
+        videoCard.setName("test");
+        videoCard.setId(1L);
+        session.save(videoCard);
+
+        System.out.println(videoCard.toString());
 
         transaction.commit();
         session.close();

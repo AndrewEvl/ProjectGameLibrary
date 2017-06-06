@@ -22,4 +22,8 @@ public class VideoCard {
     @Setter
     @Getter
     private String name;
+
+    public VideoCard(String name) {
+        this.name = name;
+    }
 }

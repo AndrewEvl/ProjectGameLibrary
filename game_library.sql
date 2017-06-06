@@ -11,7 +11,7 @@ CREATE TABLE cpu (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id
 CREATE TABLE ram (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
 CREATE TABLE hdd (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
 CREATE TABLE video_card (id INT AUTO_INCREMENT, name VARCHAR(30) UNIQUE,PRIMARY KEY (id));
-CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(30), nickName VARCHAR(30),
+CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(30), nickName VARCHAR(30),city VARCHAR(50),country VARCHAR(50),
                     birthday DATE, password VARCHAR(30), mail VARCHAR(50),roles_users_id INT,
   PRIMARY KEY (id), FOREIGN KEY (roles_users_id) REFERENCES roles_users(id));
 
@@ -40,7 +40,7 @@ INSERT INTO cpu (name) VALUE ('Процессор 133 МГц');
 INSERT INTO ram (name) VALUE ('24 МБ');
 INSERT INTO video_card (name) VALUE ('VGA (640 x 480)');
 INSERT INTO roles_users (role_user) VALUE ('Admin');
-INSERT INTO users (name, nickName, password, mail, roles_users_id) VALUE ('Andrew','Lino',1,'mail@gmail.com',1);
+INSERT INTO users (name, nickName,city,country, password, mail, roles_users_id) VALUE ('Andrew','Lino','Minsk','Belarus',1,'mail@gmail.com',1);
 INSERT INTO forum_theme (theme, text) VALUE ('Как написать проект?','Как успеть написать проект?');
 INSERT INTO comments_forum (name, forum_theme_id, user_id) VALUE ('никак))',1,1);
 INSERT INTO hdd (name) VALUE ('1.5 Гб');

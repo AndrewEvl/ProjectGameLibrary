@@ -22,4 +22,8 @@ public class Hdd {
     @Setter
     @Getter
     private String name;
+
+    public Hdd(String name) {
+        this.name = name;
+    }
 }
