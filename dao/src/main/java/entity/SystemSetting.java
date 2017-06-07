@@ -45,7 +45,7 @@ public class SystemSetting {
     @Setter
     @Getter
     private VideoCard videoCard;
-    @ManyToMany(mappedBy = "systemSetting")
+    @ManyToMany(mappedBy = "platform")
     @Setter
     @Getter
     private Set<Game> game = new HashSet<>();

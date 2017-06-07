@@ -59,11 +59,11 @@ public class Game {
     private Set<ReviewGame> reviewGame = new HashSet<>();
     @ManyToMany
     @JoinTable(name = "game_platforms_system",
-            joinColumns = @JoinColumn(name = "platform_system_id"),
-            inverseJoinColumns = @JoinColumn(name = "games_id"))
+            joinColumns = @JoinColumn(name = "games_id"),
+            inverseJoinColumns = @JoinColumn(name = "platform_system_id"))
     @Setter
     @Getter
-    private Set<Platform> systemSetting = new HashSet<>();
+    private Set<Platform> platform = new HashSet<>();
 
     public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer) {
         this.name = name;
@@ -73,23 +73,23 @@ public class Game {
         this.developer = developer;
     }
 
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<Platform> systemSetting) {
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<Platform> platform) {
         this.name = name;
         this.releaseDay = releaseDay;
         this.genre = genre;
         this.publisher = publisher;
         this.developer = developer;
-        this.systemSetting = systemSetting;
+        this.platform = platform;
     }
 
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> systemSetting) {
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> platform) {
         this.name = name;
         this.releaseDay = releaseDay;
         this.genre = genre;
         this.publisher = publisher;
         this.developer = developer;
         this.reviewGame = reviewGame;
-        this.systemSetting = systemSetting;
+        this.platform = platform;
     }
 
 

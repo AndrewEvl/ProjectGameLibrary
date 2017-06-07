@@ -17,6 +17,7 @@ import org.junit.Test;
 import util.EntityTestDataImporter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
@@ -33,7 +34,23 @@ public class EntityTest {
     @BeforeClass
     public static void init() {
         SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
-//        EntityTestDataImporter.getINSTANCE().importTestData(sassionFactory);
+        EntityTestDataImporter.getINSTANCE().importTestData(SESSION_FACTORY);
+    }
+
+    @Test
+    public void testEntityDb (){
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Game> game = session.createQuery("select g FROM Game g",Game.class)
+                .getResultList();
+        List<Platform> platforms = session.createQuery("select p from Platform  p",Platform.class)
+                .getResultList();
+        System.out.println(game);
+        System.out.println(platforms);
+
+        transaction.commit();
+        session.close();
     }
 
     @Test
@@ -130,7 +147,7 @@ public class EntityTest {
         game.setGenre(genre);
         game.setDeveloper(developer);
         game.setPublisher(publisher);
-        game.getSystemSetting().add(platform);
+        game.getPlatform().add(platform);
         game.getReviewGame().add(reviewGame);
         System.out.println(game.toString());
 

@@ -45,6 +45,8 @@ public class EntityTestDataImporter {
         Genre action = saveGenre(session,"Action");
         ReviewGame quakeReviewFirst = saveReviewGame(session, "Cool");
         ReviewGame quakeReviewSecond = saveReviewGame(session, "Legendary");
+        session.save(quakeReviewFirst);
+        session.save(quakeReviewSecond);
 
 
         Cpu p4 = saveCpu(session, "Pentium 4");
@@ -52,15 +54,17 @@ public class EntityTestDataImporter {
         Hdd firstHdd = saveHdd(session, "4Gb");
         VideoCard videoCard = saveVideoCard(session, "Nvidia 550 TI");
         SystemSetting systemSetting = saveSystemSetting(session, p4,firstRam,firstHdd,videoCard);
+        session.save(systemSetting);
 
         Platform pc = savePlatform(session, "PC", systemSetting);
+        session.save(pc);
 
         Game quake = saveGame(session, "Quake II",LocalDate.of(1997, Month.DECEMBER, 9),action,idPublisher,idSoftware);
-        quake.getSystemSetting().add(pc);
+        quake.getPlatform().add(pc);
         quake.getReviewGame().add(quakeReviewFirst);
         quake.getReviewGame().add(quakeReviewSecond);
         Game halfLife = saveGame(session, "Half-Life", LocalDate.of(1998, Month.NOVEMBER, 19),action,valvePublisher,valve) ;
-        halfLife.getSystemSetting().add(pc);
+        halfLife.getPlatform().add(pc);
         halfLife.getReviewGame().add(quakeReviewFirst);
         halfLife.getReviewGame().add(quakeReviewSecond);
         session.save(quake);
@@ -73,7 +77,7 @@ public class EntityTestDataImporter {
         news.getNewsCommentSet().add(newsComment);
         session.save(news);
 
-
+        session.close();
 
     }
 
@@ -108,7 +112,7 @@ public class EntityTestDataImporter {
         return news;
     }
 
-    private Platform savePlatform(Session session, String name, SystemSetting systemSetting) {
+    private Platform     savePlatform(Session session, String name, SystemSetting systemSetting) {
         Platform platform = new Platform(name, systemSetting);
         session.save(platform);
         return platform;
