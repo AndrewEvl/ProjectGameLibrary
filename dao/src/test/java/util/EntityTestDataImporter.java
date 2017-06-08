@@ -9,6 +9,7 @@ import entity.systemParts.Ram;
 import entity.systemParts.VideoCard;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -36,6 +37,8 @@ public class EntityTestDataImporter {
     }
     public void importTestData (SessionFactory sessionFactory) {
         Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
         Developer valve = saveDeveloper(session, "Valve");
         Developer idSoftware = saveDeveloper(session,"ID Software");
 
@@ -77,6 +80,7 @@ public class EntityTestDataImporter {
         news.getNewsCommentSet().add(newsComment);
         session.save(news);
 
+        transaction.commit();
         session.close();
 
     }

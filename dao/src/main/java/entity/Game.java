@@ -13,8 +13,8 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString(exclude = "reviewGame")
-@EqualsAndHashCode
+@ToString
+@EqualsAndHashCode(exclude = "platform")
 @NoArgsConstructor
 @Table(name = "games")
 public class Game {

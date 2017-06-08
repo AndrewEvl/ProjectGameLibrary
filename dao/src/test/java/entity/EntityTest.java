@@ -42,11 +42,16 @@ public class EntityTest {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Game> game = session.createQuery("select g FROM Game g",Game.class)
+        List<Game> games = session.createQuery("select g FROM Game g",Game.class)
                 .getResultList();
         List<Platform> platforms = session.createQuery("select p from Platform  p",Platform.class)
                 .getResultList();
-        System.out.println(game);
+
+        List<ReviewGame> reviewGames = session.createQuery("select r from ReviewGame r", ReviewGame.class)
+                .getResultList();
+
+        System.out.println(reviewGames);
+        System.out.println(games);
         System.out.println(platforms);
 
         transaction.commit();
