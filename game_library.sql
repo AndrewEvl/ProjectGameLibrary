@@ -31,6 +31,7 @@ CREATE TABLE news (id INT AUTO_INCREMENT, name VARCHAR(100),games_id INT, date D
 CREATE TABLE comments_news (id INT AUTO_INCREMENT,users_id INT,news_id INT, review VARCHAR(30), PRIMARY KEY (id,users_id,news_id),FOREIGN KEY (users_id) REFERENCES users(id), FOREIGN KEY (news_id) REFERENCES news(id));
 CREATE TABLE reviews_game (id INT AUTO_INCREMENT,users_id INT,games_id INT, review VARCHAR(1000), PRIMARY KEY (id,users_id,games_id),FOREIGN KEY (users_id) REFERENCES users(id), FOREIGN KEY (games_id) REFERENCES games(id));
 CREATE TABLE game_platforms_system (id INT AUTO_INCREMENT, games_id INT, platform_system_id INT, PRIMARY KEY (id, games_id,platform_system_id), FOREIGN KEY (games_id) REFERENCES games(id), FOREIGN KEY (platform_system_id) REFERENCES platforms_system(id));
+CREATE TABLE game_collections (game_id INT, firure VARCHAR(50), artbook VARCHAR(50), ost VARCHAR(100), other VARCHAR(500), PRIMARY KEY (game_id), FOREIGN KEY (game_id) REFERENCES games(id));
 
 INSERT INTO genres (genre) VALUES ('FPS');
 INSERT INTO publishers (name) VALUE ('Sierra Studios');

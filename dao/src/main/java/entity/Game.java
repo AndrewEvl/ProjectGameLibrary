@@ -15,6 +15,7 @@ import java.util.Set;
 @Entity
 @ToString
 @EqualsAndHashCode(exclude = "platform")
+@Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @Table(name = "games")
 public class Game {

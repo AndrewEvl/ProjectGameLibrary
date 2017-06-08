@@ -163,6 +163,78 @@ public class EntityTest {
     }
 
     @Test
+    public void testSaveGameCollection() {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        GameCollection gameCollection = new GameCollection();
+        Genre genre = new Genre();
+        Publisher publisher = new Publisher();
+        Developer developer = new Developer();
+        Platform platform = new Platform();
+        ReviewGame reviewGame = new ReviewGame();
+        SystemSetting systemSetting = new SystemSetting();
+        Cpu cpu = new Cpu();
+        Ram ram = new Ram();
+        Hdd hdd = new Hdd();
+        VideoCard videoCard = new VideoCard();
+
+        gameCollection.setArtBook("test");
+        gameCollection.setFigure("test");
+        gameCollection.setOst("test");
+        gameCollection.setOther("test");
+
+        reviewGame.setText("Test");
+        reviewGame.setGame(gameCollection);
+
+        publisher.setName("Test");
+
+        genre.setName("Test");
+
+        developer.setName("Test");
+
+        gameCollection.setName("test");
+
+        cpu.setName("test");
+        ram.setName("test");
+        hdd.setName("test");
+        videoCard.setName("test");
+        platform.setName("PC");
+        systemSetting.setCpu(cpu);
+        systemSetting.setHdd(hdd);
+        systemSetting.setRam(ram);
+        systemSetting.setVideoCard(videoCard);
+        platform.setSystemSetting(systemSetting);
+        gameCollection.setReleaseDay(LocalDate.now());
+
+
+        session.save(cpu);
+        session.save(ram);
+        session.save(hdd);
+        session.save(videoCard);
+        session.save(systemSetting);
+        session.save(platform);
+
+        session.save(reviewGame);
+        session.save(developer);
+        session.save(publisher);
+        session.save(genre);
+
+
+        gameCollection.setGenre(genre);
+        gameCollection.setDeveloper(developer);
+        gameCollection.setPublisher(publisher);
+        gameCollection.getPlatform().add(platform);
+        gameCollection.getReviewGame().add(reviewGame);
+        System.out.println(gameCollection.toString());
+
+//        session.save(gameCollection);
+        transaction.commit();
+        session.close();
+
+    }
+
+    @Test
     public void testSaveGenre() {
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
