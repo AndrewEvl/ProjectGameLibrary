@@ -74,15 +74,6 @@ public class Game {
         this.developer = developer;
     }
 
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<Platform> platform) {
-        this.name = name;
-        this.releaseDay = releaseDay;
-        this.genre = genre;
-        this.publisher = publisher;
-        this.developer = developer;
-        this.platform = platform;
-    }
-
     public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> platform) {
         this.name = name;
         this.releaseDay = releaseDay;

@@ -35,8 +35,4 @@ public class ReviewGame {
         this.text = text;
     }
 
-    public ReviewGame(String text, Game game) {
-        this.text = text;
-        this.game = game;
-    }
 }

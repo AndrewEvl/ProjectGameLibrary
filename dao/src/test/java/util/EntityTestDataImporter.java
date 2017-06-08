@@ -48,8 +48,8 @@ public class EntityTestDataImporter {
         Genre action = saveGenre(session,"Action");
         ReviewGame quakeReviewFirst = saveReviewGame(session, "Cool");
         ReviewGame quakeReviewSecond = saveReviewGame(session, "Legendary");
-        session.save(quakeReviewFirst);
-        session.save(quakeReviewSecond);
+//        session.save(quakeReviewFirst);
+//        session.save(quakeReviewSecond);
 
 
         Cpu p4 = saveCpu(session, "Pentium 4");
@@ -57,28 +57,29 @@ public class EntityTestDataImporter {
         Hdd firstHdd = saveHdd(session, "4Gb");
         VideoCard videoCard = saveVideoCard(session, "Nvidia 550 TI");
         SystemSetting systemSetting = saveSystemSetting(session, p4,firstRam,firstHdd,videoCard);
-        session.save(systemSetting);
+//        session.save(systemSetting);
 
         Platform pc = savePlatform(session, "PC", systemSetting);
-        session.save(pc);
+//        session.save(pc);
 
         Game quake = saveGame(session, "Quake II",LocalDate.of(1997, Month.DECEMBER, 9),action,idPublisher,idSoftware);
         quake.getPlatform().add(pc);
         quake.getReviewGame().add(quakeReviewFirst);
         quake.getReviewGame().add(quakeReviewSecond);
+
         Game halfLife = saveGame(session, "Half-Life", LocalDate.of(1998, Month.NOVEMBER, 19),action,valvePublisher,valve) ;
         halfLife.getPlatform().add(pc);
         halfLife.getReviewGame().add(quakeReviewFirst);
         halfLife.getReviewGame().add(quakeReviewSecond);
-        session.save(quake);
-        session.save(halfLife);
+//        session.save(quake);
+//        session.save(halfLife);
 
         ForumTheme forumTheme = saveForumTheme(session, "Test Theme");
 
         NewsComment newsComment = saveNewsComment(session,"WTF");
-        News news = saveNews(session,"New NEWS",LocalDate.now(),"News od Day");
+        News news = saveNews(session,"New NEWS",LocalDate.now(),"News on Day");
         news.getNewsCommentSet().add(newsComment);
-        session.save(news);
+//        session.save(news);
 
         transaction.commit();
         session.close();

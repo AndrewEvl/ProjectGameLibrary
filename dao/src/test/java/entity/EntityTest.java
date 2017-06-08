@@ -228,7 +228,7 @@ public class EntityTest {
         gameCollection.getReviewGame().add(reviewGame);
         System.out.println(gameCollection.toString());
 
-//        session.save(gameCollection);
+        session.save(gameCollection);
         transaction.commit();
         session.close();
 

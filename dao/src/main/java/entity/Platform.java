@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString (exclude = "systemSetting")
+@ToString
 @EqualsAndHashCode (exclude = "systemSetting")
 @NoArgsConstructor
 @Table(name = "platforms")
