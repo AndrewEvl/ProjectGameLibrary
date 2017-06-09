@@ -29,6 +29,7 @@
         <mapping class="entity.reviews.NewsComment"/>
         <mapping class="entity.reviews.ReviewGame"/>
         <mapping class="entity.reviews.ForumComments"/>
+        <mapping class="entity.GameCollection"/>
 
     </session-factory>
 </hibernate-configuration>
