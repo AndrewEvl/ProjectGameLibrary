@@ -25,26 +25,31 @@ public class SystemSetting {
     @Getter
     @Setter
     private long id;
+
     @OneToOne
     @JoinColumn(name = "cpu_id")
     @Setter
     @Getter
     private Cpu cpu;
+
     @OneToOne
     @JoinColumn(name = "ram_id")
     @Setter
     @Getter
     private Ram ram;
+
     @OneToOne
     @JoinColumn(name = "hdd_id")
     @Setter
     @Getter
     private Hdd hdd;
+
     @OneToOne
     @JoinColumn(name = "video_card_id")
     @Setter
     @Getter
     private VideoCard videoCard;
+
     @ManyToMany(mappedBy = "platform")
     @Setter
     @Getter
