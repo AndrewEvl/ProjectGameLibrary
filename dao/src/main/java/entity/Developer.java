@@ -8,16 +8,9 @@ import javax.persistence.*;
  */
 @Entity
 @ToString
-@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "developers")
-public class Developer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+public class Developer extends BaseEntity {
 
     @Column (name = "name")
     @Setter

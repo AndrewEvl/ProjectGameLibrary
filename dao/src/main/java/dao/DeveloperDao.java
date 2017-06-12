@@ -5,9 +5,10 @@ import entity.Developer;
 /**
  * Created by User on 25.05.2017.
  */
-public class DeveloperDao {
+public class DeveloperDao extends BaseDao<Developer> {
 
-    public static Developer devoloperSave (String name, long id){
-        return null;
+    public DeveloperDao (){
+        super(Developer.class);
     }
+
 }
