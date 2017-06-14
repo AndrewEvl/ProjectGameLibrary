@@ -56,6 +56,17 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframwork</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframwork</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.8.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.16</version>
