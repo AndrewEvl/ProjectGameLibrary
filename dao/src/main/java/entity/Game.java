@@ -2,8 +2,6 @@ package entity;
 
 import entity.reviews.ReviewGame;
 import lombok.*;
-
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -13,12 +11,10 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString
-@EqualsAndHashCode(exclude = "platform")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @Table(name = "games")
-public class Game {
+public class Game extends BaseEntity {
 
     @Column(name = "name")
     @Setter
@@ -29,12 +25,6 @@ public class Game {
     @Setter
     @Getter
     private LocalDate releaseDay;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "genres_id")

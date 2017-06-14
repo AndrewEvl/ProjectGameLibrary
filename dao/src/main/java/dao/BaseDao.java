@@ -33,32 +33,37 @@ public abstract class BaseDao<T extends BaseEntity> {
         return result;
     }
 
-    public void saveEntity (T e){
+    public void save (T entity){
         Session session = SESSION_FACTORY.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(e);
+        session.save(entity);
         transaction.commit();
         session.close();
     }
 
-    public void  deleteEntity (){
+    public void  delete (T entity){
         Session session = SESSION_FACTORY.openSession();
-        session.delete(entryClass);
+        Transaction transaction = session.beginTransaction();
+        session.delete(entity);
+        transaction.commit();
         session.close();
     }
 
-    public T findByName (String name){
+
+    public void update (T entity) {
         Session session = SESSION_FACTORY.openSession();
-        T result = session.get(entryClass, name);
+        Transaction transaction = session.beginTransaction();
+        session.update(entryClass.getSimpleName(), entity);
+        transaction.commit();
         session.close();
-        return result;
     }
 
     //update
+    //version
 
     public List<T> findAll () {
         Session session = SESSION_FACTORY.openSession();
-        return session.createQuery("from" + entryClass.getSimpleName(), entryClass).list();
+        return session.createQuery("FROM " + entryClass.getSimpleName(), entryClass).list();
     }
 
 }

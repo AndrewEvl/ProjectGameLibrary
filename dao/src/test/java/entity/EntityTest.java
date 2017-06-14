@@ -93,7 +93,7 @@ public class EntityTest {
         developer.setId(1L);
 
         assertEquals(developer.getName(), "Test");
-        assertEquals(developer.getId(), java.util.Optional.of(1));
+//        assertEquals(developer.getId(),1L);
         System.out.println(developer);
 
         transaction.commit();

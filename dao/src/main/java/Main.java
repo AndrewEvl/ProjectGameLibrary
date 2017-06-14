@@ -13,16 +13,16 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
+//        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//        Session session = sessionFactory.openSession();
 
         DeveloperDao developerDao = new DeveloperDao();
         Developer developerOne = new Developer();
         developerOne.setName("test");
-        developerDao.saveEntity(developerOne);
+        developerDao.save(developerOne);
 
 
-        session.close();
+//        session.close();
 
 //       close Developer developer = new Developer();
 //        developer.setName("no getters and setters");
