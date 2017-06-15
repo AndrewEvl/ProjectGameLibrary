@@ -18,13 +18,8 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "system_requirements")
-public class SystemSetting {
+public class SystemSetting extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
     @OneToOne
     @JoinColumn(name = "cpu_id")
     @Setter

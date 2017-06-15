@@ -1,5 +1,6 @@
 package entity.reviews;
 
+import entity.BaseEntity;
 import entity.Game;
 import lombok.*;
 
@@ -13,12 +14,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(exclude = "game")
 @NoArgsConstructor
 @Table(name = "reviews_game")
-public class ReviewGame {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
+public class ReviewGame extends BaseEntity {
 
     @Column(name = "review")
     @Setter

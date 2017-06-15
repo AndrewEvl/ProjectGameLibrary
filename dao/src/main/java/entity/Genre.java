@@ -12,12 +12,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "genres")
-public class Genre {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+public class Genre extends BaseEntity {
+
     @Column (name = "genre")
     @Setter
     @Getter
