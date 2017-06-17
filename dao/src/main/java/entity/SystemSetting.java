@@ -18,38 +18,28 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "system_requirements")
-public class SystemSetting {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+public class SystemSetting extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "cpu_id")
     @Setter
     @Getter
     private Cpu cpu;
-
     @OneToOne
     @JoinColumn(name = "ram_id")
     @Setter
     @Getter
     private Ram ram;
-
     @OneToOne
     @JoinColumn(name = "hdd_id")
     @Setter
     @Getter
     private Hdd hdd;
-
     @OneToOne
     @JoinColumn(name = "video_card_id")
     @Setter
     @Getter
     private VideoCard videoCard;
-
     @ManyToMany(mappedBy = "platform")
     @Setter
     @Getter

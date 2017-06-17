@@ -12,13 +12,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "roles_users")
-public class Role {
+public class Role extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
     @Column (name = "role_user")
     @Setter
     @Getter

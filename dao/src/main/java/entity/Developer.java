@@ -1,23 +1,20 @@
 package entity;
 
 import lombok.*;
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by User on 23.05.2017.
  */
 @Entity
 @ToString
-@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "developers")
-public class Developer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+public class Developer extends BaseEntity {
 
     @Column (name = "name")
     @Setter

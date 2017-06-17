@@ -8,21 +8,15 @@ import javax.persistence.*;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString
-@EqualsAndHashCode (exclude = "systemSetting")
 @NoArgsConstructor
 @Table(name = "platforms")
-public class Platform {
+public class Platform extends BaseEntity {
 
     @Column (name = "name")
     @Setter
     @Getter
     private String name;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+
     @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn
     @Setter

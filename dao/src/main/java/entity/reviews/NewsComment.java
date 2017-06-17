@@ -1,5 +1,6 @@
 package entity.reviews;
 
+import entity.BaseEntity;
 import entity.News;
 import lombok.*;
 
@@ -13,12 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Table(name = "comments_news")
-public class NewsComment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
+public class NewsComment extends BaseEntity {
 
     @Column(name = "review")
     @Setter
@@ -35,8 +31,4 @@ public class NewsComment {
         this.text = text;
     }
 
-    public NewsComment(String text, News setNews) {
-        this.text = text;
-        this.setNews = setNews;
-    }
 }

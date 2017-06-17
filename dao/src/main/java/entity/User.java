@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
     @Column(name = "name")
     @Setter
     @Getter
@@ -34,11 +34,6 @@ public class User {
     @Setter
     @Getter
     private String mail;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
     @OneToOne
     @JoinColumn(name = "roles_users_id")
     @Setter

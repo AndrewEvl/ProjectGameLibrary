@@ -1,5 +1,6 @@
 package entity.systemParts;
 
+import entity.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,12 +13,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "video_card")
-public class VideoCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private long id;
+public class VideoCard extends BaseEntity {
+
     @Column(name = "name")
     @Setter
     @Getter

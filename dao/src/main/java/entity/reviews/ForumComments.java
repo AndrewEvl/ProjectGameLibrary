@@ -1,5 +1,6 @@
 package entity.reviews;
 
+import entity.BaseEntity;
 import entity.ForumTheme;
 import entity.User;
 import lombok.*;
@@ -14,12 +15,8 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "comments_forum")
-public class ForumComments {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
+public class ForumComments extends BaseEntity{
+
     @Column(name = "name")
     @Setter
     @Getter

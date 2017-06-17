@@ -16,7 +16,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "news")
-public class News {
+public class News extends BaseEntity {
     @Column(name = "name")
     @Setter
     @Getter
@@ -31,12 +31,6 @@ public class News {
     @Setter
     @Getter
     private String text;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
 
     @OneToMany(mappedBy = "setNews")
     @Setter
