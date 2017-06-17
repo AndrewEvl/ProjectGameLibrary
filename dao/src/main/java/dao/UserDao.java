@@ -17,17 +17,31 @@ public class UserDao extends BaseDao<User> {
     private static SessionFactory SESSION_FACTORY =
             new Configuration().configure().buildSessionFactory();
 
-    public User info (String name){
+    public User findByNickName(String name){
         Session session = SESSION_FACTORY.openSession();
         session.beginTransaction();
         QUser qUser = new QUser("myUser");
         JPAQuery<User> query = new JPAQuery<>(session);
-        query.select(qUser.name, qUser.nickName, qUser.date, qUser.address)
+        query.select(qUser)
                 .from(qUser)
                 .where(qUser.nickName.eq(name));
+        User result = query.fetchOne();
         session.getTransaction().commit();
         session.close();
-        return query.fetchOne();
+        return result;
+    }
+
+    public User fullInfo (Long id){
+        Session session = SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        QUser qUser = new QUser("NyUser");
+        JPAQuery<User> query = new JPAQuery<>(session);
+        query.select(qUser).from(qUser).where(qUser.id.eq(id));
+        User result = query.fetchOne();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+
     }
 
 }

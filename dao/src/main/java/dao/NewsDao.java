@@ -29,9 +29,10 @@ public class NewsDao extends BaseDao<News> {
         query.select(qNews)
                 .where(qNews.date.dayOfMonth()
                         .eq(localDate.getDayOfMonth()));
+        List<News> results = query.fetchResults().getResults();
         session.getTransaction().commit();
         session.close();
-        return query.fetchResults().getResults();
+        return results;
 
     }
 }

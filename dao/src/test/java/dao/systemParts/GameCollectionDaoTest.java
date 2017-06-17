@@ -17,6 +17,7 @@ public class GameCollectionDaoTest {
         gameCollection.setOst("test");
         gameCollection.setFigure("+");
         gameCollectionDao.save(gameCollection);
+        gameCollectionDao.fullInfo(gameCollection);
     }
 
 }

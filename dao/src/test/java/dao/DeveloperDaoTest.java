@@ -65,6 +65,8 @@ public class DeveloperDaoTest {
         developerDao.save(developer);
         developer.setName("testOne");
         developerDao.update(developer);
+        Developer byId = developerDao.findById(1L);
+        System.out.println(byId);
         assertEquals(developer.getName(),"testOne");
     }
 

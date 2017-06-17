@@ -9,9 +9,6 @@ import org.hibernate.cfg.Configuration;
  */
 public class PublisherDao extends BaseDao<Publisher>{
 
-    private static SessionFactory SESSION_FACTORY =
-            new Configuration().configure().buildSessionFactory();
-
     public PublisherDao() {
         super(Publisher.class);
     }
