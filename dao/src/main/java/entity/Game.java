@@ -14,6 +14,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @Table(name = "games")
+@ToString(exclude = {"reviewGame", "platform"}, callSuper = true)
 public class Game extends BaseEntity {
 
     @Column(name = "name")

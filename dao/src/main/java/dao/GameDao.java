@@ -43,7 +43,7 @@ public class GameDao extends BaseDao<Game> {
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
-        query.select(qGame)
+        query.select(qGame).from(qGame)
                 .where(qGame.releaseDay.year()
                         .eq(localDate.getYear()));
         List<Game> results = query.fetchResults().getResults();

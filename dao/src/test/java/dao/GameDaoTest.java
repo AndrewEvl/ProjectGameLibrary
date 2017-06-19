@@ -21,7 +21,9 @@ public class GameDaoTest {
         GameDao gameDao = new GameDao();
         Game game = new Game();
         Publisher publisher = new Publisher();
+        PublisherDao publisherDao = new PublisherDao();
         publisher.setName("test");
+        publisherDao.save(publisher);
         game.setPublisher(publisher);
         gameDao.save(game);
         List<Game> byPublisher = gameDao.findByPublisher(publisher);
