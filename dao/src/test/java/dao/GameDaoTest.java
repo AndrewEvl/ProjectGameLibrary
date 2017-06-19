@@ -2,13 +2,11 @@ package dao;
 
 import entity.Game;
 import entity.Publisher;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 

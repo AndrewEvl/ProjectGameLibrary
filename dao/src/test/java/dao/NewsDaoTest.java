@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by User on 15.06.2017.
  */

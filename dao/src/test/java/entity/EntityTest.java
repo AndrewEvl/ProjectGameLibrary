@@ -153,7 +153,7 @@ public class EntityTest {
         game.setDeveloper(developer);
         game.setPublisher(publisher);
         game.getPlatform().add(platform);
-        game.getReviewGame().add(reviewGame);
+        game.getReviews().add(reviewGame);
         System.out.println(game.toString());
 
         session.save(game);
@@ -225,7 +225,7 @@ public class EntityTest {
         gameCollection.setDeveloper(developer);
         gameCollection.setPublisher(publisher);
         gameCollection.getPlatform().add(platform);
-        gameCollection.getReviewGame().add(reviewGame);
+        gameCollection.getReviews().add(reviewGame);
         System.out.println(gameCollection.toString());
 
         session.save(gameCollection);

@@ -1,7 +1,11 @@
 package entity;
 
 import entity.reviews.ReviewGame;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -48,14 +52,14 @@ public class Game extends BaseEntity {
     @OneToMany(mappedBy = "game")
     @Setter
     @Getter
-    private Set<ReviewGame> reviewGame = new HashSet<>();
+    private Set<ReviewGame> reviews = new HashSet<>();
     @ManyToMany
     @JoinTable(name = "game_platforms_system",
             joinColumns = @JoinColumn(name = "games_id"),
             inverseJoinColumns = @JoinColumn(name = "platform_system_id"))
     @Setter
     @Getter
-    private Set<Platform> platform = new HashSet<>();
+    private Set<Platform> platforms = new HashSet<>();
 
     public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer) {
         this.name = name;
@@ -65,14 +69,14 @@ public class Game extends BaseEntity {
         this.developer = developer;
     }
 
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> platform) {
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviews, Set<Platform> platforms) {
         this.name = name;
         this.releaseDay = releaseDay;
         this.genre = genre;
         this.publisher = publisher;
         this.developer = developer;
-        this.reviewGame = reviewGame;
-        this.platform = platform;
+        this.reviews = reviews;
+        this.platforms = platforms;
     }
 
 

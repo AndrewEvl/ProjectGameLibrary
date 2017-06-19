@@ -13,7 +13,6 @@ import org.hibernate.Transaction;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Set;
 
 /**
  * Created by User on 06.06.2017.
@@ -64,13 +63,13 @@ public class EntityTestDataImporter {
 
         Game quake = saveGame(session, "Quake II",LocalDate.of(1997, Month.DECEMBER, 9),action,idPublisher,idSoftware);
         quake.getPlatform().add(pc);
-        quake.getReviewGame().add(quakeReviewFirst);
-        quake.getReviewGame().add(quakeReviewSecond);
+        quake.getReviews().add(quakeReviewFirst);
+        quake.getReviews().add(quakeReviewSecond);
 
         Game halfLife = saveGame(session, "Half-Life", LocalDate.of(1998, Month.NOVEMBER, 19),action,valvePublisher,valve) ;
         halfLife.getPlatform().add(pc);
-        halfLife.getReviewGame().add(quakeReviewFirst);
-        halfLife.getReviewGame().add(quakeReviewSecond);
+        halfLife.getReviews().add(quakeReviewFirst);
+        halfLife.getReviews().add(quakeReviewSecond);
 //        session.save(quake);
 //        session.save(halfLife);
 

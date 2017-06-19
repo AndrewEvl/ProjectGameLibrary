@@ -3,7 +3,6 @@ package dao;
 import com.querydsl.jpa.impl.JPAQuery;
 import entity.News;
 import entity.QNews;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
