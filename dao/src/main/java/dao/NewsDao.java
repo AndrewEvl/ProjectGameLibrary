@@ -26,6 +26,7 @@ public class NewsDao extends BaseDao<News> {
         QNews qNews = new QNews("myNews");
         JPAQuery<News> query = new JPAQuery<>(session);
         query.select(qNews)
+                .from(qNews)
                 .where(qNews.date.dayOfMonth()
                         .eq(localDate.getDayOfMonth()));
         List<News> results = query.fetchResults().getResults();

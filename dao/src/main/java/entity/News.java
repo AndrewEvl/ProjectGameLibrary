@@ -3,10 +3,7 @@ package entity;
 import entity.reviews.NewsComment;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +12,7 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString
+@ToString (exclude = "newsCommentSet", callSuper = true)
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "news")

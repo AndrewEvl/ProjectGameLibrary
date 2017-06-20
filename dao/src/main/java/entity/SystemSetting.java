@@ -40,7 +40,7 @@ public class SystemSetting extends BaseEntity {
     @Setter
     @Getter
     private VideoCard videoCard;
-    @ManyToMany(mappedBy = "platforms")
+    @ManyToMany(mappedBy = "platform")
     @Setter
     @Getter
     private Set<Game> game = new HashSet<>();

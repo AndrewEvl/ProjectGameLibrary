@@ -1,11 +1,7 @@
 package entity;
 
 import entity.reviews.ReviewGame;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -18,7 +14,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
 @Table(name = "games")
-@ToString(exclude = {"reviewGame", "platform"}, callSuper = true)
+@ToString(exclude = {"reviews", "platform"}, callSuper = true)
 public class Game extends BaseEntity {
 
     @Column(name = "name")
@@ -33,8 +29,8 @@ public class Game extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "genres_id")
-    @Setter
     @Getter
+    @Setter
     private Genre genre;
 
     @ManyToOne
@@ -59,7 +55,7 @@ public class Game extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "platform_system_id"))
     @Setter
     @Getter
-    private Set<Platform> platforms = new HashSet<>();
+    private Set<Platform> platform = new HashSet<>();
 
     public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer) {
         this.name = name;
@@ -69,14 +65,14 @@ public class Game extends BaseEntity {
         this.developer = developer;
     }
 
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviews, Set<Platform> platforms) {
+    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> platform) {
         this.name = name;
         this.releaseDay = releaseDay;
         this.genre = genre;
         this.publisher = publisher;
         this.developer = developer;
-        this.reviews = reviews;
-        this.platforms = platforms;
+        this.reviews = reviewGame;
+        this.platform = platform;
     }
 
 
