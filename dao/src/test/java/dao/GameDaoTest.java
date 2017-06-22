@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Game;
+import entity.Genre;
 import entity.Publisher;
 import org.junit.Test;
 
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by User on 14.06.2017.
  */
 public class GameDaoTest {
+
     @Test
     public void findByPublisher() throws Exception {
         GameDao gameDao = new GameDao();
@@ -28,6 +30,22 @@ public class GameDaoTest {
         System.out.println(byPublisher);
     }
 
+    @Test
+    public void findByGenre (){
+        GameDao gameDao = new GameDao();
+        Game game = new Game();
+        Genre genre = new Genre();
+        GenreDao genreDao = new GenreDao();
+        genre.setName("test");
+        genreDao.save(genre);
+        game.setName("test");
+        game.setGenre(genre);
+        gameDao.save(game);
+        List<Game> byGenre = gameDao.findByGenre(genre);
+        System.out.println(byGenre);
+    }
+
+
 
     @Test
     public void findByReleaseDay() throws Exception {
@@ -41,8 +59,6 @@ public class GameDaoTest {
         assertNotNull(gameList);
 
     }
-
-//    private static SessionFactory SESSION_FACTORY;
 
     @Test
     public void findByNameTest() throws Exception {

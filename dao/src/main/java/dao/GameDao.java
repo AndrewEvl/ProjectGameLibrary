@@ -1,9 +1,7 @@
 package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import entity.Game;
-import entity.Publisher;
-import entity.QGame;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -29,7 +27,8 @@ public class GameDao extends BaseDao<Game> {
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         query.select(qGame)
-                .from(qGame).where(qGame.name.eq(name));
+                .from(qGame)
+                .where(qGame.name.eq(name));
         Game result = query.fetchOne();
         session.getTransaction().commit();
         session.close();
@@ -61,6 +60,32 @@ public class GameDao extends BaseDao<Game> {
         session.getTransaction().commit();
         session.close();
         return results;
+    }
+
+    public List<Game> findByGenre (Genre genre){
+        Session session = SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        QGame qGame = new QGame("myGame");
+        JPAQuery<Game> query = new JPAQuery<>(session);
+        List<Game> result = query.select(qGame).from(qGame).where(qGame.genre.eq(genre)).fetchResults().getResults();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public List<Game> findByPlatform (Platform platform){
+        Session session = SESSION_FACTORY.openSession();
+        session.beginTransaction();
+        QGame qGame = new QGame("myGame");
+        JPAQuery<Game> query = new JPAQuery<>(session);
+        query.select(qGame)
+                .from(qGame)
+                .join(qGame.platform);
+//                .where(qGame.platform.equals(platform))
+
+        session.getTransaction().commit();
+        session.close();
+        return null;
     }
 
 }

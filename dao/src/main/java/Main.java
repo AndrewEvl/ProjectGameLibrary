@@ -8,7 +8,7 @@ import entity.Developer;
 public class Main {
     public static void main(String[] args) {
 
-//        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//        SessionFactory sessionFactory = new Configuration.Configuration().configure().buildSessionFactory();
 //        Session session = sessionFactory.openSession();
 
         DeveloperDao developerDao = new DeveloperDao();
