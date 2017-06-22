@@ -1,5 +1,6 @@
 package dao;
 
+import dao.common.BaseDao;
 import entity.ForumTheme;
 
 /**

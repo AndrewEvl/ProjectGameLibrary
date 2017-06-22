@@ -1,6 +1,6 @@
 package dao.systemParts;
 
-import dao.BaseDao;
+import dao.common.BaseDao;
 import entity.systemParts.VideoCard;
 
 /**

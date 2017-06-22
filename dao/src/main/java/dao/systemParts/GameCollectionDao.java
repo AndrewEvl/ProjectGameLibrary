@@ -1,16 +1,18 @@
 package dao.systemParts;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import dao.BaseDao;
+import dao.common.BaseDao;
 import entity.GameCollection;
 import entity.QGameCollection;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by User on 15.06.2017.
  */
+@Repository
 public class GameCollectionDao extends BaseDao<GameCollection> {
     public GameCollectionDao() {
         super(GameCollection.class);

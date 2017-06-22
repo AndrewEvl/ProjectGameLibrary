@@ -1,6 +1,7 @@
 package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
+import dao.common.BaseDao;
 import entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

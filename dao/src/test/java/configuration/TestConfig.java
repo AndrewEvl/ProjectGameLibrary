@@ -1,4 +1,4 @@
-package Configuration;
+package configuration;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.springframework.beans.factory.annotation.Value;

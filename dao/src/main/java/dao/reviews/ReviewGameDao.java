@@ -1,6 +1,6 @@
 package dao.reviews;
 
-import dao.BaseDao;
+import dao.common.BaseDao;
 import entity.reviews.ReviewGame;
 
 /**
