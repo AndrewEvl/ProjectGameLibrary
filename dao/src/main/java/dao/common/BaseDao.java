@@ -1,54 +1,21 @@
 package dao.common;
 
 import entity.BaseEntity;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-
 /**
- * Created by User on 12.06.2017.
+ * Created by User on 22.06.2017.
  */
-public abstract class BaseDao<T extends BaseEntity> {
+public interface BaseDao<T extends BaseEntity> {
 
-    private SessionFactory sessionFactory;
-    private Class<T> entryClass;
+    T findById (Long id);
 
-    public BaseDao (Class<T> entityClass){
-        this.entryClass = entityClass;
-    }
+    void save(T entity);
 
-    public T findById (Long id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(entryClass, id);
-    }
+    void delete (T entity);
 
-    public void save (T entity){
-        sessionFactory.getCurrentSession().save(entity);
-    }
+    void update (T entity);
 
-    public void  delete (T entity){
-        sessionFactory.getCurrentSession().delete(entity);
-    }
-
-
-    public void update (T entity) {
-        sessionFactory.getCurrentSession().update(entity);
-    }
-
-    //update
-    //version
-
-    public List<T> findAll () {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("FROM " + entryClass.getSimpleName(), entryClass).list();
-    }
-
-    private SessionFactory getSessionFactory(){
-        return sessionFactory;
-    }
-
+    List<T> findAll();
 }

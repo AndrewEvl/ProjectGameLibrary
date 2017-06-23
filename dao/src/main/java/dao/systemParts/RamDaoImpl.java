@@ -1,13 +1,13 @@
 package dao.systemParts;
 
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.systemParts.Ram;
 
 /**
  * Created by User on 15.06.2017.
  */
-public class RamDao extends BaseDao<Ram> {
-    public RamDao() {
+public class RamDaoImpl extends BaseDaoImpl<Ram> {
+    public RamDaoImpl() {
         super(Ram.class);
     }
 }

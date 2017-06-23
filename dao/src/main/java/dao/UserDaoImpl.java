@@ -1,7 +1,7 @@
 package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.QUser;
 import entity.User;
 import org.hibernate.Session;
@@ -11,8 +11,8 @@ import org.hibernate.cfg.Configuration;
 /**
  * Created by User on 15.06.2017.
  */
-public class UserDao extends BaseDao<User> {
-    public UserDao() {
+public class UserDaoImpl extends BaseDaoImpl<User> {
+    public UserDaoImpl() {
         super(User.class);
     }
     private static SessionFactory SESSION_FACTORY =

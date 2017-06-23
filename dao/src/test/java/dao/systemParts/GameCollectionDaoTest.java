@@ -1,5 +1,6 @@
 package dao.systemParts;
 
+import dao.GameCollectionDaoImpl;
 import entity.GameCollection;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import org.junit.Test;
 public class GameCollectionDaoTest {
     @Test
     public void fullInfo() throws Exception {
-        GameCollectionDao gameCollectionDao = new GameCollectionDao();
+        GameCollectionDaoImpl gameCollectionDao = new GameCollectionDaoImpl();
         GameCollection gameCollection = new GameCollection();
         gameCollection.setName("test");
         gameCollection.setOst("test");

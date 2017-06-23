@@ -1,7 +1,7 @@
 package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.News;
 import entity.QNews;
 import org.hibernate.Session;
@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * Created by User on 15.06.2017.
  */
-public class NewsDao extends BaseDao<News> {
-    public NewsDao() {
+public class NewsDaoImpl extends BaseDaoImpl<News> {
+    public NewsDaoImpl() {
         super(News.class);
     }
     private static SessionFactory SESSION_FACTORY =

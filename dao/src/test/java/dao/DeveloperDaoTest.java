@@ -20,15 +20,15 @@ public class DeveloperDaoTest {
 
     private static SessionFactory SESSION_FACTORY;
 
-    @Before
-    public void setUp() throws Exception {
-        SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
-        EntityTestDataImporter.getINSTANCE().importTestData(SESSION_FACTORY);
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
+//        EntityTestDataImporter.getINSTANCE().importTestData(SESSION_FACTORY);
+//    }
 
     @Test
     public void findById() throws Exception {
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developerOne = new Developer();
         developerOne.setName("test");
         developerDao.save(developerOne);
@@ -39,7 +39,7 @@ public class DeveloperDaoTest {
 
     @Test
     public void saveEntity() throws Exception {
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developerOne = new Developer();
         developerOne.setName("test");
         developerDao.save(developerOne);
@@ -47,7 +47,7 @@ public class DeveloperDaoTest {
 
     @Test
     public void deleteEntity() throws Exception {
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -57,7 +57,7 @@ public class DeveloperDaoTest {
 
     @Test
     public void update() throws Exception {
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -70,7 +70,7 @@ public class DeveloperDaoTest {
 
     @Test
     public void findAll() throws Exception {
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -79,9 +79,9 @@ public class DeveloperDaoTest {
         System.out.println(developerList);
     }
 
-    @After
-    public void tearDown() throws Exception {
-        SESSION_FACTORY.close();
-    }
+//    @After
+//    public void tearDown() throws Exception {
+//        SESSION_FACTORY.close();
+//    }
 
 }

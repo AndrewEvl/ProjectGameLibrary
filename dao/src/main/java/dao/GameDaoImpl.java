@@ -1,7 +1,7 @@
 package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,12 +13,12 @@ import java.util.List;
 /**
  * Created by User on 25.05.2017.
  */
-public class GameDao extends BaseDao<Game> {
+public class GameDaoImpl extends BaseDaoImpl<Game> {
 
     private static SessionFactory SESSION_FACTORY =
             new Configuration().configure().buildSessionFactory();
 
-    public GameDao() {
+    public GameDaoImpl() {
         super(Game.class);
     }
 

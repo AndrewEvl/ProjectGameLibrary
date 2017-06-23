@@ -1,7 +1,7 @@
-package dao.systemParts;
+package dao;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.GameCollection;
 import entity.QGameCollection;
 import org.hibernate.Session;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
  * Created by User on 15.06.2017.
  */
 @Repository
-public class GameCollectionDao extends BaseDao<GameCollection> {
-    public GameCollectionDao() {
+public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> {
+    public GameCollectionDaoImpl() {
         super(GameCollection.class);
     }
     private static SessionFactory SESSION_FACTORY =

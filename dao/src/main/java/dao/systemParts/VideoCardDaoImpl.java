@@ -1,13 +1,13 @@
 package dao.systemParts;
 
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.systemParts.VideoCard;
 
 /**
  * Created by User on 15.06.2017.
  */
-public class VideoCardDao extends BaseDao<VideoCard> {
-    public VideoCardDao() {
+public class VideoCardDaoImpl extends BaseDaoImpl<VideoCard> {
+    public VideoCardDaoImpl() {
         super(VideoCard.class);
     }
 }

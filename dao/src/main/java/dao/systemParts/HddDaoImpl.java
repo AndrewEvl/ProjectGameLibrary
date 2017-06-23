@@ -1,13 +1,13 @@
 package dao.systemParts;
 
-import dao.common.BaseDao;
+import dao.common.BaseDaoImpl;
 import entity.systemParts.Hdd;
 
 /**
  * Created by User on 15.06.2017.
  */
-public class HddDao extends BaseDao<Hdd> {
-    public HddDao() {
+public class HddDaoImpl extends BaseDaoImpl<Hdd> {
+    public HddDaoImpl() {
         super(Hdd.class);
     }
 }

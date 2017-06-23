@@ -18,10 +18,10 @@ public class GameDaoTest {
 
     @Test
     public void findByPublisher() throws Exception {
-        GameDao gameDao = new GameDao();
+        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         Publisher publisher = new Publisher();
-        PublisherDao publisherDao = new PublisherDao();
+        PublisherDaoImpl publisherDao = new PublisherDaoImpl();
         publisher.setName("test");
         publisherDao.save(publisher);
         game.setPublisher(publisher);
@@ -32,10 +32,10 @@ public class GameDaoTest {
 
     @Test
     public void findByGenre (){
-        GameDao gameDao = new GameDao();
+        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         Genre genre = new Genre();
-        GenreDao genreDao = new GenreDao();
+        GenreDaoImpl genreDao = new GenreDaoImpl();
         genre.setName("test");
         genreDao.save(genre);
         game.setName("test");
@@ -49,7 +49,7 @@ public class GameDaoTest {
 
     @Test
     public void findByReleaseDay() throws Exception {
-        GameDao gameDao = new GameDao();
+        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         game.setName("test");
         game.setReleaseDay(LocalDate.now());
@@ -62,7 +62,7 @@ public class GameDaoTest {
 
     @Test
     public void findByNameTest() throws Exception {
-        GameDao gameDao = new GameDao();
+        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         game.setName("test");
         gameDao.save(game);

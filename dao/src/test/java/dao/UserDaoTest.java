@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class UserDaoTest {
     @Test
     public void fullInfo() throws Exception {
-        UserDao userDao = new UserDao();
+        UserDaoImpl userDao = new UserDaoImpl();
         User user = new User();
         user.setNickName("test");
         userDao.save(user);
@@ -23,7 +23,7 @@ public class UserDaoTest {
 
     @Test
     public void findByNickNameTest() throws Exception {
-        UserDao userDao = new UserDao();
+        UserDaoImpl userDao = new UserDaoImpl();
         User user = new User();
         user.setName("test");
         user.setNickName("Bad");

@@ -1,4 +1,4 @@
-import dao.DeveloperDao;
+import dao.DeveloperDaoImpl;
 import entity.Developer;
 
 
@@ -11,7 +11,7 @@ public class Main {
 //        SessionFactory sessionFactory = new configuration.configuration().configure().buildSessionFactory();
 //        Session session = sessionFactory.openSession();
 
-        DeveloperDao developerDao = new DeveloperDao();
+        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developerOne = new Developer();
         developerOne.setName("test");
         developerDao.save(developerOne);

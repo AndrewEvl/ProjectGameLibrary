@@ -12,7 +12,7 @@ import java.util.List;
 public class NewsDaoTest {
     @Test
     public void getByDate() throws Exception {
-        NewsDao newsDao = new NewsDao();
+        NewsDaoImpl newsDao = new NewsDaoImpl();
         News news = new News();
         news.setName("test");
         news.setDate(LocalDate.now());
