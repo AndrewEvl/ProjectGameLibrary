@@ -18,9 +18,6 @@ public class GameDaoImpl extends BaseDaoImpl<Game> {
     private static SessionFactory SESSION_FACTORY =
             new Configuration().configure().buildSessionFactory();
 
-    public GameDaoImpl() {
-        super(Game.class);
-    }
 
     public Game findByName(String name) {
         Session session = SESSION_FACTORY.openSession();

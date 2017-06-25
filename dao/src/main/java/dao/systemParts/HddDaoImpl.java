@@ -7,7 +7,4 @@ import entity.systemParts.Hdd;
  * Created by User on 15.06.2017.
  */
 public class HddDaoImpl extends BaseDaoImpl<Hdd> {
-    public HddDaoImpl() {
-        super(Hdd.class);
-    }
 }

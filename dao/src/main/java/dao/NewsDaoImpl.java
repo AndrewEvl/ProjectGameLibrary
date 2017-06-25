@@ -15,9 +15,6 @@ import java.util.List;
  * Created by User on 15.06.2017.
  */
 public class NewsDaoImpl extends BaseDaoImpl<News> {
-    public NewsDaoImpl() {
-        super(News.class);
-    }
     private static SessionFactory SESSION_FACTORY =
             new Configuration().configure().buildSessionFactory();
 

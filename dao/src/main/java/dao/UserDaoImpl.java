@@ -12,9 +12,6 @@ import org.hibernate.cfg.Configuration;
  * Created by User on 15.06.2017.
  */
 public class UserDaoImpl extends BaseDaoImpl<User> {
-    public UserDaoImpl() {
-        super(User.class);
-    }
     private static SessionFactory SESSION_FACTORY =
             new Configuration().configure().buildSessionFactory();
 

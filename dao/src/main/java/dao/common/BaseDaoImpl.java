@@ -3,8 +3,8 @@ package dao.common;
 import entity.BaseEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.GenericTypeResolver;
 
 import java.util.List;
 
@@ -14,36 +14,44 @@ import java.util.List;
  */
 public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
+    @Autowired
     private SessionFactory sessionFactory;
-    private Class<T> entryClass;
+    private Class<T> modelClass;
 
-    public BaseDaoImpl(Class<T> entityClass){
-        this.entryClass = entityClass;
+    @SuppressWarnings("unchecked")
+    public BaseDaoImpl() {
+        modelClass = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), BaseDaoImpl.class);
     }
 
-    public T findById (Long id) {
+    @Override
+    public T findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(entryClass, id);
+        return session.get(modelClass, id);
     }
 
-    public void save (T entity){
+    @Override
+    public void save(T entity) {
         sessionFactory.getCurrentSession().save(entity);
     }
 
-    public void  delete (T entity){
+    @Override
+    public void delete(T entity) {
         sessionFactory.getCurrentSession().delete(entity);
     }
 
-    public void update (T entity) {
+    @Override
+    public void update(T entity) {
         sessionFactory.getCurrentSession().update(entity);
     }
 
-    public List<T> findAll () {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("FROM " + entryClass.getSimpleName(), entryClass).list();
+    @Override
+    public List<T> findAll() {
+        return sessionFactory
+                .getCurrentSession()
+                .createQuery("FROM " + modelClass.getSimpleName(), modelClass).list();
     }
 
-    private SessionFactory getSessionFactory(){
+    protected SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 

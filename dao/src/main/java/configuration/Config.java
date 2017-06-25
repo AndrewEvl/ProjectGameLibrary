@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -17,8 +18,8 @@ import java.util.Properties;
 /**
  * Created by User on 22.06.2017.
  */
-@org.springframework.context.annotation.Configuration
-@ComponentScan({"entity","dao"})
+@Configuration
+@ComponentScan(basePackages = {"dao"})
 @EnableTransactionManagement
 @PropertySource("classpath:database.properties")
 public class Config {
@@ -54,7 +55,7 @@ public class Config {
     public LocalSessionFactoryBean sessionFactory(){
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan("by.hector.project.entity");
+        sessionFactoryBean.setPackagesToScan("entity");
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         return sessionFactoryBean;
     }
@@ -65,7 +66,7 @@ public class Config {
         properties.setProperty("hibernate.dialect",dialect);
         properties.setProperty("hibernate.show_sql", showSql);
         properties.setProperty("hibernate.format_sql", formatSql);
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", creationPolicy);
         return properties;
     }
 

@@ -5,23 +5,17 @@ import dao.common.BaseDaoImpl;
 import entity.GameCollection;
 import entity.QGameCollection;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 /**
  * Created by User on 15.06.2017.
  */
 @Repository
-public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> {
-    public GameCollectionDaoImpl() {
-        super(GameCollection.class);
-    }
-    private static SessionFactory SESSION_FACTORY =
-            new Configuration().configure().buildSessionFactory();
+public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> implements GameCollectionDao {
+
 
     public GameCollection fullInfo (GameCollection gameCollection){
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGameCollection qGameCollection = new QGameCollection("myGameColl");
         JPAQuery<GameCollection> query = new JPAQuery<>(session);

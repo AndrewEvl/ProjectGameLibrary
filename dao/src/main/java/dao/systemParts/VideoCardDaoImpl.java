@@ -7,7 +7,4 @@ import entity.systemParts.VideoCard;
  * Created by User on 15.06.2017.
  */
 public class VideoCardDaoImpl extends BaseDaoImpl<VideoCard> {
-    public VideoCardDaoImpl() {
-        super(VideoCard.class);
-    }
 }

@@ -1,12 +1,9 @@
 package dao;
 
 import entity.Developer;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import util.EntityTestDataImporter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
 
@@ -16,19 +13,14 @@ import static org.junit.Assert.*;
 /**
  * Created by User on 12.06.2017.
  */
-public class DeveloperDaoTest {
+public class DeveloperDaoTest extends BaseTest {
 
-    private static SessionFactory SESSION_FACTORY;
+    @Autowired
+    private DeveloperDao developerDao;
 
-//    @Before
-//    public void setUp() throws Exception {
-//        SESSION_FACTORY = new Configuration().configure().buildSessionFactory();
-//        EntityTestDataImporter.getINSTANCE().importTestData(SESSION_FACTORY);
-//    }
 
     @Test
     public void findById() throws Exception {
-        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developerOne = new Developer();
         developerOne.setName("test");
         developerDao.save(developerOne);
@@ -38,16 +30,15 @@ public class DeveloperDaoTest {
     }
 
     @Test
-    public void saveEntity() throws Exception {
-        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
-        Developer developerOne = new Developer();
-        developerOne.setName("test");
-        developerDao.save(developerOne);
+    @Rollback (value = false)
+    public void saveEntity() {
+        Developer developer = new Developer();
+        developer.setName("test");
+        developerDao.save(developer);
     }
 
     @Test
     public void deleteEntity() throws Exception {
-        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -57,7 +48,6 @@ public class DeveloperDaoTest {
 
     @Test
     public void update() throws Exception {
-        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -70,7 +60,6 @@ public class DeveloperDaoTest {
 
     @Test
     public void findAll() throws Exception {
-        DeveloperDaoImpl developerDao = new DeveloperDaoImpl();
         Developer developer = new Developer();
         developer.setName("test");
         developerDao.save(developer);
@@ -78,10 +67,4 @@ public class DeveloperDaoTest {
         assertThat(developerList, hasSize(1));
         System.out.println(developerList);
     }
-
-//    @After
-//    public void tearDown() throws Exception {
-//        SESSION_FACTORY.close();
-//    }
-
 }
