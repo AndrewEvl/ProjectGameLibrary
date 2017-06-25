@@ -1,4 +1,4 @@
-import dao.DeveloperDaoImpl;
+import dao.daoImpl.DeveloperDaoImpl;
 import entity.Developer;
 
 

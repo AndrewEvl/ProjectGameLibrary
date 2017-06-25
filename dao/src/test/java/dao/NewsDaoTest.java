@@ -1,5 +1,6 @@
 package dao;
 
+import dao.daoImpl.NewsDaoImpl;
 import entity.News;
 import org.junit.Test;
 

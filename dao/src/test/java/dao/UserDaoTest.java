@@ -1,5 +1,6 @@
 package dao;
 
+import dao.daoImpl.UserDaoImpl;
 import entity.User;
 import org.junit.Test;
 

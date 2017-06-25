@@ -1,6 +1,6 @@
 package service;
 
-import dao.DeveloperDao;
+import dao.interfaceDao.DeveloperDao;
 import entity.Developer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

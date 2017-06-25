@@ -1,5 +1,8 @@
 package dao;
 
+import dao.daoImpl.GameDaoImpl;
+import dao.daoImpl.GenreDaoImpl;
+import dao.daoImpl.PublisherDaoImpl;
 import entity.Game;
 import entity.Genre;
 import entity.Publisher;
