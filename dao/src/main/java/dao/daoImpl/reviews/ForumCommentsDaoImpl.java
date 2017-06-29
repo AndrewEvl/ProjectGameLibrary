@@ -1,7 +1,7 @@
 package dao.daoImpl.reviews;
 
 import dao.common.BaseDaoImpl;
-import dao.reviews.ForumCommentsDao;
+import dao.interfaceDao.reviews.ForumCommentsDao;
 import entity.reviews.ForumComments;
 import org.springframework.stereotype.Repository;
 

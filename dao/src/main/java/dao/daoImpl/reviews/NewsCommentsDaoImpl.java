@@ -1,7 +1,7 @@
 package dao.daoImpl.reviews;
 
 import dao.common.BaseDaoImpl;
-import dao.reviews.NewsCommentsDao;
+import dao.interfaceDao.reviews.NewsCommentsDao;
 import entity.reviews.NewsComment;
 import org.springframework.stereotype.Repository;
 

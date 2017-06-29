@@ -18,12 +18,8 @@ import java.util.List;
 @Repository
 public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
 
-    private static SessionFactory SESSION_FACTORY =
-            new Configuration().configure().buildSessionFactory();
-
-
     public Game findByName(String name) {
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -38,7 +34,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
     }
 
     public List<Game> findByReleaseDay (LocalDate localDate){
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -52,7 +48,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
     }
 
     public List<Game> findByPublisher (Publisher publisher){
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -64,7 +60,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
     }
 
     public List<Game> findByGenre (Genre genre){
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -75,7 +71,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
     }
 
     public List<Game> findByPlatform (Platform platform){
-        Session session = SESSION_FACTORY.openSession();
+        Session session = getSessionFactory().getCurrentSession();
         session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);

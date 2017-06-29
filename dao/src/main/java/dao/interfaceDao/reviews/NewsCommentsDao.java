@@ -1,4 +1,4 @@
-package dao.reviews;
+package dao.interfaceDao.reviews;
 
 import dao.common.BaseDao;
 import entity.reviews.NewsComment;

@@ -1,7 +1,7 @@
 package dao.daoImpl.reviews;
 
 import dao.common.BaseDaoImpl;
-import dao.reviews.ReviewGameDao;
+import dao.interfaceDao.reviews.ReviewGameDao;
 import entity.reviews.ReviewGame;
 import org.springframework.stereotype.Repository;
 
