@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Holli Game</title>
+</head>
+<body>
+<a href="/all-developers">Developers List</a>   <a href="/developer">Find By ID Developers</a>
+
+<ul th:each="newsList : ${newsList}">
+    <li th:text="${newsList.name}">News Name</li>   <li th:text="${newsList.date}">News Date</li>
+    <li th:text="${newsList.text}">News Text</li>
+
+    <ul th:each="newsCom : ${newsList.newsCommentSet}">
+    <li th:include="newsCom.newsCom">News Comments Set</li>
+    </ul>
+</ul>
+</body>
+</html>

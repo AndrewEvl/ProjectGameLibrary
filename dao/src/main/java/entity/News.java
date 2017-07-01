@@ -13,7 +13,6 @@ import java.util.Set;
  */
 @Entity
 @ToString (exclude = "newsCommentSet", callSuper = true)
-@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "news")
 public class News extends BaseEntity {
