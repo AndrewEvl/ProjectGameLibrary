@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Created by User on 28.06.2017.
@@ -13,6 +14,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 @Configuration
 @ComponentScan(basePackages = "service")
 @Import(value = Config.class)
+@EnableTransactionManagement
 public class ServiceConfig{
 
     @Bean

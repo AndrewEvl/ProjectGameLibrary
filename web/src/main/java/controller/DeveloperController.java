@@ -28,8 +28,8 @@ public class DeveloperController {
     }
 
     @PostMapping(path = "/developer")
-    public String findByIdDeveloper (Long idDev, Model model){
-        model.addAttribute("devId",idDev);
+    public String findByIdDeveloper (Long id, Model model){
+        model.addAttribute("devId",id);
         return "redirect:/developer-info/{devId}";
     }
 
