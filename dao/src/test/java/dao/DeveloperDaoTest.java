@@ -22,16 +22,15 @@ public class DeveloperDaoTest extends BaseTest {
 
     @Test
     public void findById() throws Exception {
-        Developer developerOne = new Developer();
-        developerOne.setName("test");
-        developerDao.save(developerOne);
+        Developer developer1 = new Developer();
+        developer1.setName("test");
+        developerDao.save(developer1);
         Developer developer = developerDao.findById(1L);
         assertEquals(developer.getName(),"test");
         System.out.println(developer);
     }
 
     @Test
-    @Rollback (value = false)
     public void saveEntity() {
         Developer developer = new Developer();
         developer.setName("test");

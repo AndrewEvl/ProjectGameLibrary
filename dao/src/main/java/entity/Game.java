@@ -17,6 +17,11 @@ import java.util.Set;
 @ToString(exclude = {"reviews", "platform"}, callSuper = true)
 public class Game extends BaseEntity {
 
+    @Version
+    @Getter
+    @Setter
+    private LocalDate version;
+
     @Column(name = "name")
     @Setter
     @Getter
@@ -49,6 +54,7 @@ public class Game extends BaseEntity {
     @Setter
     @Getter
     private Set<ReviewGame> reviews = new HashSet<>();
+
     @ManyToMany
     @JoinTable(name = "game_platforms_system",
             joinColumns = @JoinColumn(name = "games_id"),

@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import util.EntityTestDataImporter;
 
 /**
  * Created by User on 22.06.2017.
  */
 @Configuration
-@Import(Config.class)
+@Import(ConfigDao.class)
 public class TestConfig {
 
     @Value("${jdbc.url}")
@@ -28,5 +30,4 @@ public class TestConfig {
         dataSource.setPassword(password);
         return dataSource;
     }
-
 }

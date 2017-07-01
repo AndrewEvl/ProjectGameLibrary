@@ -28,13 +28,14 @@ public class DeveloperController {
     }
 
     @PostMapping(path = "/developer")
-    public String findByIdDeveloper (Long idDev, Model model){
-        model.addAttribute("devId",idDev);
-        return "redirect:/developer-info/{devId}";
+    public String findByIdDeveloper (Developer developer, Model model){
+        Long id = developer.getId();
+        model.addAttribute("id",id);
+        return "redirect:/developer-info/{id}";
     }
 
-    @GetMapping(path = "/developer-info/{devId}")
-    public String showInfoDeveloper (@PathVariable("devId") Long devId, Model model){
+    @GetMapping(path = "/developer-info/{id}")
+    public String showInfoDeveloper (@PathVariable("id") Long devId, Model model){
         Developer developer = developerService.findById(devId);
         model.addAttribute("developer", developer);
         return "developer-info";

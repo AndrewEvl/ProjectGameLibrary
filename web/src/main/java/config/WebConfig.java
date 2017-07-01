@@ -1,6 +1,6 @@
 package config;
 
-import configuration.Config;
+import configuration.ConfigDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan(basePackages = "controller")
 @EnableWebMvc
-@Import(value = Config.class)
+@Import(value = {ConfigDao.class, ThymeleafConfig.class})
 public class WebConfig {
 
     @Bean

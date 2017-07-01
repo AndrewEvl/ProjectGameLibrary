@@ -22,7 +22,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"dao"})
 @EnableTransactionManagement
 @PropertySource("classpath:database.properties")
-public class Config {
+public class ConfigDao {
 
     @Value("${jdbc.url}")
     private String url;

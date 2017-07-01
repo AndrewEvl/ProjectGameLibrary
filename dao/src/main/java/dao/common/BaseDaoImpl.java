@@ -16,17 +16,17 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
     @Autowired
     private SessionFactory sessionFactory;
-    private Class<T> modelClass;
+    private Class<T> entityClass;
 
     @SuppressWarnings("unchecked")
     public BaseDaoImpl() {
-        modelClass = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), BaseDaoImpl.class);
+        entityClass = (Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), BaseDaoImpl.class);
     }
 
     @Override
     public T findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(modelClass, id);
+        return session.get(entityClass, id);
     }
 
     @Override
@@ -48,7 +48,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
     public List<T> findAll() {
         return sessionFactory
                 .getCurrentSession()
-                .createQuery("FROM " + modelClass.getSimpleName(), modelClass).list();
+                .createQuery("FROM " + entityClass.getSimpleName(), entityClass).list();
     }
 
     protected SessionFactory getSessionFactory() {
