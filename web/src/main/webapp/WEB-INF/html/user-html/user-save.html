@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/user-save}" method="post" th:object="${user}">
+    <p><label th:for="name">Enter you name</label>
+        <label>
+            <input type="text" th:field="*{name}">
+        </label></p>
+    <p><label th:for="nickName">Enter you Nickname</label>
+        <label>
+            <input type="text" th:field="*{nickName}">
+        </label></p>
+    <p><label th:for="date">Enter you Birthday</label>
+        <label>
+            <input type="date" th:field="*{date}">
+        </label></p>
+    <p><label th:for="password">Enter you Password</label>
+        <label>
+            <input type="password" th:field="*{password}">
+        </label></p>
+    <p><label th:for="mail">Enter you Mail</label>
+        <label>
+            <input type="email" th:field="*{mail}">
+        </label></p>
+    <p><label th:for="city">Enter you City</label>
+        <label>
+            <input type="text" th:field="*{address.city}">
+        </label></p>
+    <p><label th:for="country">Enter you Country</label>
+        <label>
+            <input type="text" th:field="*{address.country}">
+        </label></p>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
