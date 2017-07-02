@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.name}">Name Game</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.releaseDay}">Release Day</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.genre.name}">Genre game</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.publisher.name}">Publisher Game</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.developer.name}">Developer Game</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.platform.name}">Platform Game</li>
+    <li th:each="allGame : ${allGame}"
+        th:text="*{allGame.platform.systemSetting}">Platform Game</li>
+</ul>
+
+</body>
+</html>
