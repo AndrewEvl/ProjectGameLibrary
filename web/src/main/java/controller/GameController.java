@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import service.GameService;
 
 import java.util.List;
@@ -33,5 +34,25 @@ public class GameController {
         return "game-html/game-list";
     }
 
+    @GetMapping("/game-info{gameId}")
+    public String gameInfoGet (Game game, Model model){
+        Game id = gameService.findById(game.getId());
+        model.addAttribute("gameId",id);
+        return "/game-html/game-info{gameId}";
+    }
+
+    @GetMapping("/game-save")
+    public String gameSaveGet (){
+        return "game-html/game-save";
+    }
+
+    @PostMapping("/game-save")
+    public String gameSavePost(Game game, Model model){
+        gameService.save(game);
+        model.addAttribute("game",game);
+        Long id = game.getId();
+        model.addAttribute("gameId",id );
+        return "redirect:/game-info{gameId}";
+    }
 
 }

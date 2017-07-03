@@ -21,8 +21,9 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void save(Game game) {
+    public Long save(Game game) {
          gameDao.save(game);
+        return game.getId();
     }
 
     @Override
@@ -30,5 +31,12 @@ public class GameServiceImpl implements GameService {
         return gameDao.findAll();
     }
 
+    @Override
+    public Game findById(Long id) {
+        Game byId = gameDao.findById(id);
+        byId.getPlatform();
+        byId.getReviews();
+        return byId;
+    }
 
 }

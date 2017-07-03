@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface GameService {
 
-    void save(Game game);
+    Long save(Game game);
 
     List<Game> listGame ();
+
+    Game findById (Long id);
 }
