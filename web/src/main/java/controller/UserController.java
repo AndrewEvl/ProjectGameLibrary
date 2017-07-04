@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import service.UserService;
+import sun.plugin.liveconnect.SecurityContextHelper;
 
 /**
  * Created by Lino on 02.07.2017.
@@ -38,6 +39,13 @@ public class UserController {
     @GetMapping("/user-save")
     public String saveForm(){
         return "user-html/user-save";
+    }
+
+    @GetMapping("/user")
+    public String getUser(Model model){
+        User user = userService.findByNickName(SecurityContextHelper.getContext().getAuthentication().getName());
+        model.addAttribute("user",user);
+        return "user-html/login-user";
     }
 
     @PostMapping("/user-save")

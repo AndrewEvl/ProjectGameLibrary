@@ -8,4 +8,6 @@ import entity.User;
 public interface UserService {
 
     void save (User user);
+
+    User findByNickName(String name);
 }
