@@ -8,6 +8,13 @@
 <form th:action="@{/game-save}" method="post" th:object="${game}">
     <label th:for="name">Game name</label>
     <input type="text" th:field="*{name}">
+    <label th:for="releaseDay">Game Release Day</label>
+    <input type="date" th:field="*{releaseDay}">
+    <section th:field="*{genre}">
+        <option th:each="genres : ${game.genre}"
+                th:value="genres"
+                th:text="*{genre.name}">Genre Game</option>
+    </section>
 
 
     <button type="submit">Save</button>

@@ -1,12 +1,14 @@
 package controller;
 
 import entity.Game;
+import entity.Genre;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import service.GameService;
+import service.GenreService;
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class GameController {
         return "game-html/game-list";
     }
 
-    @GetMapping("/game-info{gameId}")
+    @GetMapping("/game-info")
     public String gameInfoGet (Game game, Model model){
         Game id = gameService.findById(game.getId());
         model.addAttribute("gameId",id);
