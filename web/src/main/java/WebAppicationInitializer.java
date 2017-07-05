@@ -1,4 +1,5 @@
 import config.RootConfig;
+import config.SecurityConfig;
 import config.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebAppicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {RootConfig.class};
+        return new Class[] {RootConfig.class, SecurityConfig.class};
     }
 
     @Override
