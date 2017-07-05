@@ -20,16 +20,16 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
 
     public Game findByName(String name) {
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+//        session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         query.select(qGame)
                 .from(qGame)
                 .where(qGame.name.eq(name));
         Game result = query.fetchOne();
-        session.getTransaction().commit();
-        session.close();
-        System.out.println(result);
+//        session.getTransaction().commit();
+//        session.close();
+//        System.out.println(result);
         return result;
     }
 
@@ -65,8 +65,8 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         List<Game> result = query.select(qGame).from(qGame).where(qGame.genre.eq(genre)).fetchResults().getResults();
-        session.getTransaction().commit();
-        session.close();
+//        session.getTransaction().commit();
+//        session.close();
         return result;
     }
 

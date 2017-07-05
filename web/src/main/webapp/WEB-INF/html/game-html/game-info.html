@@ -5,30 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<ul>
-    <a href="/game-info">
-        <li th:each="allGame : ${allGame}"
-            th:text="*{allGame.name}">Game List
-        </li>
-    </a>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.releaseDay}">Release Day
-    </li>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.genre.name}">Genre game
-    </li>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.publisher.name}">Publisher Game
-    </li>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.developer.name}">Developer Game
-    </li>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.platform.name}">Platform Game
-    </li>
-    <li th:each="allGame : ${allGame}"
-        th:text="*{allGame.platform.systemSetting}">Platform Game
-    </li>
-</ul>
+
+Game name : <p th:text="*{game.name}">Game name</p>
+Game Release Day : <p th:text="*{game.releaseDay}">Game Release Day</p>
+Genre Game : <p th:text="*{game.genre.name}">Genre Game</p>
+Developer Name :<p th:text="*{game.developer.name}">Developer Name</p>
+Platform : <p th:text="*{game.platform}">Platform</p>
+Publisher : <p th:text="*{game.publisher.name}">Publisher</p>
+Reviews : <p th:text="*{game.reviews}">Reviews</p>
+
 </body>
 </html>

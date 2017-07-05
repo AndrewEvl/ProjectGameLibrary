@@ -2,6 +2,8 @@ package entity;
 
 import entity.reviews.ReviewGame;
 import lombok.*;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -21,6 +23,11 @@ public class Game extends BaseEntity {
     @Setter
     @Getter
     private String name;
+
+//    @Version
+//    @Getter
+//    @Setter
+//    private LocalDate version;
 
     @Column(name = "release_day")
     @Setter

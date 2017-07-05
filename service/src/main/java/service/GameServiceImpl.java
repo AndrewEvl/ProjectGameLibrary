@@ -39,4 +39,11 @@ public class GameServiceImpl implements GameService {
         return byId;
     }
 
+    @Override
+    public Game findByName(String name) {
+        Game byName = gameDao.findByName(name);
+        byName.getPlatform();
+        byName.getReviews();
+        return byName;
+    }
 }

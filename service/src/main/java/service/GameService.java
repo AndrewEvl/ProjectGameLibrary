@@ -14,4 +14,6 @@ public interface GameService {
     List<Game> listGame ();
 
     Game findById (Long id);
+
+    Game findByName (String name);
 }
