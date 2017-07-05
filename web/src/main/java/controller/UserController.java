@@ -40,6 +40,13 @@ public class UserController {
         return "user-html/user-save";
     }
 
+//    @GetMapping("/user")
+//    public String getUser(Model model){
+//        User user = userService.findByNickName(SecurityContextHelper.getContext().getAuthentication().getName());
+//        model.addAttribute("user",user);
+//        return "user-html/login-user";
+//    }
+
     @PostMapping("/user-save")
     public String saveUserGet(User user, Model model){
         userService.save(user);
