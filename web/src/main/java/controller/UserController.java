@@ -30,10 +30,10 @@ public class UserController {
         return "user-html/login-user";
     }
 
-    @PostMapping("/login")
-    public String loginFormPost(){
-        return "user-html/login-user";
-    }
+//    @PostMapping("/login")
+//    public String loginFormPost(){
+//        return "user-html/login-user";
+//    }
 
     @GetMapping("/user-save")
     public String saveForm(){

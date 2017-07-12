@@ -17,7 +17,7 @@ public class Platform extends BaseEntity {
     @Getter
     private String name;
 
-    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn
     @Setter
     @Getter

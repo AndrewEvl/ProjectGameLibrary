@@ -1,6 +1,7 @@
 package service;
 
 import dao.interfaceDao.GameDao;
+import dao.interfaceDao.PlatformDao;
 import entity.Game;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public class GameServiceImpl implements GameService {
 
     private final GameDao gameDao;
+    private final PlatformDao platformDao;
 
-    public GameServiceImpl(GameDao gameDao) {
+    public GameServiceImpl(GameDao gameDao, PlatformDao platformDao) {
         this.gameDao = gameDao;
+        this.platformDao = platformDao;
     }
 
     @Override
@@ -34,16 +37,12 @@ public class GameServiceImpl implements GameService {
     @Override
     public Game findById(Long id) {
         Game byId = gameDao.findById(id);
-        byId.getPlatform();
-        byId.getReviews();
         return byId;
     }
 
     @Override
     public Game findByName(String name) {
         Game byName = gameDao.findByName(name);
-        byName.getPlatform();
-        byName.getReviews();
         return byName;
     }
 }

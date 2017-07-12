@@ -31,7 +31,7 @@ public class News extends BaseEntity {
     @Getter
     private String text;
 
-    @OneToMany(mappedBy = "setNews")
+    @OneToMany(mappedBy = "setNews", fetch = FetchType.EAGER)
     @Setter
     @Getter
     private Set<NewsComment> newsCommentSet = new HashSet<>();

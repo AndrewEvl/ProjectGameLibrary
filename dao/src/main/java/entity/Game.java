@@ -24,10 +24,10 @@ public class Game extends BaseEntity {
     @Getter
     private String name;
 
-//    @Version
-//    @Getter
-//    @Setter
-//    private LocalDate version;
+    @Version
+    @Getter
+    @Setter
+    private LocalDate version;
 
     @Column(name = "release_day")
     @Setter
@@ -52,11 +52,12 @@ public class Game extends BaseEntity {
     @Getter
     private Developer developer;
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     @Setter
     @Getter
     private Set<ReviewGame> reviews = new HashSet<>();
-    @ManyToMany
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "game_platforms_system",
             joinColumns = @JoinColumn(name = "games_id"),
             inverseJoinColumns = @JoinColumn(name = "platform_system_id"))

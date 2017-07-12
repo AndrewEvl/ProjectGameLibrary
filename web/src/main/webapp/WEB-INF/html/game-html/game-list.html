@@ -6,8 +6,8 @@
 </head>
 <body>
 <ul>
-    <a href="/game-info"><li th:each="allGame : ${allGame}"
-        th:text="*{allGame.name}">Game List</li></a>
+    <a href="/game-info"><li th:each="game : ${allGames}"
+        th:text="*{game.name}">Game List</li></a>
     <!--<li th:each="allGame : ${allGame}"-->
         <!--th:text="*{allGame.releaseDay}">Release Day</li>-->
     <!--<li th:each="allGame : ${allGame}"-->

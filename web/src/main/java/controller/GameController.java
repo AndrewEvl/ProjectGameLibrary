@@ -36,7 +36,7 @@ public class GameController {
     @GetMapping("/game-list")
     public String gameListGet (Model model){
         List<Game> gameList = gameService.listGame();
-        model.addAttribute("allGame", gameList);
+        model.addAttribute("allGames", gameList);
         return "game-html/game-list";
     }
 
@@ -46,9 +46,7 @@ public class GameController {
     }
 
     @PostMapping("/game-info")
-    public String gameInfoPost (Game game, Model model){
-        Game id = gameService.findById(game.getId());
-        model.addAttribute("gameId",id);
+    public String gameInfoPost (){
         return "/game-html/game-info";
     }
 
@@ -83,8 +81,8 @@ public class GameController {
         Set<ReviewGame> reviews = byName.getReviews();
         Set<Platform> platform = byName.getPlatform();
         model.addAttribute("game", byName);
-        model.addAttribute("platform", platform);
-        model.addAttribute("reviews", reviews);
+        model.addAttribute("platformsList", platform);
+        model.addAttribute("reviewsList", reviews);
         return "game-html/game-info";
     }
 }

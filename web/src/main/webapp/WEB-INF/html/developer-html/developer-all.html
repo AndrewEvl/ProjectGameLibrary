@@ -6,8 +6,8 @@
 </head>
 <body>
 <ul>
-    <a href="/developer-info"> <li th:each="allDevelopers : ${allDevelopers}"
-    th:text="${allDevelopers.name}">ListDevelopers</li></a>
+    <a href="/developer-info{id}"> <li th:each="developers : ${allDevelopers}"
+    th:text="${developers.name}">ListDevelopers</li></a>
 </ul>
 </body>
 </html>

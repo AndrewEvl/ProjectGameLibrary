@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import service.NewsService;
 
 import java.util.List;
@@ -20,6 +21,11 @@ public class NewsController {
     @Autowired
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
+    }
+
+    @ModelAttribute("news")
+    public News news(){
+        return new News();
     }
 
     @GetMapping("/")

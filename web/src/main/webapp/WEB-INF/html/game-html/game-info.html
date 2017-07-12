@@ -10,9 +10,12 @@ Game name : <p th:text="*{game.name}">Game name</p>
 Game Release Day : <p th:text="*{game.releaseDay}">Game Release Day</p>
 Genre Game : <p th:text="*{game.genre.name}">Genre Game</p>
 Developer Name :<p th:text="*{game.developer.name}">Developer Name</p>
-Platform : <p th:text="*{game.platform}">Platform</p>
+Platform :<p><ul th:each="platform : ${platformsList}"
+    th:text="${platform.name}">
+</ul></p>
 Publisher : <p th:text="*{game.publisher.name}">Publisher</p>
-Reviews : <p th:text="*{game.reviews}">Reviews</p>
+Reviews : <p th:each="reviews : ${reviewsList}"
+th:text="${reviews.text}">Reviews</p>
 
 </body>
 </html>
