@@ -10,15 +10,16 @@
     <input type="text" th:field="*{name}">
     <label th:for="releaseDay">Game Release Day</label>
     <input type="date" th:field="*{releaseDay}">
-    <section th:field="*{genre}">
-        <option th:each="genres : ${game.genre}"
-                th:value="genres"
-                th:text="*{genre.name}">Genre Game</option>
-    </section>
-
-
+    <!--<section th:field="*{genre}">-->
+        <!--<option th:each="genres : ${game.genre}"-->
+                <!--th:value="genres"-->
+                <!--th:text="*{genre.name}">Genre Game</option>-->
+    <!--</section>-->
+    <!--<label th:for="publisher">Publisher</label>-->
+    <!--<input type="text" th:field="*{publisher}">-->
+    <!--<label th:for="developer">Publisher</label>-->
+    <!--<input type="text" th:field="*{developer}">-->
     <button type="submit">Save</button>
 </form>
-
 </body>
 </html>

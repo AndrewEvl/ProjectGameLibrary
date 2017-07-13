@@ -39,16 +39,17 @@ public class GameController {
         model.addAttribute("allGames", gameList);
         return "game-html/game-list";
     }
+//
+//    @GetMapping("/game-info")
+//    public String gameInfoGet (@PathVariable ("name") String name, Model model){
+//        model.addAttribute("name", name);
+//        return "redirect:/game-info/{name}";
+//    }
 
-    @GetMapping("/game-info")
-    public String gameInfoGet (){
-        return "game-html/game-info";
-    }
-
-    @PostMapping("/game-info")
-    public String gameInfoPost (){
-        return "/game-html/game-info";
-    }
+//    @PostMapping("/game-info/{nameGame}")
+//    public String gameInfoPost (){
+//        return "/game-html/game-info";
+//    }
 
     @GetMapping("/game-save")
     public String gameSaveGet (){
@@ -58,10 +59,10 @@ public class GameController {
     @PostMapping("/game-save")
     public String gameSavePost(Game game, Model model){
         gameService.save(game);
+        String name = game.getName();
         model.addAttribute("gameInfo",game);
-        Long id = game.getId();
-        model.addAttribute("gameId",id );
-        return "redirect:/game-info{gameId}";
+        model.addAttribute("name",name);
+        return "redirect:/game-info/{name}";
     }
 
     @GetMapping("/findByNameGame")

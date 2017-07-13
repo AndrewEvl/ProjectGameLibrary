@@ -24,10 +24,10 @@ public class Game extends BaseEntity {
     @Getter
     private String name;
 
-    @Version
-    @Getter
-    @Setter
-    private LocalDate version;
+//    @Version
+//    @Getter
+//    @Setter
+//    private LocalDate version;
 
     @Column(name = "release_day")
     @Setter

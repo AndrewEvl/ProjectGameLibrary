@@ -54,9 +54,9 @@ public class DeveloperController {
     }
 
     @PostMapping(path = "/developer-save")
-    public String saveDeveloper(String name, Model model){
-        Developer developer = new Developer();
-        developer.setName(name);
+    public String saveDeveloper(Developer developer, Model model){
+//         = new Developer();
+//        developer.setName(name);
         developerService.save(developer);
         Long id = developer.getId();
         model.addAttribute("developer",developer);
