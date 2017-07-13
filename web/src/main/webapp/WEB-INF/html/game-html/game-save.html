@@ -6,15 +6,15 @@
 </head>
 <body>
 <form th:action="@{/game-save}" method="post" th:object="${game}">
-    <label th:for="${game.name}">Game name</label>
-    <input type="text" th:text="${game.name}">
+    <label th:for="name">Game name</label>
+    <input type="text" th:field="*{name}">
 
-    <!--<select th:field="*{genre.id}">-->
-        <!--<option th:each="genreGame : ${genres}"-->
-                <!--th:value="*{genre}"-->
-                <!--th:text="${genreGame.name}">-->
-        <!--</option>-->
-    <!--</select>-->
+    <select th:field="*{genre.id}">
+        <option th:each="genreGame : ${genres}"
+                th:value="${genreGame}"
+                th:text="${genreGame.name}">
+        </option>
+    </select>
 
     <!--<select th:field="*{publisher.id}">-->
     <!--<option th:each="publisher : ${publisherList}"-->
