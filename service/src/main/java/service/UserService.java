@@ -5,8 +5,8 @@ import entity.User;
 /**
  * Created by Lino on 02.07.2017.
  */
-public interface UserService  {
-//    extends UserDetailsService
+public interface UserService {
+//
 
     void save (User user);
 

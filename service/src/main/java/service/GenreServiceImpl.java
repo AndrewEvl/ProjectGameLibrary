@@ -4,12 +4,14 @@ import dao.interfaceDao.GenreDao;
 import entity.Genre;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by User on 04.07.2017.
  */
 @Service
+@Transactional
 public class GenreServiceImpl implements GenreService {
 
     private final GenreDao genreDao;

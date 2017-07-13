@@ -7,10 +7,10 @@
 <body>
 <a href="/all-developers">Developers List</a>  <a href="/findByNameGame">Find By Name Game</a>  <a href="/user-save">Registration</a> <a href="/developer-save">Save Developer</a>  <a href="/developer">Find By ID Developers</a>  <a href="/game-save">Game Save</a> <a href="/game-list">Game List</a> <a href="/login">Login</a>
 
-<ul th:each="newsList : ${newsList}">
-    <li th:text="${newsList.name}">News Name</li>
-    <t th:text="${newsList.text}">News Text</t>
+<ui th:each="newsList : ${news}">
+    <li th:text="${news.name}">News Name</li>
+    <t th:text="${news.text}">News Text</t>
     </ui>
-</ul>
+</ui>
 </body>
 </html>

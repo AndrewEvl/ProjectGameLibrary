@@ -1,8 +1,6 @@
 package controller;
 
-import entity.Game;
-import entity.Genre;
-import entity.Platform;
+import entity.*;
 import entity.reviews.ReviewGame;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +21,11 @@ import java.util.Set;
 public class GameController {
 
     private final GameService gameService;
+    private final GenreService genreService;
 
-    public GameController(GameService gameService) {
+    public GameController(GameService gameService, GenreService genreService) {
         this.gameService = gameService;
+        this.genreService = genreService;
     }
 
     @ModelAttribute("game")
@@ -52,7 +52,9 @@ public class GameController {
 //    }
 
     @GetMapping("/game-save")
-    public String gameSaveGet (){
+    public String gameSaveGet (Model model){
+        List<Genre> all = genreService.findAll();
+        model.addAttribute("genres",all);
         return "game-html/game-save";
     }
 

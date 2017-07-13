@@ -97,26 +97,26 @@
         <!--<dependency>-->
             <!--<groupId>org.springframework.security</groupId>-->
             <!--<artifactId>spring-security-core</artifactId>-->
-            <!--<version>${spring-security-web.version}</version>-->
+            <!--<version>4.2.2.RELEASE</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>org.springframework.security</groupId>-->
             <!--<artifactId>spring-security-web</artifactId>-->
-            <!--<version>${spring-security-web.version}</version>-->
+            <!--<version>4.2.2.RELEASE</version>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>org.springframework.security</groupId>-->
             <!--<artifactId>spring-security-config</artifactId>-->
-            <!--<version>${spring-security-web.version}</version>-->
+            <!--<version>4.2.2.RELEASE</version>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
-            <version>3.0.2.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.thymeleaf.extras</groupId>-->
+            <!--<artifactId>thymeleaf-extras-springsecurity4</artifactId>-->
+            <!--<version>3.0.2.RELEASE</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
