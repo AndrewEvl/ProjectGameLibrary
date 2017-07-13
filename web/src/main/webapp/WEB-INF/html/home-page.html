@@ -5,12 +5,14 @@
     <title>Holli Game</title>
 </head>
 <body>
-<a href="/all-developers">Developers List</a>  <a href="/findByNameGame">Find By Name Game</a>  <a href="/user-save">Registration</a> <a href="/developer-save">Save Developer</a>  <a href="/developer">Find By ID Developers</a>  <a href="/game-save">Game Save</a> <a href="/game-list">Game List</a> <a href="/login">Login</a>
+<a href="/all-developers">Developers List</a> <a href="/findByNameGame">Find By Name Game</a> <a href="/user-save">Registration</a>
+<a href="/developer-save">Save Developer</a> <a href="/developer">Find By ID Developers</a> <a href="/game-save">Game
+    Save</a> <a href="/game-list">Game List</a> <a href="/login">Login</a>
 
 <ui th:each="newsList : ${news}">
-    <li th:text="${news.name}">News Name</li>
+    <li th:text="${news.getName()}">News Name</li>
     <t th:text="${news.text}">News Text</t>
-    </ui>
+</ui>
 </ui>
 </body>
 </html>
