@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @ComponentScan(basePackages = "controller")
 @EnableWebMvc
-@Import(ThymeleafConfig.class)
+@Import(value = {ThymeleafConfig.class, LocalizationConfig.class})
 public class WebConfig {
 
 }

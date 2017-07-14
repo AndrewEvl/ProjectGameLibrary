@@ -35,44 +35,35 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
 
     public List<Game> findByReleaseDay (LocalDate localDate){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         query.select(qGame).from(qGame)
                 .where(qGame.releaseDay.year()
                         .eq(localDate.getYear()));
         List<Game> results = query.fetchResults().getResults();
-        session.getTransaction().commit();
-        session.close();
         return results;
     }
 
     public List<Game> findByPublisher (Publisher publisher){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         query.select(qGame).from(qGame).where(qGame.publisher.eq(publisher));
         List<Game> results = query.fetchResults().getResults();
-        session.getTransaction().commit();
-        session.close();
         return results;
     }
 
     public List<Game> findByGenre (Genre genre){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         List<Game> result = query.select(qGame).from(qGame).where(qGame.genre.eq(genre)).fetchResults().getResults();
-//        session.getTransaction().commit();
-//        session.close();
         return result;
     }
 
     public List<Game> findByPlatform (Platform platform){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
+
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
         query.select(qGame)
@@ -80,8 +71,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
                 .join(qGame.platform);
 //                .where(qGame.platform.equals(platform))
 
-        session.getTransaction().commit();
-        session.close();
+
         return null;
     }
 

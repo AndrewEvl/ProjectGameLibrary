@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import service.UserService;
+import sun.plugin.liveconnect.SecurityContextHelper;
 
 /**
  * Created by Lino on 02.07.2017.
@@ -31,7 +32,8 @@ public class UserController {
     }
 
 //    @PostMapping("/login")
-//    public String loginFormPost(){
+//    public String loginFormPost(String name, String password,Model model){
+//        userService.loadUserByUsername(name);
 //        return "user-html/login-user";
 //    }
 

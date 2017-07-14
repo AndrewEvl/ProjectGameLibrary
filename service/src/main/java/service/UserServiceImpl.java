@@ -4,6 +4,10 @@ import dao.interfaceDao.UserDao;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,17 +38,22 @@ public class UserServiceImpl implements UserService {
         return userDao.findByNickName(name);
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-//        User userDB = userDao.findByNickName(name);
-//        if(userDB == null){
-//            throw new UsernameNotFoundException("YOU SHALL NOT PASS" + name);
-//        }
-//        return new org.springframework.security.core.userdetails.User
-//                (userDB.getNickName(),userDB.getPassword(), getUserAuthorities(userDB));
-//    }
+    @Override
+    public UserDetails loadUser(String name) {
+        return null;
+    }
 
-//    private Set<GrantedAuthority> getUserAuthorities(User user){
-//        return Collections.singleton(new SimpleGrantedAuthority(user.getRole().getRole()));
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        User userDB = userDao.findByNickName(name);
+        if(userDB == null){
+            throw new UsernameNotFoundException("YOU SHALL NOT PASS" + name);
+        }
+        return new org.springframework.security.core.userdetails.User
+                (userDB.getNickName(),userDB.getPassword(), getUserAuthorities(userDB));
+    }
+
+    private Set<GrantedAuthority> getUserAuthorities(User user){
+        return Collections.singleton(new SimpleGrantedAuthority(user.getRole().getRole()));
+    }
 }

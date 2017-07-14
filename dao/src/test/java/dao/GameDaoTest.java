@@ -3,10 +3,13 @@ package dao;
 import dao.daoImpl.GameDaoImpl;
 import dao.daoImpl.GenreDaoImpl;
 import dao.daoImpl.PublisherDaoImpl;
+import dao.interfaceDao.GameDao;
+import dao.interfaceDao.PublisherDao;
 import entity.Game;
 import entity.Genre;
 import entity.Publisher;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,12 +22,18 @@ import static org.junit.Assert.assertNotNull;
  */
 public class GameDaoTest {
 
+    @Autowired
+    private GameDao gameDao;
+
+    @Autowired
+    private PublisherDao publisherDao;
+
+
+
     @Test
     public void findByPublisher() throws Exception {
-        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         Publisher publisher = new Publisher();
-        PublisherDaoImpl publisherDao = new PublisherDaoImpl();
         publisher.setName("test");
         publisherDao.save(publisher);
         game.setPublisher(publisher);
@@ -65,7 +74,6 @@ public class GameDaoTest {
 
     @Test
     public void findByNameTest() throws Exception {
-        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         game.setName("test");
         gameDao.save(game);

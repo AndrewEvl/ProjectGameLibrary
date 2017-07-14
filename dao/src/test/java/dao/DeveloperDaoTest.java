@@ -31,7 +31,6 @@ public class DeveloperDaoTest extends BaseTest {
     }
 
     @Test
-    @Rollback (value = false)
     public void saveEntity() {
         Developer developer = new Developer();
         developer.setName("test");

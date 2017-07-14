@@ -1,8 +1,10 @@
 package dao;
 
 import dao.daoImpl.UserDaoImpl;
+import dao.interfaceDao.UserDao;
 import entity.User;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
@@ -12,6 +14,11 @@ import static org.junit.Assert.assertEquals;
  * Created by User on 15.06.2017.
  */
 public class UserDaoTest {
+
+    @Autowired
+    private  UserDao userDao;
+
+
     @Test
     public void fullInfo() throws Exception {
         UserDaoImpl userDao = new UserDaoImpl();
@@ -24,11 +31,10 @@ public class UserDaoTest {
 
     @Test
     public void findByNickNameTest() throws Exception {
-        UserDaoImpl userDao = new UserDaoImpl();
         User user = new User();
         user.setName("test");
         user.setNickName("Bad");
-        user.setDate(LocalDate.now());
+//        user.setDate(LocalDate.now());
         userDao.save(user);
         User byNickName = userDao.findByNickName(user.getNickName());
         assertEquals(byNickName.getNickName(), "Bad");
