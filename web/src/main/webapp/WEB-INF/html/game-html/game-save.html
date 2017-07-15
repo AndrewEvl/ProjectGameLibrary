@@ -5,40 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/game-save}" method="post" th:object="${game}">
+<form th:action="@{/game-save}" method="post" th:object="${gameDto}">
     <label th:for="name">Game name</label>
-    <input type="text" th:field="*{name}">
+    <input type="text" th:field="*{nameGame}">
 
-    <select th:field="*{genre.id}">
+    <select th:field="*{genreId}">
         <option th:each="genreGame : ${genres}"
-                th:value="${genreGame}"
+                th:value="${genreGame.id}"
                 th:text="${genreGame.name}">
         </option>
     </select>
 
-    <!--<select th:field="*{publisher.id}">-->
-    <!--<option th:each="publisher : ${publisherList}"-->
-            <!--th:value="*{publisher}"-->
-            <!--th:text="${publisher.name}">-->
-    <!--</option>-->
-<!--</select>-->
+    <select th:field="*{publisherId}">
+    <option th:each="publisher : ${publisherList}"
+            th:value="${publisher.id}"
+            th:text="${publisher.name}">
+    </option>
+</select>
 
-    <!--<select th:field="*{developer.id}">-->
-    <!--<option th:each="developers : ${developerList}"-->
-            <!--th:value="*{developer}"-->
-            <!--th:text="${developers.name}">-->
-    <!--</option>-->
-<!--</select>-->
-    <!--<select th:field="${}">-->
-        <!--<option th:each="developerList : ${p}"-->
-                <!--th:value=""-->
-                <!--th:text="">-->
-        <!--</option>-->
-    <!--</select>-->
-    <!--<label th:for="publisher">Publisher</label>-->
-    <!--<input type="text" th:field="*{publisher}">-->
-    <!--<label th:for="developer">Publisher</label>-->
-    <!--<input type="text" th:field="*{developer}">-->
+    <select th:field="*{developerId}">
+    <option th:each="developers : ${developerList}"
+            th:value="${developers.id}"
+            th:text="${developers.name}">
+    </option>
+</select>
+    <select th:field="*{publisherId}">
+        <option th:each="platforms : ${platformList}"
+                th:value="${platforms.id}"
+                th:text="${platforms.name}">
+        </option>
+    </select>
+    <!--<p th:each="platforms : ${platformList}">-->
+        <!--<input type="checkbox" th:field="*{publisherId}"-->
+               <!--th:value="${platforms}">-->
+        <!--<label th:text="${platforms.name}"></label>-->
+    <!--</p>-->
     <button type="submit">Save</button>
 </form>
 </body>
