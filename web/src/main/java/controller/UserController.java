@@ -1,5 +1,7 @@
 package controller;
 
+import entity.Genre;
+import entity.Role;
 import entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +53,9 @@ public class UserController {
 
     @PostMapping("/user-save")
     public String saveUserGet(User user, Model model){
+        Role role = new Role();
+        role.setId(2L);
+        user.setRole(role);
         userService.save(user);
         model.addAttribute("user",user);
         model.addAttribute("userName",user.getNickName());

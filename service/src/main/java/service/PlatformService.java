@@ -12,4 +12,6 @@ public interface PlatformService {
     List<Platform> findAll();
 
     void save(Platform platform);
+
+    Platform findByID (Long id);
 }

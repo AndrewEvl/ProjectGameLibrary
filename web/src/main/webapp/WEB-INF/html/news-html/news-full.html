@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div >
+    <div th:text="${news.name}"></div>
+    <p th:text="${news.text}"></p>
+
+    <form th:action="@{/news-full}" method="post" th:object="${newsComment}">
+        <label th:for="text">Add comment</label>
+        <input type="text" th:field="*{text}">
+        <button type="submit">Add</button>
+    </form>
+    Комментарии :
+    <div th:each="newsSet : ${newsCementsSet}">
+        <t th:text="${newsSet.text}"></t>
+    </div>
+
+</div>
+
+</body>
+</html>

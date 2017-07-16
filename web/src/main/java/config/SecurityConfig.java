@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -55,7 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login", "/user-save")
                     .permitAll()
                 .anyRequest()
-                    .authenticated()
+                .permitAll()
+//                    .authenticated()
+                .antMatchers("/adminPage")
+                    .hasAuthority("Admin")
                 .and()
                     .formLogin()
                     .loginPage("/login")
@@ -70,9 +72,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.userDetailsService(userDetailsService);
     }
-
-//    @Override
-//    public void init(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/resurces/**");
-//    }
 }

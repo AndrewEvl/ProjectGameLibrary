@@ -1,5 +1,6 @@
 package configuration;
 
+import aspects.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -11,6 +12,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class AopConfig {
 
-//    @Bean
-//    public
+    @Bean
+    public Logger logger (){
+        return new Logger();
+    }
 }

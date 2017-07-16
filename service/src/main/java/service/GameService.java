@@ -16,4 +16,6 @@ public interface GameService {
     Game findById (Long id);
 
     Game findByName (String name);
+
+    void update (Game game);
 }

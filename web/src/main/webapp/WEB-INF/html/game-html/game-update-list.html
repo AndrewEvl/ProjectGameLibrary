@@ -5,11 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-
 <ul>
     <p th:each="game : ${allGames}">
-        <a th:href="@{/game-info/(name=${game.name})}" th:text="*{game.name}"> Game List</a></p>
+        <a th:href="@{/game-update/(name=${game.name})}" th:text="*{game.name}"> Game List</a></p>
 </ul>
-
 </body>
 </html>

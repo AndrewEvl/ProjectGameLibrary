@@ -26,4 +26,11 @@ public class NewsServiceImpl implements NewsService {
     public List<News> getAll() {
         return newsDao.findAll();
     }
+
+    @Override
+    public News findById(Long id) {
+        return newsDao.findById(id);
+    }
+
+
 }

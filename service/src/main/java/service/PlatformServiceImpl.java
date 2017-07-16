@@ -32,5 +32,10 @@ public class PlatformServiceImpl implements PlatformService {
         platformDao.save(platform);
     }
 
+    @Override
+    public Platform findByID(Long id) {
+        return platformDao.findById(id);
+    }
+
 
 }

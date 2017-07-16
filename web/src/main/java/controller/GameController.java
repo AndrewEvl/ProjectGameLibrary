@@ -51,17 +51,27 @@ public class GameController {
         model.addAttribute("allGames", gameList);
         return "game-html/game-list";
     }
-//
-//    @GetMapping("/game-info")
-//    public String gameInfoGet (@PathVariable ("name") String name, Model model){
-//        model.addAttribute("name", name);
-//        return "redirect:/game-info/{name}";
-//    }
 
-//    @PostMapping("/game-info/{nameGame}")
-//    public String gameInfoPost (){
-//        return "/game-html/game-info";
-//    }
+    @PostMapping("/game-list")
+    public String gameListPost (Model model, Game game){
+        String name = game.getName();
+        model.addAttribute("name", name);
+        return "redirect:/game-info/{name}";
+    }
+
+    @GetMapping("/game-update-list")
+    public String gameListUpdateGet(Model model) {
+        List<Game> gameList = gameService.listGame();
+        model.addAttribute("allGames", gameList);
+        return "game-html/game-update-list";
+    }
+
+    @PostMapping("/game-update-list")
+    public String gameListUpdatePost (Model model, Game game){
+        String name = game.getName();
+        model.addAttribute("name", name);
+        return "redirect:/game-update";
+    }
 
     @GetMapping("/game-save")
     public String gameSaveGet(Model model) {
@@ -83,17 +93,17 @@ public class GameController {
         Publisher publisher = new Publisher();
         Developer developer = new Developer();
         Platform platform = new Platform();
+
         developer.setId(gameDto.getDeveloperId());
         publisher.setId(gameDto.getPublisherId());
         genre.setId(gameDto.getGenreId());
-        platform.setId(gameDto.getPlatforms());
+
+
         game.setGenre(genre);
         game.setPublisher(publisher);
         game.setDeveloper(developer);
         game.setName(gameDto.getNameGame());
-        Set<Platform> platformsList = new HashSet<>();
-        platformsList.add(platform);
-        game.setPlatform(platformsList);
+
         gameService.save(game);
         String name = game.getName();
         model.addAttribute("gameInfo", game);
@@ -112,8 +122,16 @@ public class GameController {
         return "redirect:/game-info/{name}";
     }
 
+    @GetMapping("/game-info")
+    public String gameInfoPost (Game game, Model model){
+        String name = game.getName();
+        model.addAttribute("name", name);
+        return "redirect:/game-info/{name}";
+    }
+
     @GetMapping("/game-info/{name}")
     public String findByNameGamePost(@PathVariable("name") String name, Model model) {
+
         Game byName = gameService.findByName(name);
         Set<ReviewGame> reviews = byName.getReviews();
         Set<Platform> platform = byName.getPlatform();
@@ -121,5 +139,51 @@ public class GameController {
         model.addAttribute("platformsList", platform);
         model.addAttribute("reviewsList", reviews);
         return "game-html/game-info";
+    }
+
+    @GetMapping("/game-update")
+    public String gameUpdateGet (Game game, Model model){
+        String name = game.getName();
+        model.addAttribute("name", name);
+        return "redirect:/game-update/{name}";
+    }
+
+    @GetMapping("/game-update/{name}")
+    public String updateGameGet (Game game, Model model){
+        List<Developer> developerList = developerService.getAll();
+        List<Genre> all = genreService.findAll();
+        List<Platform> platformList = platformService.findAll();
+        List<Publisher> publisherList = publisherService.findAll();
+
+        model.addAttribute("updateGame", game);
+        model.addAttribute("publisherList", publisherList);
+        model.addAttribute("developerList", developerList);
+        model.addAttribute("platformList", platformList);
+        model.addAttribute("genres", all);
+        return "game-html/game-update";
+    }
+
+    @PostMapping("/game-update")
+    public String updateGamePost (GameDto gameDto, Model model){
+        Game game = new Game();
+        Genre genre = new Genre();
+        Publisher publisher = new Publisher();
+        Developer developer = new Developer();
+        Platform platform = new Platform();
+
+        developer.setId(gameDto.getDeveloperId());
+        publisher.setId(gameDto.getPublisherId());
+        genre.setId(gameDto.getGenreId());
+
+
+        game.setGenre(genre);
+        game.setPublisher(publisher);
+        game.setDeveloper(developer);
+        game.setName(gameDto.getNameGame());
+
+        gameService.update(game);
+        String name = game.getName();
+        model.addAttribute("name",name);
+        return "redirect:/game-info/{name}";
     }
 }

@@ -16,20 +16,20 @@ import java.util.List;
 public class GameServiceImpl implements GameService {
 
     private final GameDao gameDao;
-    private final PlatformDao platformDao;
 
-    public GameServiceImpl(GameDao gameDao, PlatformDao platformDao) {
+    public GameServiceImpl(GameDao gameDao) {
         this.gameDao = gameDao;
-        this.platformDao = platformDao;
     }
 
     @Override
+    @Loggable
     public Long save(Game game) {
          gameDao.save(game);
         return game.getId();
     }
 
     @Override
+    @LoggableAfter
     public List<Game> listGame() {
         return gameDao.findAll();
     }
@@ -41,8 +41,14 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    @Loggable
     public Game findByName(String name) {
         Game byName = gameDao.findByName(name);
         return byName;
+    }
+
+    @Override
+    public void update(Game game) {
+        gameDao.update(game);
     }
 }
