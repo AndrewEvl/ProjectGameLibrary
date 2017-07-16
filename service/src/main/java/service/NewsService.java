@@ -12,4 +12,6 @@ public interface NewsService {
     List<News> getAll();
 
     News findById (Long id);
+
+    void save(News news);
 }

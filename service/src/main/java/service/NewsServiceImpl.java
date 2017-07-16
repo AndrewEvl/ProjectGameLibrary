@@ -32,5 +32,10 @@ public class NewsServiceImpl implements NewsService {
         return newsDao.findById(id);
     }
 
+    @Override
+    public void save(News news) {
+        newsDao.save(news);
+    }
+
 
 }

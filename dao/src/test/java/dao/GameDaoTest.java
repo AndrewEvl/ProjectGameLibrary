@@ -2,7 +2,6 @@ package dao;
 
 import dao.daoImpl.GameDaoImpl;
 import dao.daoImpl.GenreDaoImpl;
-import dao.daoImpl.PublisherDaoImpl;
 import dao.interfaceDao.GameDao;
 import dao.interfaceDao.PublisherDao;
 import entity.Game;
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by User on 14.06.2017.
  */
-public class GameDaoTest {
+public class GameDaoTest extends BaseTest {
 
     @Autowired
     private GameDao gameDao;

@@ -1,8 +1,9 @@
 package dao;
 
-import dao.daoImpl.NewsDaoImpl;
+import dao.interfaceDao.NewsDao;
 import entity.News;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,10 +11,13 @@ import java.util.List;
 /**
  * Created by User on 15.06.2017.
  */
-public class NewsDaoTest {
+public class NewsDaoTest extends BaseTest {
+
+    @Autowired
+    private NewsDao newsDao;
+
     @Test
     public void getByDate() throws Exception {
-        NewsDaoImpl newsDao = new NewsDaoImpl();
         News news = new News();
         news.setName("test");
         news.setDate(LocalDate.now());
