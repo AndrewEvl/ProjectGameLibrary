@@ -9,9 +9,9 @@
     <div th:text="${news.name}"></div>
     <p th:text="${news.text}"></p>
 
-    <form th:action="@{/news-full}" method="post" th:object="${newsComment}">
+    <form th:action="@{/news-full/}" method="post" th:object="${newsComment}">
         <label th:for="text">Add comment</label>
-        <input type="text" th:field="*{text}">
+        <input type="text" th:field="${newsComment.text}">
         <button type="submit">Add</button>
     </form>
     Комментарии :

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <p th:each="theme : ${themeList}">
+        <a th:href="@{/full-forum/(id=${theme.id})}" th:text="*{theme.theme}"></a>
+    </p>
+</ul>
+</body>
+</html>

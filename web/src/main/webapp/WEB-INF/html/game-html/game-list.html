@@ -11,5 +11,11 @@
         <a th:href="@{/game-info/(name=${game.name})}" th:text="*{game.name}"> Game List</a></p>
 </ul>
 
+Collection version :
+<ul>
+    <p th:each="gameCollection : ${gameCollectionAll}">
+        <a th:href="@{/game-info-collection/(id=${gameCollection.id})}" th:text="*{gameCollection.name}"> Game List</a></p>
+</ul>
+
 </body>
 </html>

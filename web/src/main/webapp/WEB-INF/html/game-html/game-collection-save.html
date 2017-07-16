@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/game-collection-save}" method="post" th:object="${gameCollectionDto}">
+    <label th:for="name">Game name</label>
+    <input type="text" th:field="*{nameGame}">
+
+    <select th:field="*{genreId}">
+        <option th:each="genreGame : ${genres}"
+                th:value="${genreGame.id}"
+                th:text="${genreGame.name}">
+        </option>
+    </select>
+
+    <select th:field="*{publisherId}">
+        <option th:each="publisher : ${publisherList}"
+                th:value="${publisher.id}"
+                th:text="${publisher.name}">
+        </option>
+    </select>
+
+    <select th:field="*{developerId}">
+        <option th:each="developers : ${developerList}"
+                th:value="${developers.id}"
+                th:text="${developers.name}">
+        </option>
+    </select>
+    <select th:field="*{publisherId}">
+        <option th:each="platforms : ${platformList}"
+                th:value="${platforms.id}"
+                th:text="${platforms.name}">
+        </option>
+    </select>
+    <label th:for="artbook">Artbook</label>
+    <input type="text" th:field="*{artbook}">
+    <label th:for="figure">Figure</label>
+    <input type="text" th:field="*{figure}">
+    <label th:for="ost">OST</label>
+    <input type="text" th:field="*{ost}">
+    <label th:for="other">Other</label>
+    <input type="text" th:field="*{other}">
+    <!--<p th:each="platforms : ${platformList}">-->
+    <!--<input type="checkbox" th:field="*{publisherId}"-->
+    <!--th:value="${platforms.id}">-->
+    <!--<label th:text="${platforms.name}"></label>-->
+    <!--</p>-->
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

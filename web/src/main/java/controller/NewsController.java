@@ -2,7 +2,6 @@ package controller;
 
 import entity.News;
 import entity.reviews.NewsComment;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,6 +56,17 @@ public class NewsController {
         return "redirect:/news-full/{id}";
     }
 
+    @GetMapping("/news-add")
+    public String newsAddGet (){
+        return "news-html/news-add";
+    }
+
+    @PostMapping("/news-add")
+    public String newsAddPost (News news){
+        newsService.save(news);
+        return "redirect:/adminPage";
+    }
+
     @GetMapping("/news-full/{id}")
     public String newsInfoGet (@PathVariable ("id") Long id, Model model){
         News news = newsService.findById(id);
@@ -67,8 +77,7 @@ public class NewsController {
     }
 
     @PostMapping("/news-full")
-    public String newsInfoPost (News news,NewsComment newsComment,Model model){
-
+    public String newsInfoPost (NewsComment newsComment,Model model){
         newsCommentsService.save(newsComment);
 //        model.addAttribute("id",id);
         return "redirect:/news-full/{id}";

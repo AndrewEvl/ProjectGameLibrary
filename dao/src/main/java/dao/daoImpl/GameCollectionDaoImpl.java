@@ -26,4 +26,5 @@ public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> implement
         session.close();
         return result;
     }
+
 }
