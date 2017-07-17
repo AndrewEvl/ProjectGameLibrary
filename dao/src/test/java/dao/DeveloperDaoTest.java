@@ -4,7 +4,6 @@ import dao.interfaceDao.DeveloperDao;
 import entity.Developer;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import java.util.List;
 
@@ -18,7 +17,6 @@ public class DeveloperDaoTest extends BaseTest {
 
     @Autowired
     private DeveloperDao developerDao;
-
 
     @Test
     public void findById() throws Exception {

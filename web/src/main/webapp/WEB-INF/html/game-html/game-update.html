@@ -5,30 +5,30 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/game-update}" method="post" th:object="${updateGame}">
-    <p th:text="*{name}"></p>
+<form th:action="@{/game-update}" method="post" th:object="${gameDto}">
+    <p th:text="*{nameGame}"></p>
 
-    <select th:field="*{genre.id}">
+    <select th:field="*{genreId}">
         <option th:each="genreGame : ${genres}"
                 th:value="${genreGame.id}"
                 th:text="${genreGame.name}">
         </option>
     </select>
 
-    <select th:field="*{publisher.id}">
+    <select th:field="*{publisherId}">
         <option th:each="publisher : ${publisherList}"
                 th:value="${publisher.id}"
                 th:text="${publisher.name}">
         </option>
     </select>
 
-    <select th:field="*{developer.id}">
+    <select th:field="*{developerId}">
         <option th:each="developers : ${developerList}"
                 th:value="${developers.id}"
                 th:text="${developers.name}">
         </option>
     </select>
-    <select th:field="*{platform}">
+    <select th:field="*{platforms}">
         <option th:each="platforms : ${platformList}"
                 th:value="${platforms.id}"
                 th:text="${platforms.name}">

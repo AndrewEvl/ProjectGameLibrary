@@ -27,34 +27,34 @@ public class ForumController {
         this.forumCommentsService = forumCommentsService;
     }
 
-@GetMapping("/forum-theme-list")
-    public String forumThemeListGet(Model model){
-    List<ForumTheme> themeList = forumThemService.findAll();
-    model.addAttribute("themeList", themeList);
-    return "forum-html/forum-theme-list";
-}
+    @GetMapping("/forum-theme-list")
+    public String forumThemeListGet(Model model) {
+        List<ForumTheme> themeList = forumThemService.findAll();
+        model.addAttribute("themeList", themeList);
+        return "forum-html/forum-theme-list";
+    }
 
-@PostMapping("/forum-theme-list")
-    public String forumThemeListPost (Model model, ForumTheme forumTheme){
-    Long id = forumTheme.getId();
-    model.addAttribute("id", id);
-    return "redirect:/full-forum{id}";
-}
+    @PostMapping("/forum-theme-list")
+    public String forumThemeListPost(Model model, ForumTheme forumTheme) {
+        Long id = forumTheme.getId();
+        model.addAttribute("id", id);
+        return "redirect:/full-forum{id}";
+    }
 
-//@GetMapping("/full-forum")
-//    public String fullForumGet (ForumTheme forumTheme, Model model){
-//    Long id = forumTheme.getId();
-//    model.addAttribute("id",id);
-//    return "redirect:/full-forum/{id}";
-//}
+    @GetMapping("/full-forum")
+    public String fullForumGet(ForumTheme forumTheme, Model model) {
+        Long id = forumTheme.getId();
+        model.addAttribute("id", id);
+        return "redirect:/full-forum/{id}";
+    }
 
-@GetMapping("/full-forum/{id}")
-    public String fullForumIdGet (@PathVariable ("id") Long id, Model model){
-    ForumTheme byId = forumThemService.findById(id);
-    Set<ForumComments> forumComments = byId.getForumComments();
-    model.addAttribute("them",byId);
-    model.addAttribute("commentsList",forumComments);
-    return "forum-html/full-forum";
-}
+    @GetMapping("/full-forum/{id}")
+    public String fullForumIdGet(@PathVariable("id") Long id, Model model) {
+        ForumTheme byId = forumThemService.findById(id);
+        Set<ForumComments> forumComments = byId.getForumComments();
+        model.addAttribute("them", byId);
+        model.addAttribute("commentsList", forumComments);
+        return "forum-html/full-forum";
+    }
 
 }

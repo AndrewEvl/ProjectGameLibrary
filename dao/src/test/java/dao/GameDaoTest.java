@@ -3,6 +3,7 @@ package dao;
 import dao.daoImpl.GameDaoImpl;
 import dao.daoImpl.GenreDaoImpl;
 import dao.interfaceDao.GameDao;
+import dao.interfaceDao.GenreDao;
 import dao.interfaceDao.PublisherDao;
 import entity.Game;
 import entity.Genre;
@@ -27,7 +28,8 @@ public class GameDaoTest extends BaseTest {
     @Autowired
     private PublisherDao publisherDao;
 
-
+    @Autowired
+    private GenreDao genreDao;
 
     @Test
     public void findByPublisher() throws Exception {
@@ -43,10 +45,8 @@ public class GameDaoTest extends BaseTest {
 
     @Test
     public void findByGenre (){
-        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         Genre genre = new Genre();
-        GenreDaoImpl genreDao = new GenreDaoImpl();
         genre.setName("test");
         genreDao.save(genre);
         game.setName("test");
@@ -60,7 +60,6 @@ public class GameDaoTest extends BaseTest {
 
     @Test
     public void findByReleaseDay() throws Exception {
-        GameDaoImpl gameDao = new GameDaoImpl();
         Game game = new Game();
         game.setName("test");
         game.setReleaseDay(LocalDate.now());

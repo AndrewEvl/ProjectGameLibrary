@@ -11,8 +11,7 @@ import javax.persistence.*;
  * Created by User on 06.06.2017.
  */
 @Entity
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = "forumTheme")
 @NoArgsConstructor
 @Table(name = "comments_forum")
 public class ForumComments extends BaseEntity{
@@ -21,11 +20,13 @@ public class ForumComments extends BaseEntity{
     @Setter
     @Getter
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "forum_theme_id")
     @Setter
     @Getter
     private ForumTheme forumTheme;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     @Setter

@@ -21,6 +21,7 @@ import java.util.Set;
 @Controller
 public class GameController {
 
+    private String NAME;
     private final GameService gameService;
     private final GenreService genreService;
     private final PublisherService publisherService;
@@ -215,6 +216,7 @@ public class GameController {
     @GetMapping("/game-update")
     public String gameUpdateGet (Game game, Model model){
         String name = game.getName();
+        NAME = name;
         model.addAttribute("name", name);
         return "redirect:/game-update/{name}";
     }
@@ -247,6 +249,7 @@ public class GameController {
         genre.setId(gameDto.getGenreId());
 
 
+        game.setName(NAME);
         game.setGenre(genre);
         game.setPublisher(publisher);
         game.setDeveloper(developer);

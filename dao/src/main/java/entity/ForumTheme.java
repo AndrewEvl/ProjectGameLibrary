@@ -22,7 +22,7 @@ public class ForumTheme extends BaseEntity {
     @Getter
     private String theme;
 
-    @OneToMany(mappedBy = "forumTheme")
+    @OneToMany(mappedBy = "forumTheme", fetch = FetchType.EAGER)
     @Setter
     @Getter
     private Set<ForumComments> forumComments;

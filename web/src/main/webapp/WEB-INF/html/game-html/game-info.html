@@ -5,16 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<div><a href="?language=ru_RU">РУС</a>  <a href="?language=en_US">ENG</a></div>
+<h th:text="#{game.name}"></h>
+<p th:text="*{game.name}">Game name</p>
+<!--cerecta encodinc filter-->
+<h th:text="#{game.genre}"></h>
+<p th:text="*{game.genre.name}">Genre Game</p>
 
-Game name : <p th:text="*{game.name}">Game name</p>
-<!--Game Release Day : <p th:text="*{game.releaseDay}">Game Release Day</p>-->
-Genre Game : <p th:text="*{game.genre.name}">Genre Game</p>
-Developer Name :<p th:text="*{game.developer.name}">Developer Name</p>
-Platform :<p><ul th:each="platform : ${platformsList}"
+<h th:text="#{game.developer}"></h>
+<p th:text="*{game.developer.name}">Developer Name</p>
+
+<h th:text="#{game.publisher}"></h>
+<p><ul th:each="platform : ${platformsList}"
     th:text="${platform.name}">
 </ul></p>
-Publisher : <p th:text="*{game.publisher.name}">Publisher</p>
-Reviews : <p th:each="reviews : ${reviewsList}"
+
+<h th:text="#{game.publisher}"></h>
+<p th:text="*{game.publisher.name}">Publisher</p>
+
+<h th:text="#{game.reviews}"></h>
+<p th:each="reviews : ${reviewsList}"
 th:text="${reviews.text}">Reviews</p>
 
 </body>

@@ -2,6 +2,7 @@ package entity.reviews;
 
 import entity.BaseEntity;
 import entity.News;
+import entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,6 @@ import javax.persistence.*;
 @Entity
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode
 @Table(name = "comments_news")
 public class NewsComment extends BaseEntity {
 

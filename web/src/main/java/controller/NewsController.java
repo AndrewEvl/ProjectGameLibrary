@@ -1,8 +1,11 @@
 package controller;
 
+import dto.NewsCommentsDto;
 import entity.News;
+import entity.User;
 import entity.reviews.NewsComment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import service.NewsCommentsService;
 import service.NewsService;
+import service.UserService;
 
 import java.util.List;
 import java.util.Set;
@@ -33,6 +37,11 @@ public class NewsController {
     @ModelAttribute("news")
     public News news(){
         return new News();
+    }
+
+    @ModelAttribute("newsCommentsDto")
+    public NewsCommentsDto newsCommentsDto (){
+        return new NewsCommentsDto();
     }
 
     @ModelAttribute("newsComment")
@@ -73,13 +82,35 @@ public class NewsController {
         Set<NewsComment> newsCommentSet = news.getNewsCommentSet();
         model.addAttribute("newsCementsSet", newsCommentSet);
         model.addAttribute("news", news);
+        model.addAttribute("id",id);
         return "news-html/news-full";
     }
 
-    @PostMapping("/news-full")
-    public String newsInfoPost (NewsComment newsComment,Model model){
+    @PostMapping("/news-full/{id}")
+    public String newsInfoPost(NewsComment newsComment, News news,  Model model){
+//        newsService.findById(id);
         newsCommentsService.save(newsComment);
-//        model.addAttribute("id",id);
-        return "redirect:/news-full/{id}";
+        return "redirect:/";
     }
+
+//    @GetMapping("/news-comments-add")
+//public String newsCommentsAddNoId (){
+//        return "redirect:/news-comments-add/{id}";
+//    }
+
+    @GetMapping("/news-comments-add")
+            public String newsCommentsAddGet () {
+        return "news-html/news-comments-add";
+    }
+
+//    @PostMapping("/news-comments-add")
+//    public String newsInfoPost (NewsComment newsComment, Model model){
+//        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+//        User byNickName = userService.findByNickName(name);
+//        newsComment.setUser(byNickName);
+//        newsComment.setSetNews(NEWS);
+//        newsCommentsService.save(newsComment);
+//        model.addAttribute("newsComments", newsComment);
+//        return "redirect:/news-full/{ID}";
+//    }
 }
