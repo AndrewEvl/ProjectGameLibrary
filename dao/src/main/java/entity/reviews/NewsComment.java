@@ -2,8 +2,10 @@ package entity.reviews;
 
 import entity.BaseEntity;
 import entity.News;
-import entity.User;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -22,7 +24,7 @@ public class NewsComment extends BaseEntity {
     private String text;
 
     @ManyToOne
-    @JoinColumn (name = "news_id")
+    @JoinColumn(name = "news_id")
     @Setter
     @Getter
     private News setNews;

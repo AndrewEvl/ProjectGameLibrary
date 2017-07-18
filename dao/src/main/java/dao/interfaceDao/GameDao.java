@@ -13,11 +13,11 @@ import java.util.List;
  */
 public interface GameDao extends BaseDao<Game> {
 
-    Game findByName (String name);
+    Game findByName(String name);
 
-    List<Game> findByReleaseDay (LocalDate localDate);
+    List<Game> findByReleaseDay(LocalDate localDate);
 
-    List<Game> findByPublisher (Publisher publisher);
+    List<Game> findByPublisher(Publisher publisher);
 
-    List<Game> findByGenre (Genre genre);
+    List<Game> findByGenre(Genre genre);
 }

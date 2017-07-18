@@ -49,23 +49,23 @@ public class DeveloperController {
     }
 
     @GetMapping(path = "/developer-save")
-    public String saveDeveloperForm (){
+    public String saveDeveloperForm() {
         return "developer-html/developer-save";
     }
 
     @PostMapping(path = "/developer-save")
-    public String saveDeveloper(Developer developer, Model model){
+    public String saveDeveloper(Developer developer, Model model) {
 //         = new Developer();
 //        developer.setName(name);
         developerService.save(developer);
         Long id = developer.getId();
-        model.addAttribute("developer",developer);
+        model.addAttribute("developer", developer);
         model.addAttribute("devId", id);
         return "redirect:/developer-info/{devId}";
     }
 
     @GetMapping("/all-developers")
-    public String allDevelopers (Model model){
+    public String allDevelopers(Model model) {
         List<Developer> developers = developerService.getAll();
         model.addAttribute("allDevelopers", developers);
         return "developer-html/developer-all";

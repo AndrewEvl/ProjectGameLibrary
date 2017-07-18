@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface PublisherService {
 
-    List<Publisher> findAll ();
+    List<Publisher> findAll();
 }

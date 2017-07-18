@@ -14,7 +14,7 @@ import javax.persistence.*;
 @ToString(exclude = "forumTheme")
 @NoArgsConstructor
 @Table(name = "comments_forum")
-public class ForumComments extends BaseEntity{
+public class ForumComments extends BaseEntity {
 
     @Column(name = "name")
     @Setter

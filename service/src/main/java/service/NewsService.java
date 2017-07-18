@@ -11,9 +11,13 @@ public interface NewsService {
 
     List<News> getAll();
 
-    News findById (Long id);
+    News findById(Long id);
 
     void save(News news);
 
-    void update (News news);
+    void update(News news);
+
+    List<News> getNewsPage(int pageNumber);
+
+    int getCountPages();
 }

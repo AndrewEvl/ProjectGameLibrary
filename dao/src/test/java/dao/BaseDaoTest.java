@@ -22,17 +22,19 @@ import static org.junit.Assert.*;
 public abstract class BaseDaoTest<T extends BaseEntity> {
 
     protected abstract BaseDao<T> getDao();
+
     protected abstract T getModel();
 
     @Test
-    public void testSave(){
+    public void testSave() {
         T model = getModel();
         getDao().save(model);
         T entity = getDao().findById(1L);
         assertNotNull(entity);
     }
+
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         T model = getModel();
         getDao().save(model);
 
@@ -45,7 +47,7 @@ public abstract class BaseDaoTest<T extends BaseEntity> {
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         T model = getModel();
         getDao().save(model);
         getDao().delete(model);

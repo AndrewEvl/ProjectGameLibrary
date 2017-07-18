@@ -26,8 +26,4 @@ public class ForumTheme extends BaseEntity {
     @Setter
     @Getter
     private Set<ForumComments> forumComments;
-
-    public ForumTheme(String theme) {
-        this.theme = theme;
-    }
 }

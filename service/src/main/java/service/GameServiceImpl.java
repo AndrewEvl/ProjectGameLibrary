@@ -1,7 +1,6 @@
 package service;
 
 import dao.interfaceDao.GameDao;
-import dao.interfaceDao.PlatformDao;
 import entity.Game;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +12,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+@Loggable
 public class GameServiceImpl implements GameService {
 
     private final GameDao gameDao;
@@ -22,14 +22,12 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    @Loggable
     public Long save(Game game) {
-         gameDao.save(game);
+        gameDao.save(game);
         return game.getId();
     }
 
     @Override
-    @LoggableAfter
     public List<Game> listGame() {
         return gameDao.findAll();
     }
@@ -41,7 +39,6 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    @Loggable
     public Game findByName(String name) {
         Game byName = gameDao.findByName(name);
         return byName;

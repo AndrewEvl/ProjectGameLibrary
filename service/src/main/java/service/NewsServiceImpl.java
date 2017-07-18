@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -40,6 +41,22 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public void update(News news) {
         newsDao.update(news);
+    }
+
+    @Override
+    public List<News> getNewsPage(int pageNumber) {
+        List<News> newsPagination = newsDao.getNewsPage(pageNumber);
+        Collections.reverse(newsPagination);
+        return newsPagination;
+    }
+
+    public int getCountPages() {
+        int size = getAll().size();
+        int pages = size / 10;
+        if (size % 3 > 0) {
+            pages++;
+        }
+        return pages;
     }
 
 

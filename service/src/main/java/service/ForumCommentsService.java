@@ -9,10 +9,10 @@ import java.util.List;
  */
 public interface ForumCommentsService {
 
-    void save (ForumComments forumComments);
+    void save(ForumComments forumComments);
 
-    List<ForumComments> findAll ();
+    List<ForumComments> findAll();
 
-    ForumComments findById (Long id);
+    ForumComments findById(Long id);
 
 }

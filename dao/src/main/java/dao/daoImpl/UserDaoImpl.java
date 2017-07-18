@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
 
-    public User findByNickName(String name){
+    public User findByNickName(String name) {
         Session session = getSessionFactory().getCurrentSession();
         QUser qUser = new QUser("myUser");
         JPAQuery<User> query = new JPAQuery<>(session);
@@ -25,7 +25,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         return query.fetchOne();
     }
 
-    public User fullInfo (Long id){
+    public User fullInfo(Long id) {
         Session session = getSessionFactory().getCurrentSession();
         QUser qUser = new QUser("NyUser");
         JPAQuery<User> query = new JPAQuery<>(session);

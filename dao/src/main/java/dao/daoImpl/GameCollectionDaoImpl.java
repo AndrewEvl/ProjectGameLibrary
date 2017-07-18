@@ -14,8 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> implements GameCollectionDao {
 
-
-    public GameCollection fullInfo (GameCollection gameCollection){
+    public GameCollection fullInfo(GameCollection gameCollection) {
         Session session = getSessionFactory().getCurrentSession();
         QGameCollection qGameCollection = new QGameCollection("myGameColl");
         JPAQuery<GameCollection> query = new JPAQuery<>(session);

@@ -24,7 +24,7 @@ public class DeveloperDaoTest extends BaseTest {
         developerOne.setName("test");
         developerDao.save(developerOne);
         Developer developer = developerDao.findById(developerOne.getId());
-        assertEquals(developer.getName(),"test");
+        assertEquals(developer.getName(), "test");
         System.out.println(developer);
     }
 
@@ -53,7 +53,7 @@ public class DeveloperDaoTest extends BaseTest {
         developerDao.update(developer);
         Developer byId = developerDao.findById(1L);
         System.out.println(byId);
-        assertEquals(developer.getName(),"testOne");
+        assertEquals(developer.getName(), "testOne");
     }
 
     @Test

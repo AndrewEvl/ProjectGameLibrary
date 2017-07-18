@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(name = "publishers")
 public class Publisher extends BaseEntity {
 
-    @Column (name = "name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String name;

@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString (exclude = "newsCommentSet", callSuper = true)
+@ToString(exclude = "newsCommentSet", callSuper = true)
 @NoArgsConstructor
 @Table(name = "news")
 public class News extends BaseEntity {

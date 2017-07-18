@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(name = "genres")
 public class Genre extends BaseEntity {
 
-    @Column (name = "genre")
+    @Column(name = "genre")
     @Setter
     @Getter
     private String name;

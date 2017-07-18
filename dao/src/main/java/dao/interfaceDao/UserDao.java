@@ -10,5 +10,5 @@ public interface UserDao extends BaseDao<User> {
 
     User findByNickName(String name);
 
-    User fullInfo (Long id);
+    User fullInfo(Long id);
 }

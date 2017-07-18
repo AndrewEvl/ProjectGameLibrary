@@ -1,9 +1,11 @@
 package entity;
 
-import lombok.*;
-import org.hibernate.annotations.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "developers")
 public class Developer extends BaseEntity {
 
-    @Column (name = "name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String name;

@@ -7,7 +7,7 @@ import entity.Role;
  */
 public interface RoleService {
 
-    Role findById (Long id);
+    Role findById(Long id);
 
-    void save (Role role);
+    void save(Role role);
 }

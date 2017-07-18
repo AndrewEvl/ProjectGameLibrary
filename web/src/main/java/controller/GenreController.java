@@ -2,8 +2,6 @@ package controller;
 
 import entity.Genre;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import service.GenreService;
 
@@ -22,14 +20,14 @@ public class GenreController {
     }
 
     @ModelAttribute("genres")
-    public List<Genre> genre (){
+    public List<Genre> genre() {
         List<Genre> genres = genreService.findAll();
         return genres;
     }
-
-    public String allGenre (Model model){
-        List<Genre> genres = genreService.findAll();
-        model.addAttribute("genreList", genres);
-        return "game-html/game-save";
-    }
+//
+//    public String allGenre(Model model) {
+//        List<Genre> genres = genreService.findAll();
+//        model.addAttribute("genreList", genres);
+//        return "game-html/game-save";
+//    }
 }

@@ -1,7 +1,5 @@
 package dao;
 
-import dao.daoImpl.GameDaoImpl;
-import dao.daoImpl.GenreDaoImpl;
 import dao.interfaceDao.GameDao;
 import dao.interfaceDao.GenreDao;
 import dao.interfaceDao.PublisherDao;
@@ -44,7 +42,7 @@ public class GameDaoTest extends BaseTest {
     }
 
     @Test
-    public void findByGenre (){
+    public void findByGenre() {
         Game game = new Game();
         Genre genre = new Genre();
         genre.setName("test");
@@ -55,8 +53,6 @@ public class GameDaoTest extends BaseTest {
         List<Game> byGenre = gameDao.findByGenre(genre);
         System.out.println(byGenre);
     }
-
-
 
     @Test
     public void findByReleaseDay() throws Exception {
@@ -78,6 +74,4 @@ public class GameDaoTest extends BaseTest {
         Game fullInfo = gameDao.findByName("test");
         assertEquals(fullInfo.getName(), "test");
     }
-
-
 }

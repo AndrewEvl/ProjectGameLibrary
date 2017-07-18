@@ -13,5 +13,5 @@ public interface ForumThemService {
 
     List<ForumTheme> findAll();
 
-    ForumTheme findById (Long id);
+    ForumTheme findById(Long id);
 }

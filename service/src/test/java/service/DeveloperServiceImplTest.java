@@ -9,18 +9,17 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Lino on 16.07.2017.
  */
-public class DeveloperServiceImplTest extends BaseTest{
-
+public class DeveloperServiceImplTest extends BaseTest {
 
     @Autowired
     private DeveloperService developerService;
 
     @Test
-    public void save (){
+    public void save() {
         Developer developer = new Developer();
         developer.setName("dao");
         developerService.save(developer);
-        assertEquals(developer.getName(),"dao");
+        assertEquals(developer.getName(), "dao");
     }
 
 }

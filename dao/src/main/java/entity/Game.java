@@ -61,24 +61,4 @@ public class Game extends BaseEntity {
     @Setter
     @Getter
     private Set<Platform> platform = new HashSet<>();
-
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer) {
-        this.name = name;
-        this.releaseDay = releaseDay;
-        this.genre = genre;
-        this.publisher = publisher;
-        this.developer = developer;
-    }
-
-    public Game(String name, LocalDate releaseDay, Genre genre, Publisher publisher, Developer developer, Set<ReviewGame> reviewGame, Set<Platform> platform) {
-        this.name = name;
-        this.releaseDay = releaseDay;
-        this.genre = genre;
-        this.publisher = publisher;
-        this.developer = developer;
-        this.reviews = reviewGame;
-        this.platform = platform;
-    }
-
-
 }

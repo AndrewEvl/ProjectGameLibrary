@@ -6,7 +6,7 @@ import entity.GameCollection;
 /**
  * Created by Lino on 25.06.2017.
  */
-public interface GameCollectionDao extends BaseDao<GameCollection>{
+public interface GameCollectionDao extends BaseDao<GameCollection> {
 
-    GameCollection fullInfo (GameCollection gameCollection);
+    GameCollection fullInfo(GameCollection gameCollection);
 }

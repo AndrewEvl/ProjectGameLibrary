@@ -14,7 +14,7 @@ import java.util.Set;
  * Created by User on 23.05.2017.
  */
 @Entity
-@ToString (exclude = "game")
+@ToString(exclude = "game")
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "system_requirements")
@@ -44,11 +44,4 @@ public class SystemSetting extends BaseEntity {
     @Setter
     @Getter
     private Set<Game> game = new HashSet<>();
-
-    public SystemSetting(Cpu cpu, Ram ram, Hdd hdd, VideoCard videoCard) {
-        this.cpu = cpu;
-        this.ram = ram;
-        this.hdd = hdd;
-        this.videoCard = videoCard;
-    }
 }

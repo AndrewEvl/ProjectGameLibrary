@@ -12,12 +12,12 @@ import javax.persistence.*;
 @Table(name = "platforms")
 public class Platform extends BaseEntity {
 
-    @Column (name = "name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String name;
 
-    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn
     @Setter
     @Getter

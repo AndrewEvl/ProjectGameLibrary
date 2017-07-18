@@ -10,11 +10,10 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by User on 15.06.2017.
  */
-public class UserDaoTest extends BaseTest{
+public class UserDaoTest extends BaseTest {
 
     @Autowired
-    private  UserDao userDao;
-
+    private UserDao userDao;
 
     @Test
     public void fullInfo() throws Exception {

@@ -6,6 +6,5 @@ import entity.Publisher;
 /**
  * Created by Lino on 25.06.2017.
  */
-public interface PublisherDao extends BaseDao<Publisher>
-{
+public interface PublisherDao extends BaseDao<Publisher> {
 }

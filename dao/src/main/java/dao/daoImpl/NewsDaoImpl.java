@@ -17,7 +17,8 @@ import java.util.List;
 @Repository
 public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao {
 
-    public List<News> getByDate(LocalDate localDate){
+    @Override
+    public List<News> getByDate(LocalDate localDate) {
         Session session = getSessionFactory().getCurrentSession();
         QNews qNews = new QNews("myNews");
         JPAQuery<News> query = new JPAQuery<>(session);
@@ -26,5 +27,16 @@ public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao {
                 .where(qNews.date.dayOfMonth()
                         .eq(localDate.getDayOfMonth()));
         return query.fetchResults().getResults();
+    }
+
+    @Override
+    public List<News> getNewsPage(int pageNumber) {
+        Session session = getSessionFactory().getCurrentSession();
+        int maxSizePage = 10;
+        int firstPage = (pageNumber - 1) * maxSizePage;
+        return session.createQuery("from News", News.class)
+                .setFirstResult(firstPage)
+                .setMaxResults(maxSizePage)
+                .getResultList();
     }
 }

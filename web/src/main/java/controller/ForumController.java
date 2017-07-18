@@ -38,12 +38,12 @@ public class ForumController {
     }
 
     @ModelAttribute("forumComments")
-    public ForumComments forumComments (){
+    public ForumComments forumComments() {
         return new ForumComments();
     }
 
     @ModelAttribute("forumTheme")
-    public ForumTheme forumTheme (){
+    public ForumTheme forumTheme() {
         return new ForumTheme();
     }
 
@@ -82,29 +82,29 @@ public class ForumController {
     }
 
     @GetMapping("/forum-add-comments")
-    public String forumAddCommentsGet (){
+    public String forumAddCommentsGet() {
         return "forum-html/forum-add-comments";
     }
 
     @PostMapping("/forum-add-comments")
-    public String forumAddCommentsPost (ForumComments forumComments, Model model) {
+    public String forumAddCommentsPost(ForumComments forumComments, Model model) {
         ForumTheme forumTheme = forumThemService.findById(ID);
         User nickname = userService.findByNickname(SecurityContextHolder.getContext().getAuthentication().getName());
         forumComments.setForumTheme(forumTheme);
         forumComments.setUser(nickname);
         forumCommentsService.save(forumComments);
         Long id = forumTheme.getId();
-        model.addAttribute("id",id);
+        model.addAttribute("id", id);
         return "redirect:/full-forum/{id}";
     }
 
     @GetMapping("/forum-add-theme")
-    public String forumAddThemeGet (){
+    public String forumAddThemeGet() {
         return "forum-html/forum-add-theme";
     }
 
     @PostMapping("/forum-add-theme")
-    public String forumAddThemePost (ForumTheme forumTheme, Model model){
+    public String forumAddThemePost(ForumTheme forumTheme, Model model) {
         forumThemService.save(forumTheme);
         Long id = forumTheme.getId();
         model.addAttribute("id", id);

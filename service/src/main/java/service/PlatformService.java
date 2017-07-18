@@ -13,5 +13,5 @@ public interface PlatformService {
 
     void save(Platform platform);
 
-    Platform findByID (Long id);
+    Platform findByID(Long id);
 }

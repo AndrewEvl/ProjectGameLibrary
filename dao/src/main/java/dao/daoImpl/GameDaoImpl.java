@@ -27,7 +27,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
         return query.fetchOne();
     }
 
-    public List<Game> findByReleaseDay (LocalDate localDate){
+    public List<Game> findByReleaseDay(LocalDate localDate) {
         Session session = getSessionFactory().getCurrentSession();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -37,7 +37,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
         return query.fetchResults().getResults();
     }
 
-    public List<Game> findByPublisher (Publisher publisher){
+    public List<Game> findByPublisher(Publisher publisher) {
         Session session = getSessionFactory().getCurrentSession();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);
@@ -45,7 +45,7 @@ public class GameDaoImpl extends BaseDaoImpl<Game> implements GameDao {
         return query.fetchResults().getResults();
     }
 
-    public List<Game> findByGenre (Genre genre){
+    public List<Game> findByGenre(Genre genre) {
         Session session = getSessionFactory().getCurrentSession();
         QGame qGame = new QGame("myGame");
         JPAQuery<Game> query = new JPAQuery<>(session);

@@ -7,10 +7,7 @@ import entity.reviews.NewsComment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import service.NewsService;
 
 import java.util.List;
@@ -50,9 +47,18 @@ public class NewsController {
         return new NewsComment();
     }
 
-    @GetMapping("/")
+//    @GetMapping("/")
+//    public String homePageGet (Model model){
+//        List<News> newsList = newsService.getAll();
+//        model.addAttribute("newsList", newsList);
+//        return "home-page";
+//    }
+//@RequestParam("page") int page,@PathVariable ("page") int page,
+    @GetMapping(path = "/")
     public String homePage(Model model) {
-        List<News> newsList = newsService.getAll();
+        List<News> newsList = newsService.getNewsPage(1);
+        int pages = newsService.getCountPages();
+        model.addAttribute("pages", pages);
         model.addAttribute("newsList", newsList);
         return "home-page";
     }

@@ -22,7 +22,7 @@ public class GameServiceImplTest extends BaseTest {
         Game game = new Game();
         game.setName("test");
         gameService.save(game);
-        assertEquals(gameService.findByName("test"),game);
+        assertEquals(gameService.findByName("test"), game);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class GameServiceImplTest extends BaseTest {
         Game game = new Game();
         gameService.save(game);
         Game byId = gameService.findById(game.getId());
-        assertEquals(byId.getId(),game.getId());
+        assertEquals(byId.getId(), game.getId());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class GameServiceImplTest extends BaseTest {
         game.setName("test");
         gameService.save(game);
         Game byName = gameService.findByName("test");
-        assertEquals(byName.getName(),game.getName());
+        assertEquals(byName.getName(), game.getName());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class GameServiceImplTest extends BaseTest {
         game.setName("update");
         gameService.update(game);
         Game update = gameService.findByName("update");
-        assertEquals(update.getName(),"update");
+        assertEquals(update.getName(), "update");
     }
 
 }

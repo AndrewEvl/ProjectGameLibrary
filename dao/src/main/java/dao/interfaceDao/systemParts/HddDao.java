@@ -6,5 +6,5 @@ import entity.systemParts.Hdd;
 /**
  * Created by Lino on 25.06.2017.
  */
-public interface HddDao  extends BaseDao<Hdd>{
+public interface HddDao extends BaseDao<Hdd> {
 }

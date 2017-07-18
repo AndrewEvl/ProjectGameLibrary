@@ -5,18 +5,31 @@
     <title>Holli Game</title>
 </head>
 <body>
-<a href="/all-developers">Developers List</a> | <a href="/findByNameGame">Find By Name Game</a> | <a href="/user-save">Registration</a> |
-<a href="/developer">Find By ID Developers</a> | <a href="/forum-theme-list">List Theme</a> | <a href="/game-list">Game List</a> | <a href="/login">Login</a> | <a href="/exit">Exit</a> |
+<a th:href="@{/all-developers}" th:text="#{developerList}">Developers</a> |
+<a th:href="@{/findByNameGame}" th:text="#{findNameGame}">Find By Name Game</a> |
+<a th:href="@{/user-save}" th:text="#{registration}">Registration</a> |
+<a th:href="@{/developer}" th:text="#{developerId}">Find By ID Developers</a> |
+<a th:href="@{/forum-theme-list}" th:text="#{forum}">Forum</a> |
+<a th:href="@{/game-list}" th:text="#{gameList}">Game List</a> |
+<a th:href="@{/login}" th:text="#{login}">Game List</a> |
+<a th:href="@{/exit}" th:text="#{exit}">Exit</a> |
 <div></div>
-
+<li class="active"><a th:href="@{/(language=en_US)}" th:text="#{language.eng}">English</a></li>
+<li class="active"><a th:href="@{/(language=ru_RU)}" th:text="#{language.rus}">Russian</a></li>
+<div></div>
 ________________________________________________
-<div><a href="/adminPage">Admin</a> </div>
+<div><a th:href="@{/adminPage}" th:text="#{admin}">Admin Page</a></div>
 <p></p>
 <ui th:each="newsAll : ${newsList}">
     <li th:text="${newsAll.name}">News Name</li>
     <t th:text="${newsAll.text}">News Text</t>
     <p></p>
-____________________________________________________
+________________________________________________________
 </ui>
+<div class="pagination">
+    <th:block th:each="pageNumber : ${#numbers.sequence(1, pages)}">
+        <a th:text="${pageNumber}" th:href="@{/(page=${pageNumber})}">Page numbers</a>
+    </th:block>
+</div>
 </body>
 </html>

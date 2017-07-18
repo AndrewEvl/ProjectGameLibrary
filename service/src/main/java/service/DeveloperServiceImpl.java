@@ -22,7 +22,6 @@ public class DeveloperServiceImpl implements DeveloperService {
         this.developerDao = developerDao;
     }
 
-    
     @Override
     public Long save(Developer developer) {
         developerDao.save(developer);

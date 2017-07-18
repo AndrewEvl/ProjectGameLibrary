@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface GameCollectionService {
 
-    void save (GameCollection gameCollection);
+    void save(GameCollection gameCollection);
 
-    List<GameCollection> findAll ();
+    List<GameCollection> findAll();
 
     GameCollection findById(Long id);
 }

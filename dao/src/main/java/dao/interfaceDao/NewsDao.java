@@ -12,4 +12,6 @@ import java.util.List;
 public interface NewsDao extends BaseDao<News> {
 
     List<News> getByDate(LocalDate localDate);
+
+    List<News> getNewsPage(int pageNumber);
 }

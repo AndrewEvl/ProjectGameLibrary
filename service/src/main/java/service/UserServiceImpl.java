@@ -20,6 +20,7 @@ import java.util.Set;
  */
 @Service
 @Transactional
+@Loggable
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
@@ -45,18 +46,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         User userDB = userDao.findByNickName(name);
-        if(userDB == null){
+        if (userDB == null) {
             throw new UsernameNotFoundException("YOU SHALL NOT PASS" + name);
         }
         return new org.springframework.security.core.userdetails.User
-                (userDB.getNickName(),userDB.getPassword(), getUserAuthorities(userDB));
+                (userDB.getNickName(), userDB.getPassword(), getUserAuthorities(userDB));
     }
 
-    private Set<GrantedAuthority> getUserAuthorities(User user){
+    private Set<GrantedAuthority> getUserAuthorities(User user) {
         return Collections.singleton(new SimpleGrantedAuthority(user.getRole().getRole()));
     }
 
-    private String passwordEncoder (String password){
+    private String passwordEncoder(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(password);
     }

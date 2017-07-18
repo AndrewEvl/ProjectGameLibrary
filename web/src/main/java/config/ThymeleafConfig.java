@@ -12,7 +12,6 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 @Configuration
 public class ThymeleafConfig {
 
-
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();

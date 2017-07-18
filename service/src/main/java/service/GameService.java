@@ -11,11 +11,11 @@ public interface GameService {
 
     Long save(Game game);
 
-    List<Game> listGame ();
+    List<Game> listGame();
 
-    Game findById (Long id);
+    Game findById(Long id);
 
-    Game findByName (String name);
+    Game findByName(String name);
 
-    void update (Game game);
+    void update(Game game);
 }

@@ -39,7 +39,7 @@ public class GameController {
     }
 
     @ModelAttribute("gameCollection")
-    public GameCollection gameCollection (){
+    public GameCollection gameCollection() {
         return new GameCollection();
     }
 
@@ -54,7 +54,7 @@ public class GameController {
     }
 
     @ModelAttribute("gameCollectionDto")
-    public GameCollectionDto gameCollectionDto(){
+    public GameCollectionDto gameCollectionDto() {
         return new GameCollectionDto();
     }
 
@@ -62,13 +62,13 @@ public class GameController {
     public String gameListGet(Model model) {
         List<Game> gameList = gameService.listGame();
         List<GameCollection> collectionList = gameCollectionService.findAll();
-        model.addAttribute("gameCollectionAll",collectionList);
+        model.addAttribute("gameCollectionAll", collectionList);
         model.addAttribute("allGames", gameList);
         return "game-html/game-list";
     }
 
     @PostMapping("/game-list")
-    public String gameListPost (Model model, Game game){
+    public String gameListPost(Model model, Game game) {
         String name = game.getName();
         model.addAttribute("name", name);
         return "redirect:/game-info/{name}";
@@ -82,7 +82,7 @@ public class GameController {
     }
 
     @PostMapping("/game-update-list")
-    public String gameListUpdatePost (Model model, Game game){
+    public String gameListUpdatePost(Model model, Game game) {
         String name = game.getName();
         model.addAttribute("name", name);
         return "redirect:/game-update";
@@ -139,7 +139,7 @@ public class GameController {
     }
 
     @PostMapping("/game-collection-save")
-    public String gameCollectionSavePost (GameCollectionDto gameCollectionDto, Model model){
+    public String gameCollectionSavePost(GameCollectionDto gameCollectionDto, Model model) {
         GameCollection gameCollection = new GameCollection();
         Genre genre = new Genre();
         Publisher publisher = new Publisher();
@@ -178,7 +178,7 @@ public class GameController {
     }
 
     @GetMapping("/game-info")
-    public String gameInfoPost (Game game, Model model){
+    public String gameInfoPost(Game game, Model model) {
         String name = game.getName();
         model.addAttribute("name", name);
         return "redirect:/game-info/{name}";
@@ -196,14 +196,14 @@ public class GameController {
     }
 
     @GetMapping("/game-info-collection")
-    public String gameCollectionInfoGet (GameCollection gameCollection, Model model){
+    public String gameCollectionInfoGet(GameCollection gameCollection, Model model) {
         Long id = gameCollection.getId();
         model.addAttribute("id", id);
         return "redirect:/game-info-collection/{id}";
     }
 
     @GetMapping("/game-info-collection/{id}")
-    public String gameCollectionInfoIdPost (@PathVariable ("id") Long id, Model model){
+    public String gameCollectionInfoIdPost(@PathVariable("id") Long id, Model model) {
         GameCollection byId = gameCollectionService.findById(id);
         Set<ReviewGame> reviews = byId.getReviews();
         Set<Platform> platform = byId.getPlatform();
@@ -214,7 +214,7 @@ public class GameController {
     }
 
     @GetMapping("/game-update")
-    public String gameUpdateGet (Game game, Model model){
+    public String gameUpdateGet(Game game, Model model) {
         String name = game.getName();
         NAME = name;
         model.addAttribute("name", name);
@@ -222,7 +222,7 @@ public class GameController {
     }
 
     @GetMapping("/game-update/{name}")
-    public String updateGameGet (Game game, Model model){
+    public String updateGameGet(Game game, Model model) {
         List<Developer> developerList = developerService.getAll();
         List<Genre> all = genreService.findAll();
         List<Platform> platformList = platformService.findAll();
@@ -237,7 +237,7 @@ public class GameController {
     }
 
     @PostMapping("/game-update")
-    public String updateGamePost (GameDto gameDto, Model model){
+    public String updateGamePost(GameDto gameDto, Model model) {
         Game game = new Game();
         Genre genre = new Genre();
         Publisher publisher = new Publisher();
@@ -257,7 +257,7 @@ public class GameController {
 
         gameService.update(game);
         String name = game.getName();
-        model.addAttribute("name",name);
+        model.addAttribute("name", name);
         return "redirect:/game-info/{name}";
     }
 }

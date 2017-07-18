@@ -14,7 +14,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class NewsCommentsDto {
 
-    private  String text;
+    private String text;
     private Long idNews;
     private Long idUser;
 
