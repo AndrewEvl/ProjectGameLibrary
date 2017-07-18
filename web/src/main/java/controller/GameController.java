@@ -21,7 +21,6 @@ import java.util.Set;
 @Controller
 public class GameController {
 
-    private String NAME;
     private final GameService gameService;
     private final GenreService genreService;
     private final PublisherService publisherService;
@@ -74,20 +73,6 @@ public class GameController {
         return "redirect:/game-info/{name}";
     }
 
-    @GetMapping("/game-update-list")
-    public String gameListUpdateGet(Model model) {
-        List<Game> gameList = gameService.listGame();
-        model.addAttribute("allGames", gameList);
-        return "game-html/game-update-list";
-    }
-
-    @PostMapping("/game-update-list")
-    public String gameListUpdatePost(Model model, Game game) {
-        String name = game.getName();
-        model.addAttribute("name", name);
-        return "redirect:/game-update";
-    }
-
     @GetMapping("/game-save")
     public String gameSaveGet(Model model) {
         List<Developer> developerList = developerService.getAll();
@@ -109,6 +94,7 @@ public class GameController {
         Developer developer = new Developer();
         Platform platform = new Platform();
 
+        platform.setId(gameDto.getPlatforms());
         developer.setId(gameDto.getDeveloperId());
         publisher.setId(gameDto.getPublisherId());
         genre.setId(gameDto.getGenreId());
@@ -211,53 +197,5 @@ public class GameController {
         model.addAttribute("platformsList", platform);
         model.addAttribute("reviewsList", reviews);
         return "game-html/game-info-collection";
-    }
-
-    @GetMapping("/game-update")
-    public String gameUpdateGet(Game game, Model model) {
-        String name = game.getName();
-        NAME = name;
-        model.addAttribute("name", name);
-        return "redirect:/game-update/{name}";
-    }
-
-    @GetMapping("/game-update/{name}")
-    public String updateGameGet(Game game, Model model) {
-        List<Developer> developerList = developerService.getAll();
-        List<Genre> all = genreService.findAll();
-        List<Platform> platformList = platformService.findAll();
-        List<Publisher> publisherList = publisherService.findAll();
-
-        model.addAttribute("updateGame", game);
-        model.addAttribute("publisherList", publisherList);
-        model.addAttribute("developerList", developerList);
-        model.addAttribute("platformList", platformList);
-        model.addAttribute("genres", all);
-        return "game-html/game-update";
-    }
-
-    @PostMapping("/game-update")
-    public String updateGamePost(GameDto gameDto, Model model) {
-        Game game = new Game();
-        Genre genre = new Genre();
-        Publisher publisher = new Publisher();
-        Developer developer = new Developer();
-        Platform platform = new Platform();
-
-        developer.setId(gameDto.getDeveloperId());
-        publisher.setId(gameDto.getPublisherId());
-        genre.setId(gameDto.getGenreId());
-
-
-        game.setName(NAME);
-        game.setGenre(genre);
-        game.setPublisher(publisher);
-        game.setDeveloper(developer);
-        game.setName(gameDto.getNameGame());
-
-        gameService.update(game);
-        String name = game.getName();
-        model.addAttribute("name", name);
-        return "redirect:/game-info/{name}";
     }
 }

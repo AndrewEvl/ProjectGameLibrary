@@ -53,15 +53,16 @@ public class NewsController {
 //        model.addAttribute("newsList", newsList);
 //        return "home-page";
 //    }
-//@RequestParam("page") int page,@PathVariable ("page") int page,
-    @GetMapping(path = "/")
-    public String homePage(Model model) {
-        List<News> newsList = newsService.getNewsPage(1);
+
+    @GetMapping("/")
+    public String homePage(@RequestParam("page") int page, Model model) {
+        List<News> newsList = newsService.getNewsPage(page);
         int pages = newsService.getCountPages();
         model.addAttribute("pages", pages);
         model.addAttribute("newsList", newsList);
         return "home-page";
     }
+
 
     @GetMapping("/{id}")
     public String newsGet(@PathVariable("id") Long id, Model model) {

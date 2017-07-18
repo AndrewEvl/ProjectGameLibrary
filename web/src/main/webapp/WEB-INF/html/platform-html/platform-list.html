@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-Developers List :
+Platforms List :
 <ul>
-    <li th:each="developers : ${allDevelopers}"
-        th:text="${developers.name}">ListDevelopers
+    <li th:each="platforms : ${platformList}"
+        th:text="${platforms.name}">ListPlatforms
     </li>
 </ul>
 </body>

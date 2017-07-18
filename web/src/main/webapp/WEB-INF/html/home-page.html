@@ -6,13 +6,16 @@
 </head>
 <body>
 <a th:href="@{/all-developers}" th:text="#{developerList}">Developers</a> |
+<a th:href="@{/platform-list}" th:text="#{platformList}">Publisher List</a> |
+<a th:href="@{/publisher-list}" th:text="#{publisherList}">Publisher List</a> |
 <a th:href="@{/findByNameGame}" th:text="#{findNameGame}">Find By Name Game</a> |
 <a th:href="@{/user-save}" th:text="#{registration}">Registration</a> |
-<a th:href="@{/developer}" th:text="#{developerId}">Find By ID Developers</a> |
+<!--<a th:href="@{/developer}" th:text="#{developerId}">Find By ID Developers</a> |-->
 <a th:href="@{/forum-theme-list}" th:text="#{forum}">Forum</a> |
 <a th:href="@{/game-list}" th:text="#{gameList}">Game List</a> |
-<a th:href="@{/login}" th:text="#{login}">Game List</a> |
+<a th:href="@{/login}" th:text="#{login}">Login</a> |
 <a th:href="@{/exit}" th:text="#{exit}">Exit</a> |
+
 <div></div>
 <li class="active"><a th:href="@{/(language=en_US)}" th:text="#{language.eng}">English</a></li>
 <li class="active"><a th:href="@{/(language=ru_RU)}" th:text="#{language.rus}">Russian</a></li>
@@ -26,10 +29,8 @@ ________________________________________________
     <p></p>
 ________________________________________________________
 </ui>
-<div class="pagination">
     <th:block th:each="pageNumber : ${#numbers.sequence(1, pages)}">
         <a th:text="${pageNumber}" th:href="@{/(page=${pageNumber})}">Page numbers</a>
     </th:block>
-</div>
 </body>
 </html>

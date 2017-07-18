@@ -8,12 +8,12 @@
 <div>
 ------------------------------------------
 <div>
-<h th:text="#{game.name}"></h>
+    <b><h th:text="#{game.name}"></h></b>
 <p th:text="*{game.name}">Game name</p>
 ------------------------------------------
 </div>
 <div>
-<h th:text="#{game.genre}"></h>
+<b><h th:text="#{game.genre}"></h></b>
 <p th:text="*{game.genre.name}">Genre Game</p>
 ------------------------------------------
 </div>
@@ -34,10 +34,8 @@
 ------------------------------------------
 </div>
 <div>
-<h th:text="#{game.reviews}"></h>
-<p th:each="reviews : ${reviewsList}"
-th:text="${reviews.text}">Reviews</p>
 ------------------------------------------
+</div>
 </div>
 </body>
 </html>

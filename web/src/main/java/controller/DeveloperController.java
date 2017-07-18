@@ -38,7 +38,7 @@ public class DeveloperController {
     @PostMapping(path = "/developer")
     public String findByIdDeveloper(Long id, Model model) {
         model.addAttribute("devId", id);
-        return "redirect:/developer-info/{devId}";
+        return "redirect:/all-developers";
     }
 
     @GetMapping(path = "/developer-info/{devId}")
@@ -55,13 +55,11 @@ public class DeveloperController {
 
     @PostMapping(path = "/developer-save")
     public String saveDeveloper(Developer developer, Model model) {
-//         = new Developer();
-//        developer.setName(name);
         developerService.save(developer);
         Long id = developer.getId();
         model.addAttribute("developer", developer);
         model.addAttribute("devId", id);
-        return "redirect:/developer-info/{devId}";
+        return "redirect:/all-developers";
     }
 
     @GetMapping("/all-developers")

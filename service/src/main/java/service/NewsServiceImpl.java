@@ -50,6 +50,7 @@ public class NewsServiceImpl implements NewsService {
         return newsPagination;
     }
 
+    @Override
     public int getCountPages() {
         int size = getAll().size();
         int pages = size / 10;

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Publisher Save;
+<form th:action="@{/publisher-save}" method="post" th:object="${publisher}">
+    <label th:for="name">Enter name Publisher Game Studio</label>
+    <input type="text" th:field="*{name}">
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

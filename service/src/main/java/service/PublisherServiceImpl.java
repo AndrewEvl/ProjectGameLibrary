@@ -24,4 +24,9 @@ public class PublisherServiceImpl implements PublisherService {
     public List<Publisher> findAll() {
         return publisherDao.findAll();
     }
+
+    @Override
+    public void save(Publisher publisher) {
+        publisherDao.save(publisher);
+    }
 }

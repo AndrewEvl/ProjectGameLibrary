@@ -29,7 +29,7 @@
             th:text="${developers.name}">
     </option>
 </select>
-    <select th:field="*{publisherId}">
+    <select th:field="*{platforms}">
         <option th:each="platforms : ${platformList}"
                 th:value="${platforms.id}"
                 th:text="${platforms.name}">
