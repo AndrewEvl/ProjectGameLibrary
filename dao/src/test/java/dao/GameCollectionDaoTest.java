@@ -1,16 +1,20 @@
-package dao.daoImpl.systemParts;
+package dao;
 
-import dao.daoImpl.GameCollectionDaoImpl;
+import dao.interfaceDao.GameCollectionDao;
 import entity.GameCollection;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by User on 15.06.2017.
  */
-public class GameCollectionDaoTest {
+public class GameCollectionDaoTest extends BaseTest {
+
+    @Autowired
+    private GameCollectionDao gameCollectionDao;
+
     @Test
     public void fullInfo() throws Exception {
-        GameCollectionDaoImpl gameCollectionDao = new GameCollectionDaoImpl();
         GameCollection gameCollection = new GameCollection();
         gameCollection.setName("test");
         gameCollection.setOst("test");

@@ -37,5 +37,10 @@ public class NewsServiceImpl implements NewsService {
         newsDao.save(news);
     }
 
+    @Override
+    public void update(News news) {
+        newsDao.update(news);
+    }
+
 
 }

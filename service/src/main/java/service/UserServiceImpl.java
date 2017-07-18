@@ -38,13 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByNickName(String name) {
-        return userDao.findByNickName(name);
-    }
-
-    @Override
-    public UserDetails loadUser(String name) {
-        return null;
+    public User findByNickname(String nickname) {
+        return userDao.findByNickName(nickname);
     }
 
     @Override

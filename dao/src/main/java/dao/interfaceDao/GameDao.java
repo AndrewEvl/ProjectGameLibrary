@@ -3,7 +3,6 @@ package dao.interfaceDao;
 import dao.common.BaseDao;
 import entity.Game;
 import entity.Genre;
-import entity.Platform;
 import entity.Publisher;
 
 import java.time.LocalDate;
@@ -21,6 +20,4 @@ public interface GameDao extends BaseDao<Game> {
     List<Game> findByPublisher (Publisher publisher);
 
     List<Game> findByGenre (Genre genre);
-
-    List<Game> findByPlatform (Platform platform);
 }

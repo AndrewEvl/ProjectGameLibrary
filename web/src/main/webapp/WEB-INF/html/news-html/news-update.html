@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<b th:text="${news.name}"></b>
+<p></p>
+<t th:text="${news.text}"></t>
+<form th:action="@{/news-update}" method="post" th:object="${newsDto}">
+    <label th:for="newsName">New NAme News</label>
+    <input type="text" th:field="*{nameNews}" th:value="${news.name}">
+    <label th:for="testNews">New Name News</label>
+    <input type="text" th:field="*{textNews}" th:value="${news.text}">
+    <!--<p><b>Редактирование текста:</b></p>-->
+    <!--<p><textarea th:text="${newsDto.textNews}" th:value="${news.text}"></textarea></p>-->
+    <p><input type="submit"></p>
+</form>
+</body>
+</html>

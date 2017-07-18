@@ -5,11 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="${them.theme}"></p>
-<ul>
-    <p th:each="listComments : ${commentsList}"
-    th:text="*{listComments.name}">
-    </p>
+            <h1 th:text="${them.theme}"></h1>
+<div>------------------------------------------------------</div>
+<a href="/forum-add-comments">Add Comments</a>
+<div>------------------------------------------------------</div>
+<ul th:each="listComments : ${commentsList}">
+       <t th:text="${listComments.user.nickName}"></t> :
+    <t th:text="${listComments.name}"></t>
+    <p></p>
+    ------------------------------------------------
 </ul>
 </body>
 </html>

@@ -17,28 +17,20 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
     public User findByNickName(String name){
         Session session = getSessionFactory().getCurrentSession();
-//        session.beginTransaction();
         QUser qUser = new QUser("myUser");
         JPAQuery<User> query = new JPAQuery<>(session);
         query.select(qUser)
                 .from(qUser)
                 .where(qUser.nickName.eq(name));
-        User result = query.fetchOne();
-//        session.getTransaction().commit();
-//        session.close();
-        return result;
+        return query.fetchOne();
     }
 
     public User fullInfo (Long id){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
         QUser qUser = new QUser("NyUser");
         JPAQuery<User> query = new JPAQuery<>(session);
         query.select(qUser).from(qUser).where(qUser.id.eq(id));
-        User result = query.fetchOne();
-        session.getTransaction().commit();
-        session.close();
-        return result;
+        return query.fetchOne();
 
     }
 

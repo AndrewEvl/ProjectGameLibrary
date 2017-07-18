@@ -1,6 +1,5 @@
 package dao;
 
-import dao.daoImpl.UserDaoImpl;
 import dao.interfaceDao.UserDao;
 import entity.User;
 import org.junit.Test;
@@ -19,12 +18,11 @@ public class UserDaoTest extends BaseTest{
 
     @Test
     public void fullInfo() throws Exception {
-        UserDaoImpl userDao = new UserDaoImpl();
         User user = new User();
         user.setNickName("test");
         userDao.save(user);
-        User fullInfo = userDao.fullInfo(1L);
-        assertEquals(fullInfo.getNickName(), "test");
+        User test = userDao.findByNickName("test");
+        assertEquals(test.getNickName(), "test");
     }
 
     @Test
@@ -32,7 +30,6 @@ public class UserDaoTest extends BaseTest{
         User user = new User();
         user.setName("test");
         user.setNickName("Bad");
-//        user.setDate(LocalDate.now());
         userDao.save(user);
         User byNickName = userDao.findByNickName(user.getNickName());
         assertEquals(byNickName.getNickName(), "Bad");

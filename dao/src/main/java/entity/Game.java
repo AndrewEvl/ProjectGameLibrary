@@ -1,8 +1,10 @@
 package entity;
 
 import entity.reviews.ReviewGame;
-import lombok.*;
-import org.springframework.stereotype.Service;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,11 +25,6 @@ public class Game extends BaseEntity {
     @Setter
     @Getter
     private String name;
-
-    @Version
-    @Getter
-    @Setter
-    private Long version;
 
     @Column(name = "release_day")
     @Setter

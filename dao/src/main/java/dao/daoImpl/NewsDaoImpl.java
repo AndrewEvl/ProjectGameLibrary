@@ -25,8 +25,6 @@ public class NewsDaoImpl extends BaseDaoImpl<News> implements NewsDao {
                 .from(qNews)
                 .where(qNews.date.dayOfMonth()
                         .eq(localDate.getDayOfMonth()));
-        List<News> results = query.fetchResults().getResults();
-        return results;
-
+        return query.fetchResults().getResults();
     }
 }

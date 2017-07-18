@@ -17,14 +17,10 @@ public class GameCollectionDaoImpl extends BaseDaoImpl<GameCollection> implement
 
     public GameCollection fullInfo (GameCollection gameCollection){
         Session session = getSessionFactory().getCurrentSession();
-        session.beginTransaction();
         QGameCollection qGameCollection = new QGameCollection("myGameColl");
         JPAQuery<GameCollection> query = new JPAQuery<>(session);
         query.select(qGameCollection).from(qGameCollection).where(qGameCollection.eq(gameCollection));
-        GameCollection result = query.fetchOne();
-        session.getTransaction().commit();
-        session.close();
-        return result;
+        return query.fetchOne();
     }
 
 }

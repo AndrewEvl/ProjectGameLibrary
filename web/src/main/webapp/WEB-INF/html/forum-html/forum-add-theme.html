@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/forum-add-theme}" method="post" th:object="${forumTheme}">
+    <label th:for="text">Add comment</label>
+    <input type="text" th:field="${forumTheme.theme}">
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

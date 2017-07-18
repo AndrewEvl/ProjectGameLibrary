@@ -21,6 +21,11 @@ public class News extends BaseEntity {
     @Getter
     private String name;
 
+    @Version
+    @Getter
+    @Setter
+    private Long version;
+
     @Column(name = "date")
     @Setter
     @Getter

@@ -6,26 +6,38 @@
 </head>
 <body>
 <div><a href="?language=ru_RU">РУС</a>  <a href="?language=en_US">ENG</a></div>
+------------------------------------------
+<div>
 <h th:text="#{game.name}"></h>
 <p th:text="*{game.name}">Game name</p>
-<!--cerecta encodinc filter-->
+------------------------------------------
+</div>
+<div>
 <h th:text="#{game.genre}"></h>
 <p th:text="*{game.genre.name}">Genre Game</p>
-
-<h th:text="#{game.developer}"></h>
+------------------------------------------
+</div>
+<div th:text="#{game.developer}">
 <p th:text="*{game.developer.name}">Developer Name</p>
-
-<h th:text="#{game.publisher}"></h>
+------------------------------------------
+</div>
+<div>
+<h th:text="#{game.platform}"></h>
 <p><ul th:each="platform : ${platformsList}"
     th:text="${platform.name}">
 </ul></p>
-
+------------------------------------------
+</div>
+<div>
 <h th:text="#{game.publisher}"></h>
 <p th:text="*{game.publisher.name}">Publisher</p>
-
+------------------------------------------
+</div>
+<div>
 <h th:text="#{game.reviews}"></h>
 <p th:each="reviews : ${reviewsList}"
 th:text="${reviews.text}">Reviews</p>
-
+------------------------------------------
+</div>
 </body>
 </html>

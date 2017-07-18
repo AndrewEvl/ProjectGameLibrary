@@ -5,10 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<a href="forum-add-theme">Add Theme Forum</a>
 <ul>
     <p th:each="theme : ${themeList}">
         <a th:href="@{/full-forum/(id=${theme.id})}" th:text="*{theme.theme}"></a>
     </p>
+    <p></p>
+    -----------------------------------------------------------------------------------
 </ul>
 </body>
 </html>

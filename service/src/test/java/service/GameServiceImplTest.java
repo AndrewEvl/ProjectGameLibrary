@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 /**
  * Created by Lino on 16.07.2017.
  */
@@ -19,6 +22,7 @@ public class GameServiceImplTest extends BaseTest {
         Game game = new Game();
         game.setName("test");
         gameService.save(game);
+        assertEquals(gameService.findByName("test"),game);
     }
 
     @Test
@@ -27,15 +31,16 @@ public class GameServiceImplTest extends BaseTest {
         game.setName("test");
         gameService.save(game);
         List<Game> games = gameService.listGame();
+        assertNotNull(games);
 
     }
 
     @Test
     public void findById() throws Exception {
         Game game = new Game();
-        game.setId(1L);
         gameService.save(game);
-        Game byId = gameService.findById(1L);
+        Game byId = gameService.findById(game.getId());
+        assertEquals(byId.getId(),game.getId());
     }
 
     @Test
@@ -43,7 +48,8 @@ public class GameServiceImplTest extends BaseTest {
         Game game = new Game();
         game.setName("test");
         gameService.save(game);
-        gameService.findByName("test");
+        Game byName = gameService.findByName("test");
+        assertEquals(byName.getName(),game.getName());
     }
 
     @Test
@@ -53,6 +59,8 @@ public class GameServiceImplTest extends BaseTest {
         gameService.save(game);
         game.setName("update");
         gameService.update(game);
+        Game update = gameService.findByName("update");
+        assertEquals(update.getName(),"update");
     }
 
 }
